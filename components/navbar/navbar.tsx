@@ -1,13 +1,30 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import MenuBar from "../menu-bar/menu-bar";
+type NavbarProps = {
+  setIsMenuOpened: Function;
+  isMenuOpened: boolean;
+};
 
-const Navbar = () => {
+const Navbar = ({ setIsMenuOpened, isMenuOpened }: NavbarProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>Logo</Text>
-      <MenuBar />
+
+      {isMenuOpened ? (
+        <View onTouchStart={() => setIsMenuOpened(!isMenuOpened)}>
+          <Text style={styles.closeIcon}>&times;</Text>
+        </View>
+      ) : (
+        <View
+          style={styles.menuIconContainer}
+          onTouchStart={() => setIsMenuOpened(!isMenuOpened)}
+        >
+          <View style={styles.lineLeft} />
+          <View style={styles.lineRight} />
+          <View style={styles.lineLeft} />
+        </View>
+      )}
     </View>
   );
 };
@@ -25,6 +42,33 @@ const styles = StyleSheet.create({
   logo: {
     fontSize: 24,
     color: "#fff",
+  },
+  closeIcon: {
+    fontSize: 50,
+    color: "#fff",
+  },
+  lineLeft: {
+    width: 25,
+    height: 3,
+    borderWidth: 1,
+    borderColor: "#fff",
+    borderRadius: 20,
+    backgroundColor: "#fff",
+  },
+  lineRight: {
+    width: 25,
+    marginLeft: 7,
+    height: 3,
+    borderWidth: 1,
+    borderColor: "#fff",
+    borderRadius: 20,
+    backgroundColor: "#fff",
+  },
+  menuIconContainer: {
+    width: 32,
+    height: 24,
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
 });
 
