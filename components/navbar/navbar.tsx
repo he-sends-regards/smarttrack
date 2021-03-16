@@ -1,6 +1,7 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MenuBar from '../menu-bar/menu-bar';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+
+import MenuBar from "../menu-bar/menu-bar";
 
 const Navbar = () => {
   return (
@@ -9,22 +10,22 @@ const Navbar = () => {
       <MenuBar />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: "100%",
     height: 60,
-    backgroundColor: '#212155',
+    backgroundColor: "#212155",
     paddingHorizontal: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   logo: {
     fontSize: 24,
-    color: '#fff'
-  }
+    color: "#fff",
+  },
 });
 
 export default Navbar;
