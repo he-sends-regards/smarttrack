@@ -1,29 +1,33 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, SafeAreaView, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import React, { useState } from "react";
+import { SafeAreaView } from "react-native";
 
-import Menu from "./components/menu/menu";
 import Navbar from "./components/navbar/navbar";
+import { AppRoute } from "./const";
+import HomeScreen from "./screens/home-screen/home-screen";
+import Menu from "./screens/menu/menu";
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const App = () => {
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Navbar />
+    <SafeAreaView>
+      <NavigationContainer>
+        <Navbar isMenuOpened={isMenuOpened} setIsMenuOpened={setIsMenuOpened} />
 
-      <View>
-        <Menu />
-      </View>
-
-      <StatusBar style="auto" />
+        {isMenuOpened ? (
+          <Menu />
+        ) : (
+          <Stack.Navigator initialRouteName={AppRoute.DASHBOARD}>
+            <Stack.Screen name={AppRoute.DASHBOARD} component={HomeScreen} />
+          </Stack.Navigator>
+        )}
+      </NavigationContainer>
     </SafeAreaView>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "flex-end",
-    justifyContent: "space-between",
-  },
-});
+export default App;
