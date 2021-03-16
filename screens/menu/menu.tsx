@@ -1,7 +1,30 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 
 import { AppRoute } from "../../const";
+
+const MenuItems = [
+  {
+    title: AppRoute.DASHBOARD,
+    logo: require("./img/dashboard.png"),
+    activeLogo: require("./img/dashboard-active.png"),
+  },
+  {
+    title: AppRoute.STUFF,
+    logo: require("./img/stuff.png"),
+    activeLogo: require("./img/stuff-active.png"),
+  },
+  {
+    title: AppRoute.ALLERTS,
+    logo: require("./img/allerts.png"),
+    activeLogo: require("./img/allerts-active.png"),
+  },
+  {
+    title: AppRoute.SEQUENCE,
+    logo: require("./img/sequence.png"),
+    activeLogo: require("./img/sequence-active.png"),
+  },
+];
 
 const Menu = () => {
   // Active menu item should be received from props
@@ -9,24 +32,25 @@ const Menu = () => {
 
   return (
     <View style={styles.container}>
-      {Object.values(AppRoute).map((route) => (
+      {MenuItems.map(({ title, logo, activeLogo }) => (
         <View
-          key={route}
+          key={title}
           style={
-            activeMenuItem === route
+            activeMenuItem === title
               ? styles.activeMenuItemContainer
               : styles.menuItemContainer
           }
           onTouchStart={() => {
-            setActiveMenuItem(route);
+            setActiveMenuItem(title);
           }}
         >
+          <Image source={activeMenuItem === title ? activeLogo : logo} />
           <Text
             style={
-              activeMenuItem === route ? styles.activeMenuItem : styles.menuItem
+              activeMenuItem === title ? styles.activeMenuItem : styles.menuItem
             }
           >
-            {route}
+            {title}
           </Text>
         </View>
       ))}
@@ -46,28 +70,36 @@ const styles = StyleSheet.create({
   },
   menuItem: {
     fontSize: 18,
-    color: "white",
     paddingVertical: 18,
-    paddingLeft: 62,
     paddingRight: "40%",
+    color: "white",
+    marginLeft: 14,
   },
   activeMenuItem: {
     fontSize: 18,
     paddingVertical: 18,
-    paddingLeft: 62,
     paddingRight: "40%",
     color: "white",
-    backgroundColor: "#6AC7BE",
+    marginLeft: 14,
   },
   menuItemContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
     width: "80%",
+    paddingLeft: 25,
   },
   activeMenuItemContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
     width: "80%",
+    backgroundColor: "#6AC7BE",
     borderWidth: 1,
     borderColor: "#6AC7BE",
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
+    paddingLeft: 25,
   },
 });
 
