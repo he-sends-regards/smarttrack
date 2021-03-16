@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontSize: 24,
+    lineHeight: 36,
+    fontWeight: "bold",
     color: "#fff",
   },
   closeIcon: {
