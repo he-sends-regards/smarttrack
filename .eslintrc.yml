@@ -3,5 +3,4 @@ root:
 extends: 
   "universe/native"
 plugins:
-  "@typescript-eslint"
-  "@typescript-eslint/tslint"
+  - "@typescript-eslint"

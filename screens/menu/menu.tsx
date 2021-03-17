@@ -1,7 +1,9 @@
 import React, {useState} from "react";
-import {StyleSheet, Text, View, Image} from "react-native";
+import {StyleSheet, Text, View, Image, Alert} from "react-native";
 
+import Navbar from "../../components/navbar/navbar";
 import {AppRoute} from "../../const";
+import * as RootNavigation from "../../routes/root-navigation";
 
 const MenuItems = [
   {
@@ -32,6 +34,7 @@ const Menu = () => {
 
   return (
     <View style={styles.container}>
+      <Navbar />
       {MenuItems.map(({title, logo, activeLogo}) => (
         <View
           key={title}
@@ -42,16 +45,19 @@ const Menu = () => {
           }
           onTouchStart={() => {
             setActiveMenuItem(title);
+            RootNavigation.navigate(title, {});
           }}>
           <Image source={activeMenuItem === title ? activeLogo : logo} />
-          <Text
-            style={
-              activeMenuItem === title ? styles.activeMenuItem : styles.menuItem
-            }>
-            {title}
-          </Text>
+          <Text style={styles.menuItem}>{title}</Text>
         </View>
       ))}
+
+      <View
+        style={styles.signOut}
+        onTouchStart={() => Alert.alert("You are signed out (no)")}>
+        <Image source={require("./img/sign-out.png")} />
+        <Text style={styles.signOutText}>Sign Out</Text>
+      </View>
     </View>
   );
 };
@@ -59,21 +65,12 @@ const Menu = () => {
 // Styles should be refactored
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
+    flex: 1,
     alignItems: "flex-end",
     justifyContent: "flex-start",
-    paddingTop: 32,
     backgroundColor: "#212155",
   },
   menuItem: {
-    fontSize: 18,
-    paddingVertical: 18,
-    paddingRight: "40%",
-    color: "white",
-    marginLeft: 14,
-  },
-  activeMenuItem: {
     fontSize: 18,
     paddingVertical: 18,
     paddingRight: "40%",
@@ -98,6 +95,21 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
     paddingLeft: 25,
+  },
+  signOut: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    width: "80%",
+    paddingLeft: 25,
+    marginTop: "20%",
+  },
+  signOutText: {
+    fontSize: 18,
+    paddingVertical: 18,
+    paddingRight: "40%",
+    marginLeft: 14,
+    color: "#8484D8",
   },
 });
 

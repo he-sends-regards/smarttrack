@@ -1,32 +1,34 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import React, { useState } from "react";
-import { SafeAreaView } from "react-native";
+import {NavigationContainer} from "@react-navigation/native";
+import {createStackNavigator} from "@react-navigation/stack";
+import React from "react";
 
-import Navbar from "./components/navbar/navbar";
-import { AppRoute } from "./const";
-import HomeScreen from "./screens/home-screen/home-screen";
+import {AppRoute} from "./const";
+import {navigationRef, isReadyRef} from "./routes/root-navigation";
+import Allerts from "./screens/allerts/allerts";
+import Dashboard from "./screens/dashboard/dashboard";
 import Menu from "./screens/menu/menu";
+import Sequence from "./screens/sequence/sequence";
+import Stuff from "./screens/stuff/stuff";
 
 const Stack = createStackNavigator();
 
 const App = () => {
-  const [isMenuOpened, setIsMenuOpened] = useState(false);
+  React.useEffect(() => {
+    return () => {
+      isReadyRef.current = true;
+    };
+  }, []);
 
   return (
-    <SafeAreaView>
-      <NavigationContainer>
-        <Navbar isMenuOpened={isMenuOpened} setIsMenuOpened={setIsMenuOpened} />
-
-        {isMenuOpened ? (
-          <Menu />
-        ) : (
-          <Stack.Navigator initialRouteName={AppRoute.DASHBOARD}>
-            <Stack.Screen name={AppRoute.DASHBOARD} component={HomeScreen} />
-          </Stack.Navigator>
-        )}
-      </NavigationContainer>
-    </SafeAreaView>
+    <NavigationContainer ref={navigationRef}>
+      <Stack.Navigator initialRouteName={AppRoute.DASHBOARD}>
+        <Stack.Screen name={AppRoute.DASHBOARD} component={Dashboard} />
+        <Stack.Screen name={AppRoute.STUFF} component={Stuff} />
+        <Stack.Screen name={AppRoute.ALLERTS} component={Allerts} />
+        <Stack.Screen name={AppRoute.SEQUENCE} component={Sequence} />
+        <Stack.Screen name="Menu" component={Menu} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
