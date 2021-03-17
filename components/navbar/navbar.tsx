@@ -3,17 +3,12 @@ import {StyleSheet, Text, View} from "react-native";
 
 import * as RootNavigation from "../../routes/root-navigation";
 
-type NavbarProps = {
-  setIsMenuOpened: Function;
-  isMenuOpened: boolean;
-};
-
-const Navbar = ({setIsMenuOpened, isMenuOpened}: NavbarProps) => {
+const Navbar = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>Logo</Text>
 
-      {RootNavigation.getCurrentRoute().name === "menu" ? (
+      {RootNavigation.getCurrentRoute().name === "Menu" ? (
         <View onTouchStart={() => RootNavigation.goBack()}>
           <Text style={styles.closeIcon}>&times;</Text>
         </View>
@@ -21,7 +16,7 @@ const Navbar = ({setIsMenuOpened, isMenuOpened}: NavbarProps) => {
         <View
           style={styles.menuIconContainer}
           onTouchStart={() => {
-            RootNavigation.navigate("menu", {});
+            RootNavigation.navigate("Menu", {});
           }}>
           <View style={styles.lineLeft} />
           <View style={styles.lineRight} />
