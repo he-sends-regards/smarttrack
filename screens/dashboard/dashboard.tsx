@@ -3,7 +3,7 @@ import {StyleSheet, SafeAreaView} from "react-native";
 
 import Navbar from "../../components/navbar/navbar";
 
-const HomeScreen = () => {
+const Dashboard = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Navbar />
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default Dashboard;
