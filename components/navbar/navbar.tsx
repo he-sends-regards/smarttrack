@@ -1,25 +1,28 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {StyleSheet, Text, View} from "react-native";
+
+import * as RootNavigation from "../../routes/root-navigation";
 
 type NavbarProps = {
   setIsMenuOpened: Function;
   isMenuOpened: boolean;
 };
 
-const Navbar = ({ setIsMenuOpened, isMenuOpened }: NavbarProps) => {
+const Navbar = ({setIsMenuOpened, isMenuOpened}: NavbarProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>Logo</Text>
 
-      {isMenuOpened ? (
-        <View onTouchStart={() => setIsMenuOpened(!isMenuOpened)}>
+      {RootNavigation.getCurrentRoute().name === "menu" ? (
+        <View onTouchStart={() => RootNavigation.goBack()}>
           <Text style={styles.closeIcon}>&times;</Text>
         </View>
       ) : (
         <View
           style={styles.menuIconContainer}
-          onTouchStart={() => setIsMenuOpened(!isMenuOpened)}
-        >
+          onTouchStart={() => {
+            RootNavigation.navigate("menu", {});
+          }}>
           <View style={styles.lineLeft} />
           <View style={styles.lineRight} />
           <View style={styles.lineLeft} />

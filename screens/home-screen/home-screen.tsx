@@ -1,14 +1,18 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import {StyleSheet, SafeAreaView} from "react-native";
+
+import Navbar from "../../components/navbar/navbar";
 
 const HomeScreen = () => {
-  return <View style={styles.container} />;
+  return (
+    <SafeAreaView style={styles.container}>
+      <Navbar />
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: 60,
     backgroundColor: "#212155",
     paddingHorizontal: 16,
     flexDirection: "row",

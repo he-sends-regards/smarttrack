@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {StyleSheet, Text, View, Image} from "react-native";
 
+import Navbar from "../../components/navbar/navbar";
 import {AppRoute} from "../../const";
 
 const MenuItems = [
@@ -26,12 +27,13 @@ const MenuItems = [
   },
 ];
 
-const Menu = () => {
+const Menu = ({navigation, stack}) => {
   // Active menu item should be received from props
   const [activeMenuItem, setActiveMenuItem] = useState(AppRoute.DASHBOARD);
 
   return (
     <View style={styles.container}>
+      <Navbar />
       {MenuItems.map(({title, logo, activeLogo}) => (
         <View
           key={title}
