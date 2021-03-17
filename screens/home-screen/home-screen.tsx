@@ -1,14 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-import Navbar from "../../components/navbar/navbar";
-
 const HomeScreen = () => {
-  return (
-    <View style={styles.container}>
-      <Navbar />
-    </View>
-  );
+  return <View style={styles.container} />;
 };
 
 const styles = StyleSheet.create({

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import React, {useState} from "react";
+import {StyleSheet, Text, View, Image} from "react-native";
 
-import { AppRoute } from "../../const";
+import {AppRoute} from "../../const";
 
 const MenuItems = [
   {
@@ -32,7 +32,7 @@ const Menu = () => {
 
   return (
     <View style={styles.container}>
-      {MenuItems.map(({ title, logo, activeLogo }) => (
+      {MenuItems.map(({title, logo, activeLogo}) => (
         <View
           key={title}
           style={
@@ -42,14 +42,12 @@ const Menu = () => {
           }
           onTouchStart={() => {
             setActiveMenuItem(title);
-          }}
-        >
+          }}>
           <Image source={activeMenuItem === title ? activeLogo : logo} />
           <Text
             style={
               activeMenuItem === title ? styles.activeMenuItem : styles.menuItem
-            }
-          >
+            }>
             {title}
           </Text>
         </View>
