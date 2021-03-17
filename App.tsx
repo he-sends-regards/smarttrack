@@ -3,18 +3,30 @@ import {createStackNavigator} from "@react-navigation/stack";
 import React from "react";
 
 import {AppRoute} from "./const";
-import {navigationRef} from "./routes/root-navigation";
-import HomeScreen from "./screens/home-screen/home-screen";
+import {navigationRef, isReadyRef} from "./routes/root-navigation";
+import Allerts from "./screens/allerts/allerts";
+import Dashboard from "./screens/dashboard/dashboard";
 import Menu from "./screens/menu/menu";
+import Sequence from "./screens/sequence/sequence";
+import Stuff from "./screens/stuff/stuff";
 
 const Stack = createStackNavigator();
 
 const App = () => {
+  React.useEffect(() => {
+    return () => {
+      isReadyRef.current = true;
+    };
+  }, []);
+
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator initialRouteName={AppRoute.DASHBOARD}>
-        <Stack.Screen name={AppRoute.DASHBOARD} component={HomeScreen} />
-        <Stack.Screen name="menu" component={Menu} />
+        <Stack.Screen name={AppRoute.DASHBOARD} component={Dashboard} />
+        <Stack.Screen name={AppRoute.STUFF} component={Stuff} />
+        <Stack.Screen name={AppRoute.ALLERTS} component={Allerts} />
+        <Stack.Screen name={AppRoute.SEQUENCE} component={Sequence} />
+        <Stack.Screen name="Menu" component={Menu} />
       </Stack.Navigator>
     </NavigationContainer>
   );
