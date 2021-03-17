@@ -56,7 +56,7 @@ const Menu = () => {
         style={styles.signOut}
         onTouchStart={() => Alert.alert("You are signed out (no)")}>
         <Image source={require("./img/sign-out.png")} />
-        <Text style={styles.menuItem}>Sign Out</Text>
+        <Text style={styles.signOutText}>Sign Out</Text>
       </View>
     </View>
   );
@@ -105,7 +105,11 @@ const styles = StyleSheet.create({
     marginTop: "20%",
   },
   signOutText: {
-    color: "white",
+    fontSize: 18,
+    paddingVertical: 18,
+    paddingRight: "40%",
+    marginLeft: 14,
+    color: "#8484D8",
   },
 });
 
