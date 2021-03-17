@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, Image} from "react-native";
 
 import Navbar from "../../components/navbar/navbar";
 import {AppRoute} from "../../const";
+import * as RootNavigation from "../../routes/root-navigation";
 
 const MenuItems = [
   {
@@ -27,7 +28,7 @@ const MenuItems = [
   },
 ];
 
-const Menu = ({navigation, stack}) => {
+const Menu = () => {
   // Active menu item should be received from props
   const [activeMenuItem, setActiveMenuItem] = useState(AppRoute.DASHBOARD);
 
@@ -44,14 +45,10 @@ const Menu = ({navigation, stack}) => {
           }
           onTouchStart={() => {
             setActiveMenuItem(title);
+            RootNavigation.navigate(title, {});
           }}>
           <Image source={activeMenuItem === title ? activeLogo : logo} />
-          <Text
-            style={
-              activeMenuItem === title ? styles.activeMenuItem : styles.menuItem
-            }>
-            {title}
-          </Text>
+          <Text style={styles.menuItem}>{title}</Text>
         </View>
       ))}
     </View>
@@ -61,21 +58,12 @@ const Menu = ({navigation, stack}) => {
 // Styles should be refactored
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
+    flex: 1,
     alignItems: "flex-end",
     justifyContent: "flex-start",
-    paddingTop: 32,
     backgroundColor: "#212155",
   },
   menuItem: {
-    fontSize: 18,
-    paddingVertical: 18,
-    paddingRight: "40%",
-    color: "white",
-    marginLeft: 14,
-  },
-  activeMenuItem: {
     fontSize: 18,
     paddingVertical: 18,
     paddingRight: "40%",
