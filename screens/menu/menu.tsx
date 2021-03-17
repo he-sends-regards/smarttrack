@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {StyleSheet, Text, View, Image} from "react-native";
+import {StyleSheet, Text, View, Image, Alert} from "react-native";
 
 import Navbar from "../../components/navbar/navbar";
 import {AppRoute} from "../../const";
@@ -51,6 +51,13 @@ const Menu = () => {
           <Text style={styles.menuItem}>{title}</Text>
         </View>
       ))}
+
+      <View
+        style={styles.signOut}
+        onTouchStart={() => Alert.alert("You are signed out (no)")}>
+        <Image source={require("./img/sign-out.png")} />
+        <Text style={styles.menuItem}>Sign Out</Text>
+      </View>
     </View>
   );
 };
@@ -88,6 +95,17 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
     paddingLeft: 25,
+  },
+  signOut: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    width: "80%",
+    paddingLeft: 25,
+    marginTop: "20%",
+  },
+  signOutText: {
+    color: "white",
   },
 });
 
