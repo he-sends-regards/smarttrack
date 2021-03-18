@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {StyleSheet, Text, View, Image, Alert} from "react-native";
+import {TouchableHighlight} from "react-native-gesture-handler";
 
 import Navbar from "../../components/navbar/navbar";
 import {AppRoute} from "../../const";
@@ -36,19 +37,22 @@ const Menu = () => {
     <View style={styles.container}>
       <Navbar />
       {MenuItems.map(({title, logo, activeLogo}) => (
-        <View
-          key={title}
-          style={
-            activeMenuItem === title
-              ? styles.activeMenuItemContainer
-              : styles.menuItemContainer
-          }
-          onTouchStart={() => {
-            setActiveMenuItem(title);
-            RootNavigation.navigate(title, {});
-          }}>
-          <Image source={activeMenuItem === title ? activeLogo : logo} />
-          <Text style={styles.menuItem}>{title}</Text>
+        <View key={title}>
+          <TouchableHighlight
+            onPress={() => {
+              setActiveMenuItem(title);
+              RootNavigation.navigate(title, {});
+            }}>
+            <View
+              style={
+                activeMenuItem === title
+                  ? styles.activeMenuItemContainer
+                  : styles.menuItemContainer
+              }>
+              <Image source={activeMenuItem === title ? activeLogo : logo} />
+              <Text style={styles.menuItem}>{title}</Text>
+            </View>
+          </TouchableHighlight>
         </View>
       ))}
 

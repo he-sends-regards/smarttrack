@@ -1,5 +1,6 @@
 import React from "react";
 import {StyleSheet, Text, View} from "react-native";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
 import * as RootNavigation from "../../routes/root-navigation";
 
@@ -9,19 +10,26 @@ const Navbar = () => {
       <Text style={styles.logo}>Logo</Text>
 
       {RootNavigation.getCurrentRoute().name === "Menu" ? (
-        <View onTouchStart={() => RootNavigation.goBack()}>
+        <TouchableHighlight
+          onPress={() => RootNavigation.goBack()}
+          underlayColor="transparent"
+          >
+        <View>
           <Text style={styles.closeIcon}>&times;</Text>
         </View>
+        </TouchableHighlight>
       ) : (
-        <View
-          style={styles.menuIconContainer}
-          onTouchStart={() => {
-            RootNavigation.navigate("Menu", {});
-          }}>
-          <View style={styles.lineLeft} />
-          <View style={styles.lineRight} />
-          <View style={styles.lineLeft} />
-        </View>
+        <TouchableHighlight onPress={() => {
+          RootNavigation.navigate("Menu", {});
+        }}
+        underlayColor="transparent">
+          <View
+            style={styles.menuIconContainer}>
+            <View style={styles.lineLeft} />
+            <View style={styles.lineRight} />
+            <View style={styles.lineLeft} />
+          </View>
+      </TouchableHighlight>
       )}
     </View>
   );
