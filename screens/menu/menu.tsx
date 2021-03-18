@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import {StyleSheet, Text, View, SafeAreaView, Image, Alert} from "react-native";
+import {StyleSheet, Text, View, Image, Alert, SafeAreaView} from "react-native";
+import {TouchableHighlight} from "react-native-gesture-handler";
 
 import Navbar from "../../components/navbar/navbar";
 import {AppRoute} from "../../const";
@@ -35,21 +36,30 @@ const Menu = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Navbar />
+
       {MenuItems.map(({title, logo, activeLogo}) => (
-        <View
+        <TouchableHighlight
           key={title}
-          style={
-            activeMenuItem === title
-              ? styles.activeMenuItemContainer
-              : styles.menuItemContainer
-          }
-          onTouchStart={() => {
+          underlayColor="transparent"
+          onPress={() => {
             setActiveMenuItem(title);
             RootNavigation.navigate(title, {});
+          }}
+          style={{
+            width: "100%",
+            justifyContent: "flex-start",
+            flexDirection: "row",
           }}>
-          <Image source={activeMenuItem === title ? activeLogo : logo} />
-          <Text style={styles.menuItem}>{title}</Text>
-        </View>
+          <View
+            style={
+              activeMenuItem === title
+                ? styles.activeMenuItemContainer
+                : styles.menuItemContainer
+            }>
+            <Image source={activeMenuItem === title ? activeLogo : logo} />
+            <Text style={styles.menuItem}>{title}</Text>
+          </View>
+        </TouchableHighlight>
       ))}
 
       <View
