@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     paddingRight: "40%",
     color: "white",
     marginLeft: 14,
+    fontFamily: "Poppins-Regular",
   },
   menuItemContainer: {
     flexDirection: "row",
@@ -110,6 +111,7 @@ const styles = StyleSheet.create({
     paddingRight: "40%",
     marginLeft: 14,
     color: "#8484D8",
+    fontFamily: "Poppins-Regular",
   },
 });
 
