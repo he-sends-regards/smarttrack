@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, View, Image} from "react-native";
 import {TouchableHighlight} from "react-native-gesture-handler";
 
 import * as RootNavigation from "../../routes/root-navigation";
@@ -13,9 +13,10 @@ const Navbar = () => {
         <TouchableHighlight
           onPress={() => RootNavigation.goBack()}
           underlayColor="transparent">
-          <View>
-            <Text style={styles.closeIcon}>&times;</Text>
-          </View>
+          <Image
+            style={styles.closeIcon}
+            source={require("./img/close-icon.png")}
+          />
         </TouchableHighlight>
       ) : (
         <TouchableHighlight
@@ -51,8 +52,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   closeIcon: {
-    fontSize: 50,
-    color: "#fff",
+    width: 24,
   },
   lineLeft: {
     width: 25,
