@@ -11,9 +11,12 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		5307C0F50F2645C79F51ADA4 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6542CCFAAA9492C8A712312 /* Poppins-Bold.ttf */; };
 		5534582D86AA5B21C0FCC903 /* libPods-SmartTrack-SmartTrackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE2BBC3C54966039597F5ED /* libPods-SmartTrack-SmartTrackTests.a */; };
 		6F3789F1E6B2D04ABE91164D /* libPods-SmartTrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B557C1ABCE46CE91804F79 /* libPods-SmartTrack.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A465A4A32E8D4E7696180454 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC718ABFB1E49C1A11A79F4 /* Poppins-Regular.ttf */; };
+		FCF379C800C240DD86905B42 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E965DA2D9D944C3A14AB33B /* Poppins-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +42,12 @@
 		32330FC53EABDBB44775AF75 /* Pods-SmartTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack.release.xcconfig"; path = "Target Support Files/Pods-SmartTrack/Pods-SmartTrack.release.xcconfig"; sourceTree = "<group>"; };
 		4BE2BBC3C54966039597F5ED /* libPods-SmartTrack-SmartTrackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartTrack-SmartTrackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B557C1ABCE46CE91804F79 /* libPods-SmartTrack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartTrack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E965DA2D9D944C3A14AB33B /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
+		7FC718ABFB1E49C1A11A79F4 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SmartTrack/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3837E438C6DEBF89C5AA439 /* Pods-SmartTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack.debug.xcconfig"; path = "Target Support Files/Pods-SmartTrack/Pods-SmartTrack.debug.xcconfig"; sourceTree = "<group>"; };
 		BAEE52EAC53F3B4755D37FC2 /* Pods-SmartTrack-SmartTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack-SmartTrackTests.release.xcconfig"; path = "Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests.release.xcconfig"; sourceTree = "<group>"; };
+		E6542CCFAAA9492C8A712312 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FF92880FDA5F518E6FDD9131 /* Pods-SmartTrack-SmartTrackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack-SmartTrackTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +128,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				EF373EE7C8F3ED93ABD2AFE9 /* Pods */,
+				DD2A9053A508438E888577EB /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -137,6 +144,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		DD2A9053A508438E888577EB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E6542CCFAAA9492C8A712312 /* Poppins-Bold.ttf */,
+				6E965DA2D9D944C3A14AB33B /* Poppins-Light.ttf */,
+				7FC718ABFB1E49C1A11A79F4 /* Poppins-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		EF373EE7C8F3ED93ABD2AFE9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +162,6 @@
 				FF92880FDA5F518E6FDD9131 /* Pods-SmartTrack-SmartTrackTests.debug.xcconfig */,
 				BAEE52EAC53F3B4755D37FC2 /* Pods-SmartTrack-SmartTrackTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -245,6 +261,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				5307C0F50F2645C79F51ADA4 /* Poppins-Bold.ttf in Resources */,
+				FCF379C800C240DD86905B42 /* Poppins-Light.ttf in Resources */,
+				A465A4A32E8D4E7696180454 /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
