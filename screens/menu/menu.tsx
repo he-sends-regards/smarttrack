@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {StyleSheet, Text, View, Image, Alert} from "react-native";
+import {StyleSheet, Text, View, SafeAreaView, Image, Alert} from "react-native";
 
 import Navbar from "../../components/navbar/navbar";
 import {AppRoute} from "../../const";
@@ -33,7 +33,7 @@ const Menu = () => {
   const [activeMenuItem, setActiveMenuItem] = useState(AppRoute.DASHBOARD);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Navbar />
       {MenuItems.map(({title, logo, activeLogo}) => (
         <View
@@ -58,7 +58,7 @@ const Menu = () => {
         <Image source={require("./img/sign-out.png")} />
         <Text style={styles.signOutText}>Sign Out</Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     paddingRight: "40%",
     color: "white",
     marginLeft: 14,
+    fontFamily: "Poppins-Regular",
   },
   menuItemContainer: {
     flexDirection: "row",
@@ -110,6 +111,7 @@ const styles = StyleSheet.create({
     paddingRight: "40%",
     marginLeft: 14,
     color: "#8484D8",
+    fontFamily: "Poppins-Regular",
   },
 });
 

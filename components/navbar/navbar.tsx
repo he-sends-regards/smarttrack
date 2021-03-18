@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   logo: {
     fontSize: 24,
     lineHeight: 36,
-    fontWeight: "bold",
+    fontFamily: "Poppins-Bold",
     color: "#fff",
   },
   closeIcon: {

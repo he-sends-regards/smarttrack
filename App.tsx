@@ -3,7 +3,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import React from "react";
 
 import {AppRoute} from "./const";
-import {navigationRef, isReadyRef} from "./routes/root-navigation";
+import {navigationRef} from "./routes/root-navigation";
 import Allerts from "./screens/allerts/allerts";
 import Dashboard from "./screens/dashboard/dashboard";
 import Menu from "./screens/menu/menu";
@@ -13,15 +13,11 @@ import Stuff from "./screens/stuff/stuff";
 const Stack = createStackNavigator();
 
 const App = () => {
-  React.useEffect(() => {
-    return () => {
-      isReadyRef.current = true;
-    };
-  }, []);
-
   return (
     <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator initialRouteName={AppRoute.DASHBOARD}>
+      <Stack.Navigator
+        initialRouteName={AppRoute.DASHBOARD}
+        screenOptions={{headerShown: false}}>
         <Stack.Screen name={AppRoute.DASHBOARD} component={Dashboard} />
         <Stack.Screen name={AppRoute.STUFF} component={Stuff} />
         <Stack.Screen name={AppRoute.ALLERTS} component={Allerts} />
