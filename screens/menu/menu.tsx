@@ -36,24 +36,30 @@ const Menu = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Navbar />
+
       {MenuItems.map(({title, logo, activeLogo}) => (
-        <View key={title}>
-          <TouchableHighlight
-            onPress={() => {
-              setActiveMenuItem(title);
-              RootNavigation.navigate(title, {});
-            }}>
-            <View
-              style={
-                activeMenuItem === title
-                  ? styles.activeMenuItemContainer
-                  : styles.menuItemContainer
-              }>
-              <Image source={activeMenuItem === title ? activeLogo : logo} />
-              <Text style={styles.menuItem}>{title}</Text>
-            </View>
-          </TouchableHighlight>
-        </View>
+        <TouchableHighlight
+          key={title}
+          underlayColor="transparent"
+          onPress={() => {
+            setActiveMenuItem(title);
+            RootNavigation.navigate(title, {});
+          }}
+          style={{
+            width: "100%",
+            justifyContent: "flex-start",
+            flexDirection: "row",
+          }}>
+          <View
+            style={
+              activeMenuItem === title
+                ? styles.activeMenuItemContainer
+                : styles.menuItemContainer
+            }>
+            <Image source={activeMenuItem === title ? activeLogo : logo} />
+            <Text style={styles.menuItem}>{title}</Text>
+          </View>
+        </TouchableHighlight>
       ))}
 
       <View
