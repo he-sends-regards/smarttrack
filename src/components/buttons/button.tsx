@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, Text, TouchableOpacity} from "react-native";
+import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
 interface ButtonProps {
   title: string;
@@ -18,18 +18,21 @@ const Button = ({
   border,
   color,
 }: ButtonProps) => {
-  //  const border = type === "filled" ? "#fff" : "#6AC7BE";
-
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={{...styles.appButtonContainer, backgroundColor, width}}>
-      <Text style={{...styles.appButtonText, color}}>{title}</Text>
-    </TouchableOpacity>
+    <View style={styles.container}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={{...styles.appButtonContainer, backgroundColor, width}}>
+        <Text style={{...styles.appButtonText, color}}>{title}</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: "5%",
+  },
   appButtonContainer: {
     borderRadius: 20,
     paddingVertical: 11,

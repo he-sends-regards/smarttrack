@@ -26,9 +26,6 @@ const StuffList = ({stuff}: StuffListProps) => {
         renderItem={renderItem}
         keyExtractor={item => item.name}
       />
-      {/* {stuff.map((stuffWorker: StuffItemType) => (
-        <StuffItem key={stuffWorker.name} stuffWorkerData={stuffWorker} />
-      ))} */}
     </SafeAreaView>
   );
 };
@@ -39,6 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     paddingHorizontal: "5%",
+    marginTop: 15,
   },
 });
 

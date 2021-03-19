@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import {StyleSheet, Text, View, Image, Alert, SafeAreaView} from "react-native";
 import {TouchableHighlight} from "react-native-gesture-handler";
 
+import * as RootNavigation from "../../../routes/root-navigation";
 import Navbar from "../../components/navbar/navbar";
 import {AppRoute} from "../../const";
-import * as RootNavigation from "../../../routes/root-navigation";
 
 const MenuItems = [
   {
@@ -30,7 +30,6 @@ const MenuItems = [
 ];
 
 const Menu = () => {
-  // Active menu item should be received from props
   const [activeMenuItem, setActiveMenuItem] = useState(AppRoute.DASHBOARD);
 
   return (
@@ -72,7 +71,6 @@ const Menu = () => {
   );
 };
 
-// Styles should be refactored
 const styles = StyleSheet.create({
   container: {
     flex: 1,
