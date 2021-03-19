@@ -3,7 +3,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import React from "react";
 
 import {AppRoute} from "./const";
-import {navigationRef} from "./routes/root-navigation";
+import {navigationRef} from "../routes/root-navigation";
 import Allerts from "./screens/allerts/allerts";
 import Dashboard from "./screens/dashboard/dashboard";
 import Menu from "./screens/menu/menu";

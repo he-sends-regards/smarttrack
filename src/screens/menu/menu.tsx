@@ -4,7 +4,7 @@ import {TouchableHighlight} from "react-native-gesture-handler";
 
 import Navbar from "../../components/navbar/navbar";
 import {AppRoute} from "../../const";
-import * as RootNavigation from "../../routes/root-navigation";
+import * as RootNavigation from "../../../routes/root-navigation";
 
 const MenuItems = [
   {
