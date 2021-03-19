@@ -31,7 +31,6 @@ const Allerts = () => {
         backgroundColor="transparent"
         width="25%"
         color={dangerColor}
-        // border="4px solid {primaryColor}"
       />
     </SafeAreaView>
   );
