@@ -1,39 +1,26 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
-import {TouchableHighlight} from "react-native-gesture-handler";
+import {StyleSheet, View} from "react-native";
 
-type StuffListProps = {
-  activeListItem: string;
-  setActiveListItem: Function;
-  listItems: string[];
+import StuffItem from "../stuff-item/stuff-item";
+
+type StuffItemType = {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  rooms: string[];
 };
 
-const StuffList = ({
-  activeListItem,
-  setActiveListItem,
-  listItems,
-}: StuffListProps) => {
+interface StuffListProps {
+  stuff: StuffItemType[];
+}
+
+const StuffList = ({stuff}: StuffListProps) => {
+  console.log(stuff);
+
   return (
     <View style={styles.container}>
-      {listItems.map(listItem => (
-        <TouchableHighlight
-          key={listItem}
-          onPress={() => setActiveListItem(listItem)}
-          underlayColor="transparent">
-          <View style={styles.listItemContainer}>
-            <Text
-              style={
-                activeListItem === listItem
-                  ? styles.activeItemList
-                  : styles.listItem
-              }>
-              {listItem}
-            </Text>
-            <View
-              style={activeListItem === listItem && styles.activeItemBorder}
-            />
-          </View>
-        </TouchableHighlight>
+      {stuff.map((stuffWorker: StuffItemType) => (
+        <StuffItem key={stuffWorker.name} stuffWorkerData={stuffWorker} />
       ))}
     </View>
   );
@@ -48,25 +35,6 @@ const styles = StyleSheet.create({
     paddingLeft: "7%",
     paddingRight: "3%",
     marginBottom: 24,
-  },
-  listItem: {
-    fontSize: 16,
-    fontFamily: "Poppins-Regular",
-  },
-  activeItemList: {
-    fontSize: 16,
-    fontFamily: "Poppins-Regular",
-    color: "#5CBD9F",
-    paddingBottom: 10,
-  },
-  listItemContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  activeItemBorder: {
-    borderBottomWidth: 1,
-    borderBottomColor: "#5CBD9F",
-    width: 22,
   },
 });
 
