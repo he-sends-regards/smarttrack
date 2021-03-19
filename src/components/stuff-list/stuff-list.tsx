@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, View} from "react-native";
+import {StyleSheet, SafeAreaView, FlatList} from "react-native";
 
 import StuffItem from "../stuff-item/stuff-item";
 
@@ -15,26 +15,30 @@ interface StuffListProps {
 }
 
 const StuffList = ({stuff}: StuffListProps) => {
-  console.log(stuff);
+  const renderItem = ({item, index}: any) => {
+    return <StuffItem stuffWorkerData={item} index={index} />;
+  };
 
   return (
-    <View style={styles.container}>
-      {stuff.map((stuffWorker: StuffItemType) => (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={stuff}
+        renderItem={renderItem}
+        keyExtractor={item => item.name}
+      />
+      {/* {stuff.map((stuffWorker: StuffItemType) => (
         <StuffItem key={stuffWorker.name} stuffWorkerData={stuffWorker} />
-      ))}
-    </View>
+      ))} */}
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-between",
-    marginTop: 24,
-    paddingLeft: "7%",
-    paddingRight: "3%",
-    marginBottom: 24,
+    paddingHorizontal: "5%",
   },
 });
 

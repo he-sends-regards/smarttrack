@@ -51,10 +51,12 @@ const styles = StyleSheet.create({
   },
   listItem: {
     fontSize: 16,
+    textTransform: "capitalize",
     fontFamily: "Poppins-Regular",
   },
   activeItemList: {
     fontSize: 16,
+    textTransform: "capitalize",
     fontFamily: "Poppins-Regular",
     color: "#5CBD9F",
     paddingBottom: 10,

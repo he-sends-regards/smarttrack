@@ -11,9 +11,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		37943013AA92291394C6CD15 /* libPods-SmartTrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B898F36FA90B6B70FDDEEA9B /* libPods-SmartTrack.a */; };
 		5307C0F50F2645C79F51ADA4 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6542CCFAAA9492C8A712312 /* Poppins-Bold.ttf */; };
-		5534582D86AA5B21C0FCC903 /* libPods-SmartTrack-SmartTrackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE2BBC3C54966039597F5ED /* libPods-SmartTrack-SmartTrackTests.a */; };
-		6F3789F1E6B2D04ABE91164D /* libPods-SmartTrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B557C1ABCE46CE91804F79 /* libPods-SmartTrack.a */; };
+		6DA439B2C7BF14B7DEBD67CB /* libPods-SmartTrack-SmartTrackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6844253B87A6B4DE4F3B6E /* libPods-SmartTrack-SmartTrackTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A465A4A32E8D4E7696180454 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FC718ABFB1E49C1A11A79F4 /* Poppins-Regular.ttf */; };
 		FCF379C800C240DD86905B42 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E965DA2D9D944C3A14AB33B /* Poppins-Light.ttf */; };
@@ -39,17 +39,17 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SmartTrack/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SmartTrack/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SmartTrack/main.m; sourceTree = "<group>"; };
-		32330FC53EABDBB44775AF75 /* Pods-SmartTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack.release.xcconfig"; path = "Target Support Files/Pods-SmartTrack/Pods-SmartTrack.release.xcconfig"; sourceTree = "<group>"; };
-		4BE2BBC3C54966039597F5ED /* libPods-SmartTrack-SmartTrackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartTrack-SmartTrackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		57B557C1ABCE46CE91804F79 /* libPods-SmartTrack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartTrack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E3279C4D7D99C77D46686CD /* Pods-SmartTrack-SmartTrackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack-SmartTrackTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests.debug.xcconfig"; sourceTree = "<group>"; };
+		64389A3A3377C4FA0031F992 /* Pods-SmartTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack.release.xcconfig"; path = "Target Support Files/Pods-SmartTrack/Pods-SmartTrack.release.xcconfig"; sourceTree = "<group>"; };
 		6E965DA2D9D944C3A14AB33B /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
+		7A6844253B87A6B4DE4F3B6E /* libPods-SmartTrack-SmartTrackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartTrack-SmartTrackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC718ABFB1E49C1A11A79F4 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SmartTrack/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B3837E438C6DEBF89C5AA439 /* Pods-SmartTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack.debug.xcconfig"; path = "Target Support Files/Pods-SmartTrack/Pods-SmartTrack.debug.xcconfig"; sourceTree = "<group>"; };
-		BAEE52EAC53F3B4755D37FC2 /* Pods-SmartTrack-SmartTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack-SmartTrackTests.release.xcconfig"; path = "Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests.release.xcconfig"; sourceTree = "<group>"; };
+		A9EE4A541208F8EC619C29CF /* Pods-SmartTrack-SmartTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack-SmartTrackTests.release.xcconfig"; path = "Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests.release.xcconfig"; sourceTree = "<group>"; };
+		B898F36FA90B6B70FDDEEA9B /* libPods-SmartTrack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartTrack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBCC4D35A250382B804375D4 /* Pods-SmartTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack.debug.xcconfig"; path = "Target Support Files/Pods-SmartTrack/Pods-SmartTrack.debug.xcconfig"; sourceTree = "<group>"; };
 		E6542CCFAAA9492C8A712312 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FF92880FDA5F518E6FDD9131 /* Pods-SmartTrack-SmartTrackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTrack-SmartTrackTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5534582D86AA5B21C0FCC903 /* libPods-SmartTrack-SmartTrackTests.a in Frameworks */,
+				6DA439B2C7BF14B7DEBD67CB /* libPods-SmartTrack-SmartTrackTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F3789F1E6B2D04ABE91164D /* libPods-SmartTrack.a in Frameworks */,
+				37943013AA92291394C6CD15 /* libPods-SmartTrack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				57B557C1ABCE46CE91804F79 /* libPods-SmartTrack.a */,
-				4BE2BBC3C54966039597F5ED /* libPods-SmartTrack-SmartTrackTests.a */,
+				B898F36FA90B6B70FDDEEA9B /* libPods-SmartTrack.a */,
+				7A6844253B87A6B4DE4F3B6E /* libPods-SmartTrack-SmartTrackTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -157,10 +157,10 @@
 		EF373EE7C8F3ED93ABD2AFE9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B3837E438C6DEBF89C5AA439 /* Pods-SmartTrack.debug.xcconfig */,
-				32330FC53EABDBB44775AF75 /* Pods-SmartTrack.release.xcconfig */,
-				FF92880FDA5F518E6FDD9131 /* Pods-SmartTrack-SmartTrackTests.debug.xcconfig */,
-				BAEE52EAC53F3B4755D37FC2 /* Pods-SmartTrack-SmartTrackTests.release.xcconfig */,
+				DBCC4D35A250382B804375D4 /* Pods-SmartTrack.debug.xcconfig */,
+				64389A3A3377C4FA0031F992 /* Pods-SmartTrack.release.xcconfig */,
+				5E3279C4D7D99C77D46686CD /* Pods-SmartTrack-SmartTrackTests.debug.xcconfig */,
+				A9EE4A541208F8EC619C29CF /* Pods-SmartTrack-SmartTrackTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -172,12 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SmartTrackTests" */;
 			buildPhases = (
-				EAE069F27F29AEEEB7618157 /* [CP] Check Pods Manifest.lock */,
+				6A362DFD27F43DDFAB20961F /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				DBBC0C32EC24414177A216EF /* [CP] Embed Pods Frameworks */,
-				BB7DFD154187E205E20F6D15 /* [CP] Copy Pods Resources */,
+				B6497A4070088D0822768CDB /* [CP] Embed Pods Frameworks */,
+				42B2BECC495E743C6B0D0577 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,14 +193,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SmartTrack" */;
 			buildPhases = (
-				841F7274E27EC95A2607E7AA /* [CP] Check Pods Manifest.lock */,
+				AEE611DE0C5948EB4538CFE8 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				8ABF946EB22356EC32B219C4 /* [CP] Embed Pods Frameworks */,
-				226B73B8387B6784A21C9E02 /* [CP] Copy Pods Resources */,
+				2E3381C99A78182C7AF32F2D /* [CP] Embed Pods Frameworks */,
+				8C9E83181A496DD2950689CD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -284,7 +284,63 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		226B73B8387B6784A21C9E02 /* [CP] Copy Pods Resources */ = {
+		2E3381C99A78182C7AF32F2D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartTrack/Pods-SmartTrack-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartTrack/Pods-SmartTrack-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartTrack/Pods-SmartTrack-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		42B2BECC495E743C6B0D0577 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A362DFD27F43DDFAB20961F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmartTrack-SmartTrackTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C9E83181A496DD2950689CD /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -301,7 +357,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartTrack/Pods-SmartTrack-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		841F7274E27EC95A2607E7AA /* [CP] Check Pods Manifest.lock */ = {
+		AEE611DE0C5948EB4538CFE8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -323,41 +379,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8ABF946EB22356EC32B219C4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SmartTrack/Pods-SmartTrack-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SmartTrack/Pods-SmartTrack-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartTrack/Pods-SmartTrack-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BB7DFD154187E205E20F6D15 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DBBC0C32EC24414177A216EF /* [CP] Embed Pods Frameworks */ = {
+		B6497A4070088D0822768CDB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -372,28 +394,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartTrack-SmartTrackTests/Pods-SmartTrack-SmartTrackTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EAE069F27F29AEEEB7618157 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SmartTrack-SmartTrackTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -448,7 +448,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF92880FDA5F518E6FDD9131 /* Pods-SmartTrack-SmartTrackTests.debug.xcconfig */;
+			baseConfigurationReference = 5E3279C4D7D99C77D46686CD /* Pods-SmartTrack-SmartTrackTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -475,7 +475,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BAEE52EAC53F3B4755D37FC2 /* Pods-SmartTrack-SmartTrackTests.release.xcconfig */;
+			baseConfigurationReference = A9EE4A541208F8EC619C29CF /* Pods-SmartTrack-SmartTrackTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -499,7 +499,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3837E438C6DEBF89C5AA439 /* Pods-SmartTrack.debug.xcconfig */;
+			baseConfigurationReference = DBCC4D35A250382B804375D4 /* Pods-SmartTrack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -525,7 +525,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32330FC53EABDBB44775AF75 /* Pods-SmartTrack.release.xcconfig */;
+			baseConfigurationReference = 64389A3A3377C4FA0031F992 /* Pods-SmartTrack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
 
 type StuffItemType = {
   name: string;
@@ -10,38 +10,92 @@ type StuffItemType = {
 
 interface StuffProps {
   stuffWorkerData: StuffItemType;
+  index: number;
 }
 
-const StuffItem = ({stuffWorkerData}: StuffProps) => {
+const StuffItem = ({stuffWorkerData, index}: StuffProps) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.coloredBlock}>
-        <Text>1</Text>
-      </View>
-      <View>
-        <Text>controls</Text>
-      </View>
-      <View>
-        <Text>{stuffWorkerData.name}</Text>
-        <Text>{stuffWorkerData.email}</Text>
-        <Text>{stuffWorkerData.phoneNumber}</Text>
-        {stuffWorkerData.rooms.map(room => (
-          <Text key={room}>{room}</Text>
-        ))}
+    <TouchableOpacity>
+      <View style={styles.container}>
+        <View style={styles.coloredBlock}>
+          <Text>{index + 1}</Text>
+        </View>
+
         <View>
-          <Text>colors</Text>
+          <View>
+            <Image
+              style={styles.controlsLogo}
+              source={require("./img/edit.png")}
+            />
+            <Image
+              style={styles.controlsLogo}
+              source={require("./img/delete.png")}
+            />
+          </View>
+
+          <View>
+            <Text style={styles.stuffItemName}>{stuffWorkerData.name}</Text>
+            <Text style={styles.stuffItem}>{stuffWorkerData.email}</Text>
+            <Text style={styles.stuffItem}>{stuffWorkerData.phoneNumber}</Text>
+            <View style={styles.rooms}>
+              <Text>Rooms:</Text>
+              {stuffWorkerData.rooms.map(room => (
+                <Text key={room}>{room}</Text>
+              ))}
+            </View>
+            <View style={styles.rooms}>
+              <Text>o</Text>
+              <Text>o</Text>
+              <Text>o</Text>
+              <Text>o</Text>
+              <Text>o</Text>
+              <Text>o</Text>
+            </View>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+    height: 200,
+    flexDirection: "row",
+    borderWidth: 1,
+    borderColor: "white",
+    borderTopLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    marginBottom: 15,
+    backgroundColor: "white",
   },
   coloredBlock: {
+    width: "10%",
     backgroundColor: "#6AC7BE",
+    marginRight: 20,
+    alignItems: "center",
+    paddingTop: 15,
+    borderWidth: 1,
+    borderColor: "#6AC7BE",
+    borderTopLeftRadius: 20,
+  },
+  stuffItem: {
+    fontSize: 14,
+    fontFamily: "Poppins-Regular",
+    marginVertical: 5,
+  },
+  stuffItemName: {
+    fontSize: 16,
+    fontFamily: "Poppins-Bold",
+  },
+  controlsLogo: {
+    width: 15,
+  },
+  rooms: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
   },
 });
 
