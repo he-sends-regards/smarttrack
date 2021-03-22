@@ -3,7 +3,7 @@ import {SafeAreaView} from "react-native";
 
 import Button from "../../components/buttons/button";
 import Navbar from "../../components/navbar/navbar";
-import {primaryColor, dangerColor} from "../../const";
+import {Color} from "../../const";
 
 const noop = () => {};
 
@@ -14,7 +14,7 @@ const Allerts = () => {
       <Button
         title="Add new"
         onPress={noop}
-        backgroundColor={primaryColor}
+        backgroundColor={Color.primaryColor}
         width="100%"
         color="#fff"
       />
@@ -23,14 +23,14 @@ const Allerts = () => {
         onPress={noop}
         backgroundColor="transparent"
         width="100%"
-        color={primaryColor}
+        color={Color.primaryColor}
       />
       <Button
         title="Add new"
         onPress={noop}
         backgroundColor="transparent"
         width="25%"
-        color={dangerColor}
+        color={Color.dangerColor}
       />
     </SafeAreaView>
   );

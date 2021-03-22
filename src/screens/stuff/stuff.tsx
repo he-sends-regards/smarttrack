@@ -5,13 +5,17 @@ import Button from "../../components/buttons/button";
 import Navbar from "../../components/navbar/navbar";
 import StuffList from "../../components/stuff-list/stuff-list";
 import StuffMenu from "../../components/stuff-menu/stuff-menu";
-import {primaryColor} from "../../const";
+import {Color} from "../../const";
 import {mockStuff} from "../../mocks/stuff";
 
-const listItems = ["doctors", "assistans", "receptionist"];
+const listItems = {
+  doctors: "doctors",
+  assistans: "assistans",
+  receptionist: "receptionist",
+};
 
 const Stuff = () => {
-  const [activeListItem, setActiveListItem] = useState("doctors");
+  const [activeListItem, setActiveListItem] = useState(listItems.doctors);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -20,13 +24,13 @@ const Stuff = () => {
       <StuffMenu
         activeListItem={activeListItem}
         setActiveListItem={setActiveListItem}
-        listItems={listItems}
+        listItems={Object.values(listItems)}
       />
 
       <Button
         onPress={() => {}}
         width="100%"
-        backgroundColor={primaryColor}
+        backgroundColor={Color.primaryColor}
         color="white"
         title="Add new"
       />
