@@ -20,22 +20,22 @@ export const Color = {
 export const MenuItems = [
   {
     title: AppRoute.DASHBOARD,
-    logo: require("./img/dashboard.png"),
-    activeLogo: require("./img/dashboard-active.png"),
+    logo: require("../assets/menu-icons/dashboard.png"),
+    activeLogo: require("../assets/menu-icons/dashboard-active.png"),
   },
   {
     title: AppRoute.STUFF,
-    logo: require("./img/stuff.png"),
-    activeLogo: require("./img/stuff-active.png"),
+    logo: require("../assets/menu-icons/stuff.png"),
+    activeLogo: require("../assets/menu-icons/stuff-active.png"),
   },
   {
     title: AppRoute.ALLERTS,
-    logo: require("./img/allerts.png"),
-    activeLogo: require("./img/allerts-active.png"),
+    logo: require("../assets/menu-icons/allerts.png"),
+    activeLogo: require("../assets/menu-icons/allerts-active.png"),
   },
   {
     title: AppRoute.SEQUENCE,
-    logo: require("./img/sequence.png"),
-    activeLogo: require("./img/sequence-active.png"),
+    logo: require("../assets/menu-icons/sequence.png"),
+    activeLogo: require("../assets/menu-icons/sequence-active.png"),
   },
 ];
