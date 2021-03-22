@@ -18,9 +18,10 @@ type StuffItemType = {
 interface StuffProps {
   stuffWorkerData: StuffItemType;
   index: number;
+  onStuffItemDelete: Function;
 }
 
-const StuffItem = ({stuffWorkerData, index}: StuffProps) => {
+const StuffItem = ({stuffWorkerData, index, onStuffItemDelete}: StuffProps) => {
   return (
     <TouchableOpacity>
       <View style={styles.container}>
@@ -36,7 +37,8 @@ const StuffItem = ({stuffWorkerData, index}: StuffProps) => {
                 source={require("./img/edit.png")}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => Alert.alert("Delete")}>
+            <TouchableOpacity
+              onPress={() => onStuffItemDelete(stuffWorkerData.email)}>
               <Image
                 style={styles.controlsLogo}
                 source={require("./img/delete.png")}

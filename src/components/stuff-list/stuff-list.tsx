@@ -12,11 +12,18 @@ type StuffItemType = {
 
 interface StuffListProps {
   stuff: StuffItemType[];
+  onStuffItemDelete: Function;
 }
 
-const StuffList = ({stuff}: StuffListProps) => {
+const StuffList = ({stuff, onStuffItemDelete}: StuffListProps) => {
   const renderItem = ({item, index}: any) => {
-    return <StuffItem stuffWorkerData={item} index={index} />;
+    return (
+      <StuffItem
+        stuffWorkerData={item}
+        index={index}
+        onStuffItemDelete={onStuffItemDelete}
+      />
+    );
   };
 
   return (

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {SafeAreaView, StyleSheet, View} from "react-native";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import Button from "../../components/buttons/button";
 import Navbar from "../../components/navbar/navbar";
@@ -19,6 +19,12 @@ const listItems = {
 const Stuff = () => {
   const [activeListItem, setActiveListItem] = useState(listItems.doctors);
   const [isFormOpened, setIsFormOpened] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const onStuffItemDelete = (id: string, type: string = activeListItem) => {
+    dispatch({type: "DELETE_STUFF", payload: {type, id}});
+  };
 
   const changeIsFormOpenedStatus = () => {
     setIsFormOpened(!isFormOpened);
@@ -49,7 +55,10 @@ const Stuff = () => {
             color="white"
             title="Add new"
           />
-          <StuffList stuff={stuffData[activeListItem]} />
+          <StuffList
+            onStuffItemDelete={onStuffItemDelete}
+            stuff={stuffData[activeListItem]}
+          />
         </View>
       )}
     </SafeAreaView>
