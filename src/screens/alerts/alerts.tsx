@@ -11,7 +11,7 @@ import {mockStuff} from "../../mocks/alerts";
 const listItems = ["doctors", "assistans", "receptionist"];
 const noop = () => {};
 
-const Allerts = () => {
+const Alerts = () => {
   const [activeListItem, setActiveListItem] = useState("doctors");
 
   return (
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Allerts;
+export default Alerts;
