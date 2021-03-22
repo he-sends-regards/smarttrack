@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import {SafeAreaView, StyleSheet, View} from "react-native";
+import {useSelector} from "react-redux";
 
 import Button from "../../components/buttons/button";
 import Navbar from "../../components/navbar/navbar";
 import StuffList from "../../components/stuff-list/stuff-list";
 import StuffMenu from "../../components/stuff-menu/stuff-menu";
 import {Color} from "../../const";
-import {mockStuff} from "../../mocks/stuff";
+import {RootState} from "../../store/store";
 import AddStuff from "../add-stuff/add-stuff";
 
 const listItems = {
@@ -22,6 +23,8 @@ const Stuff = () => {
   const changeIsFormOpenedStatus = () => {
     setIsFormOpened(!isFormOpened);
   };
+
+  const stuffData = useSelector((state: RootState) => state.stuff);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -46,7 +49,7 @@ const Stuff = () => {
             color="white"
             title="Add new"
           />
-          <StuffList stuff={mockStuff[activeListItem]} />
+          <StuffList stuff={stuffData[activeListItem]} />
         </View>
       )}
     </SafeAreaView>
