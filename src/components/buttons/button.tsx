@@ -18,11 +18,29 @@ const Button = ({
   border,
   color,
 }: ButtonProps) => {
+  const borderType =
+    border === "sm"
+      ? {
+          borderWidth: 1,
+          borderColor: color,
+          paddingVertical: 3,
+        }
+      : {
+          borderWidth: 2,
+          borderColor: backgroundColor,
+          paddingVertical: 11,
+        };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
         onPress={onPress}
-        style={{...styles.appButtonContainer, backgroundColor, width}}>
+        style={{
+          ...styles.appButtonContainer,
+          backgroundColor,
+          width,
+          ...borderType,
+        }}>
         <Text style={{...styles.appButtonText, color}}>{title}</Text>
       </TouchableOpacity>
     </View>
@@ -35,7 +53,7 @@ const styles = StyleSheet.create({
   },
   appButtonContainer: {
     borderRadius: 20,
-    paddingVertical: 11,
+    // paddingVertical: 11,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",

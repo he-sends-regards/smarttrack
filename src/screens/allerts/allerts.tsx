@@ -1,16 +1,27 @@
-import React from "react";
-import {SafeAreaView} from "react-native";
+import React, {useState} from "react";
+import {StyleSheet, SafeAreaView} from "react-native";
 
+import AlertList from "../../components/alert-list/alert-list";
 import Button from "../../components/buttons/button";
 import Navbar from "../../components/navbar/navbar";
-import {primaryColor, dangerColor} from "../../const";
+import StuffMenu from "../../components/stuff-menu/stuff-menu";
+import {primaryColor} from "../../const";
+import {mockStuff} from "../../mocks/alerts";
 
+const listItems = ["doctors", "assistans", "receptionist"];
 const noop = () => {};
 
 const Allerts = () => {
+  const [activeListItem, setActiveListItem] = useState("doctors");
+
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Navbar />
+      <StuffMenu
+        activeListItem={activeListItem}
+        setActiveListItem={setActiveListItem}
+        listItems={listItems}
+      />
       <Button
         title="Add new"
         onPress={noop}
@@ -18,22 +29,16 @@ const Allerts = () => {
         width="100%"
         color="#fff"
       />
-      <Button
-        title="Add new"
-        onPress={noop}
-        backgroundColor="transparent"
-        width="100%"
-        color={primaryColor}
-      />
-      <Button
-        title="Add new"
-        onPress={noop}
-        backgroundColor="transparent"
-        width="25%"
-        color={dangerColor}
-      />
+      <AlertList alerts={mockStuff[activeListItem]} />
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#E5E5E5",
+  },
+});
 
 export default Allerts;

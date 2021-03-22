@@ -2,6 +2,8 @@ import React from "react";
 import {StyleSheet, Text, View} from "react-native";
 import {TouchableHighlight} from "react-native-gesture-handler";
 
+import {textBaseColor} from "../../const";
+
 type StuffMenuProps = {
   activeListItem: string;
   setActiveListItem: Function;
@@ -51,6 +53,7 @@ const styles = StyleSheet.create({
   },
   listItem: {
     fontSize: 16,
+    color: textBaseColor,
     textTransform: "capitalize",
     fontFamily: "Poppins-Regular",
   },
