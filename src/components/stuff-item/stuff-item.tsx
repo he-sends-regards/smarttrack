@@ -1,6 +1,5 @@
 import React from "react";
 import {StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
-import {v4 as uuidv4} from "uuid";
 
 type StuffItemType = {
   name: string;
@@ -41,7 +40,7 @@ const StuffItem = ({stuffWorkerData, index}: StuffProps) => {
             <View style={styles.rooms}>
               <Text>Rooms:</Text>
               {stuffWorkerData.rooms.map(room => (
-                <Text key={uuidv4()}>{room}</Text>
+                <Text key={room}>{room}</Text>
               ))}
             </View>
             <View style={styles.rooms}>
