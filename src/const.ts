@@ -39,3 +39,30 @@ export const MenuItems = [
     activeLogo: require("../assets/menu-icons/sequence-active.png"),
   },
 ];
+
+export const allertTypes = [
+  {
+    name: "Assistant",
+    color: "rgb(242,215,117)",
+  },
+  {
+    name: "Doctor",
+    color: "rgb(99,191,242)",
+  },
+  {
+    name: "Finances",
+    color: "rgb(147,157,255)",
+  },
+  {
+    name: "Patient",
+    color: "rgb(116,195,134)",
+  },
+  {
+    name: "Emergency",
+    color: "rgb(252,102,102)",
+  },
+  {
+    name: "Empty",
+    color: "rgb(221,221,221)",
+  },
+];

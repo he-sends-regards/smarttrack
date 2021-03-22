@@ -4,14 +4,22 @@ import {TouchableHighlight} from "react-native-gesture-handler";
 
 import * as RootNavigation from "../../../routes/root-navigation";
 
-const Navbar = () => {
+type NavbarProps = {
+  haveCloseAbility?: boolean;
+  onPress?: Function;
+};
+
+const Navbar = ({
+  haveCloseAbility = false,
+  onPress = () => RootNavigation.goBack(),
+}: NavbarProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>Logo</Text>
 
-      {RootNavigation.getCurrentRoute().name === "Menu" ? (
+      {haveCloseAbility ? (
         <TouchableHighlight
-          onPress={() => RootNavigation.goBack()}
+          onPress={() => onPress()}
           underlayColor="transparent">
           <Image
             style={styles.closeIcon}
