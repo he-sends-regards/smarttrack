@@ -10,7 +10,7 @@ const Menu = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Navbar />
+      <Navbar haveCloseAbility />
 
       {MenuItems.map(({title, logo, activeLogo}) => (
         <MenuItem
