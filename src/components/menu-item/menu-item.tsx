@@ -10,7 +10,6 @@ type MenuItemProps = {
   activeLogo: ImageSourcePropType;
   activeMenuItem: string;
   setActiveMenuItem: Function;
-  key: string;
 };
 
 const MenuItem = ({
@@ -19,11 +18,10 @@ const MenuItem = ({
   activeLogo,
   activeMenuItem,
   setActiveMenuItem,
-  key,
 }: MenuItemProps) => {
   return (
     <TouchableHighlight
-      key={key}
+      key={title}
       underlayColor="transparent"
       onPress={() => {
         setActiveMenuItem(title);

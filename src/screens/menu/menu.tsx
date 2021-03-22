@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {StyleSheet, Text, View, Image, Alert, SafeAreaView} from "react-native";
-import {v4 as uuidv4} from "uuid";
 
 import MenuItem from "../../components/menu-item/menu-item";
 import Navbar from "../../components/navbar/navbar";
@@ -15,7 +14,6 @@ const Menu = () => {
 
       {MenuItems.map(({title, logo, activeLogo}) => (
         <MenuItem
-          key={uuidv4()}
           title={title}
           logo={logo}
           activeLogo={activeLogo}
@@ -27,7 +25,7 @@ const Menu = () => {
       <View
         style={styles.signOut}
         onTouchStart={() => Alert.alert("You are signed out (no)")}>
-        <Image source={require("./img/sign-out.png")} />
+        <Image source={require("../../../assets/menu-icons/sign-out.png")} />
         <Text style={styles.signOutText}>Sign Out</Text>
       </View>
     </SafeAreaView>
