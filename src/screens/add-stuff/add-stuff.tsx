@@ -8,7 +8,7 @@ type AddStuffType = {
 };
 
 const AddStuff = ({stuffType}: AddStuffType) => {
-  const [choosenAllert, setChoosenAllert] = useState("");
+  const [choosenAlert, setChoosenAlert] = useState("");
 
   return (
     <SafeAreaView style={styles.container}>
@@ -17,8 +17,8 @@ const AddStuff = ({stuffType}: AddStuffType) => {
       </Text>
 
       <AddingForm
-        choosenAllert={choosenAllert}
-        setChoosenAllert={setChoosenAllert}
+        choosenAlert={choosenAlert}
+        setChoosenAlert={setChoosenAlert}
       />
     </SafeAreaView>
   );

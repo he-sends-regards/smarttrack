@@ -4,7 +4,7 @@ import React from "react";
 
 import {navigationRef} from "../routes/root-navigation";
 import {AppRoute} from "./const";
-import Allerts from "./screens/allerts/allerts";
+import Alerts from "./screens/alerts/alerts";
 import Dashboard from "./screens/dashboard/dashboard";
 import Menu from "./screens/menu/menu";
 import Sequence from "./screens/sequence/sequence";
@@ -20,7 +20,7 @@ const App = () => {
         screenOptions={{headerShown: false}}>
         <Stack.Screen name={AppRoute.DASHBOARD} component={Dashboard} />
         <Stack.Screen name={AppRoute.STUFF} component={Stuff} />
-        <Stack.Screen name={AppRoute.ALLERTS} component={Allerts} />
+        <Stack.Screen name={AppRoute.ALERTS} component={Alerts} />
         <Stack.Screen name={AppRoute.SEQUENCE} component={Sequence} />
         <Stack.Screen name="Menu" component={Menu} />
       </Stack.Navigator>

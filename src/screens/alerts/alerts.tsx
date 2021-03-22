@@ -7,7 +7,7 @@ import {Color} from "../../const";
 
 const noop = () => {};
 
-const Allerts = () => {
+const Alerts = () => {
   return (
     <SafeAreaView>
       <Navbar />
@@ -36,4 +36,4 @@ const Allerts = () => {
   );
 };
 
-export default Allerts;
+export default Alerts;
