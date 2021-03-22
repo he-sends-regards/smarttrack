@@ -12,11 +12,18 @@ type StuffItemType = {
 
 interface StuffListProps {
   stuff: StuffItemType[];
+  onStuffItemDelete: Function;
 }
 
-const StuffList = ({stuff}: StuffListProps) => {
+const StuffList = ({stuff, onStuffItemDelete}: StuffListProps) => {
   const renderItem = ({item, index}: any) => {
-    return <StuffItem stuffWorkerData={item} index={index} />;
+    return (
+      <StuffItem
+        stuffWorkerData={item}
+        index={index}
+        onStuffItemDelete={onStuffItemDelete}
+      />
+    );
   };
 
   return (
@@ -33,6 +40,7 @@ const StuffList = ({stuff}: StuffListProps) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+    height: "80%", // Solve without hardcode
     flexDirection: "column",
     justifyContent: "space-between",
     paddingHorizontal: "5%",

@@ -60,7 +60,7 @@ export const mockStuff: mockStuffType = {
       rooms: ["1b", "2c"],
     },
   ],
-  assistans: [
+  assistants: [
     {
       name: "John",
       email: "test11@gmail.com",
@@ -110,7 +110,7 @@ export const mockStuff: mockStuffType = {
       rooms: ["1b", "2c"],
     },
   ],
-  receptionist: [
+  receptionists: [
     {
       name: "Liza",
       email: "test1@gmail.com",
