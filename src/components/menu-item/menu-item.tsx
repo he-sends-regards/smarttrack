@@ -1,36 +1,49 @@
-import React, {useState} from "react";
-import {StyleSheet, Text, View, Image, Alert, SafeAreaView} from "react-native";
-import {v4 as uuidv4} from "uuid";
+import React from "react";
+import {ImageSourcePropType, StyleSheet, Text, View, Image} from "react-native";
+import {TouchableHighlight} from "react-native-gesture-handler";
 
-import MenuItem from "../../components/menu-item/menu-item";
-import Navbar from "../../components/navbar/navbar";
-import {AppRoute, MenuItems} from "../../const";
+import * as RootNavigation from "../../../routes/root-navigation";
 
-const Menu = () => {
-  const [activeMenuItem, setActiveMenuItem] = useState(AppRoute.DASHBOARD);
+type MenuItemProps = {
+  title: string;
+  logo: ImageSourcePropType;
+  activeLogo: ImageSourcePropType;
+  activeMenuItem: string;
+  setActiveMenuItem: Function;
+  key: string;
+};
 
+const MenuItem = ({
+  title,
+  logo,
+  activeLogo,
+  activeMenuItem,
+  setActiveMenuItem,
+  key,
+}: MenuItemProps) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Navbar />
-
-      {MenuItems.map(({title, logo, activeLogo}) => (
-        <MenuItem
-          key={uuidv4()}
-          title={title}
-          logo={logo}
-          activeLogo={activeLogo}
-          activeMenuItem={activeMenuItem}
-          setActiveMenuItem={setActiveMenuItem}
-        />
-      ))}
-
+    <TouchableHighlight
+      key={key}
+      underlayColor="transparent"
+      onPress={() => {
+        setActiveMenuItem(title);
+        RootNavigation.navigate(title, {});
+      }}
+      style={{
+        width: "100%",
+        justifyContent: "flex-start",
+        flexDirection: "row",
+      }}>
       <View
-        style={styles.signOut}
-        onTouchStart={() => Alert.alert("You are signed out (no)")}>
-        <Image source={require("./img/sign-out.png")} />
-        <Text style={styles.signOutText}>Sign Out</Text>
+        style={
+          activeMenuItem === title
+            ? styles.activeMenuItemContainer
+            : styles.menuItemContainer
+        }>
+        <Image source={activeMenuItem === title ? activeLogo : logo} />
+        <Text style={styles.menuItem}>{title}</Text>
       </View>
-    </SafeAreaView>
+    </TouchableHighlight>
   );
 };
 
@@ -86,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Menu;
+export default MenuItem;
