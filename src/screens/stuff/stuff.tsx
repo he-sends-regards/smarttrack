@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {SafeAreaView, StyleSheet, StatusBar, View} from "react-native";
+import {SafeAreaView, StyleSheet, View} from "react-native";
 
 import Button from "../../components/buttons/button";
 import Navbar from "../../components/navbar/navbar";
@@ -56,7 +56,6 @@ const Stuff = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
     backgroundColor: "#E5E5E5",
   },
 });
