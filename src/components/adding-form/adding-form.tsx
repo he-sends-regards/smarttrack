@@ -12,18 +12,18 @@ import {
 import * as Yup from "yup";
 
 import Button from "../../components/buttons/button";
-import {Color, allertTypes} from "../../const";
+import {Color, alertTypes} from "../../const";
 
 interface FormProps {
-  choosenAllert: string;
-  setChoosenAllert: Function;
+  choosenAlert: string;
+  setChoosenAlert: Function;
 }
 
 type onSumbitArgs = {
   [key: string]: string;
 };
 
-const AddingForm = ({choosenAllert, setChoosenAllert}: FormProps) => {
+const AddingForm = ({choosenAlert, setChoosenAlert}: FormProps) => {
   const SignupSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, "Too Short!")
@@ -36,12 +36,12 @@ const AddingForm = ({choosenAllert, setChoosenAllert}: FormProps) => {
     email: Yup.string().email("Invalid email").required("Required"),
   });
 
-  const onSubmit = ({name, email, phoneNumber, allert}: onSumbitArgs) =>
+  const onSubmit = ({name, email, phoneNumber, alert}: onSumbitArgs) =>
     Alert.alert(
-      `Name: ${name}\nEmail: ${email}\nPhone number: ${phoneNumber}\nAllerts: ${allert}`
+      `Name: ${name}\nEmail: ${email}\nPhone number: ${phoneNumber}\nAlerts: ${alert}`
     );
 
-  const initialFormValues = {name: "", email: "", phoneNumber: "", allert: ""};
+  const initialFormValues = {name: "", email: "", phoneNumber: "", alert: ""};
 
   return (
     <Formik
@@ -87,24 +87,24 @@ const AddingForm = ({choosenAllert, setChoosenAllert}: FormProps) => {
             ) : null}
           </View>
 
-          <Text style={styles.allertsTitle}>Allerts</Text>
+          <Text style={styles.alertsTitle}>Alerts</Text>
 
-          <View style={styles.allertsContainer}>
-            {allertTypes.map(({name, color}) => (
+          <View style={styles.alertsContainer}>
+            {alertTypes.map(({name, color}) => (
               <TouchableOpacity
                 onPress={() => {
-                  setChoosenAllert(choosenAllert === name ? "" : name);
+                  setChoosenAlert(choosenAlert === name ? "" : name);
                 }}>
-                <View style={styles.allertItem}>
+                <View style={styles.alertItem}>
                   <View
                     style={{
-                      ...styles.allertItemCircle,
+                      ...styles.alertItemCircle,
                       borderColor: color,
                       backgroundColor: color,
                     }}>
                     <Text>
-                      {choosenAllert === name && (
-                        <Image source={require("./img/remove-allert.png")} />
+                      {choosenAlert === name && (
+                        <Image source={require("./img/remove-alert.png")} />
                       )}
                     </Text>
                   </View>
@@ -115,13 +115,13 @@ const AddingForm = ({choosenAllert, setChoosenAllert}: FormProps) => {
           </View>
 
           <TouchableOpacity
-            onPress={() => Alert.alert("Add on allert")}
-            style={styles.allertsAddingTouchable}>
-            <View style={styles.allertsAddingContainer}>
-              <View style={styles.allertsAddingCircle}>
-                <Text style={styles.allertsAddingPlus}>+</Text>
+            onPress={() => Alert.alert("Add on alert")}
+            style={styles.alertsAddingTouchable}>
+            <View style={styles.alertsAddingContainer}>
+              <View style={styles.alertsAddingCircle}>
+                <Text style={styles.alertsAddingPlus}>+</Text>
               </View>
-              <Text style={styles.allertsAddingText}>Add an Allert</Text>
+              <Text style={styles.alertsAddingText}>Add an Alert</Text>
             </View>
           </TouchableOpacity>
 
@@ -166,25 +166,25 @@ const styles = StyleSheet.create({
     color: "red",
     textAlign: "right",
   },
-  allertsTitle: {
+  alertsTitle: {
     marginTop: 25,
     marginBottom: 5,
     fontFamily: "Poppins-Bold",
     fontSize: 16,
     lineHeight: 21,
   },
-  allertsContainer: {
+  alertsContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "flex-start",
     marginBottom: 40,
   },
-  allertItem: {
+  alertItem: {
     marginBottom: 15,
     marginHorizontal: 20,
     alignItems: "center",
   },
-  allertItemCircle: {
+  alertItemCircle: {
     borderWidth: 1,
     width: 40,
     height: 40,
@@ -193,11 +193,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  allertsAddingContainer: {
+  alertsAddingContainer: {
     flexDirection: "row",
     alignItems: "center",
   },
-  allertsAddingCircle: {
+  alertsAddingCircle: {
     borderWidth: 1,
     borderColor: "#6AC7BE",
     width: 40,
@@ -208,14 +208,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  allertsAddingPlus: {color: "white", fontSize: 30},
-  allertsAddingText: {
+  alertsAddingPlus: {color: "white", fontSize: 30},
+  alertsAddingText: {
     marginLeft: 7,
     color: "#6AC7BE",
     fontSize: 14,
     fontFamily: "Poppins-Regular",
   },
-  allertsAddingTouchable: {
+  alertsAddingTouchable: {
     marginBottom: 25,
   },
 });

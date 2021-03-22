@@ -1,7 +1,7 @@
 export const AppRoute = {
   DASHBOARD: "Dashboard",
   STUFF: "Stuff",
-  ALLERTS: "Allerts",
+  ALERTS: "Alerts",
   SEQUENCE: "Sequence",
 };
 
@@ -29,9 +29,9 @@ export const MenuItems = [
     activeLogo: require("../assets/menu-icons/stuff-active.png"),
   },
   {
-    title: AppRoute.ALLERTS,
-    logo: require("../assets/menu-icons/allerts.png"),
-    activeLogo: require("../assets/menu-icons/allerts-active.png"),
+    title: AppRoute.ALERTS,
+    logo: require("../assets/menu-icons/alerts.png"),
+    activeLogo: require("../assets/menu-icons/alerts-active.png"),
   },
   {
     title: AppRoute.SEQUENCE,
@@ -40,7 +40,7 @@ export const MenuItems = [
   },
 ];
 
-export const allertTypes = [
+export const alertTypes = [
   {
     name: "Assistant",
     color: "rgb(242,215,117)",
