@@ -33,6 +33,7 @@ const StuffList = ({stuff}: StuffListProps) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+    height: "80%", // Solve without hardcode
     flexDirection: "column",
     justifyContent: "space-between",
     paddingHorizontal: "5%",
