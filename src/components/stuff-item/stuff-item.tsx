@@ -8,6 +8,8 @@ import {
   Alert,
 } from "react-native";
 
+import {generateId} from "../../utils";
+
 type StuffItemType = {
   name: string;
   email: string;
@@ -53,7 +55,7 @@ const StuffItem = ({stuffWorkerData, index, onStuffItemDelete}: StuffProps) => {
             <View style={styles.rooms}>
               <Text>Rooms:</Text>
               {stuffWorkerData.rooms.map(room => (
-                <Text key={room}>{room}</Text>
+                <Text key={generateId()}>{room}</Text>
               ))}
             </View>
             <View style={styles.rooms}>

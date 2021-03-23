@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from "react-native";
 import {TouchableHighlight} from "react-native-gesture-handler";
 
 import {textBaseColor} from "../../const";
+import {generateId} from "../../utils";
 
 type StuffMenuProps = {
   activeListItem: string;
@@ -19,7 +20,7 @@ const StuffMenu = ({
     <View style={styles.container}>
       {listItems.map(listItem => (
         <TouchableHighlight
-          key={listItem}
+          key={generateId()}
           onPress={() => setActiveListItem(listItem)}
           underlayColor="transparent">
           <View style={styles.listItemContainer}>

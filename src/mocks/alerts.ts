@@ -7,7 +7,7 @@ type mockAlertType = {
   [key: string]: alertType[];
 };
 
-export const mockStuff: mockAlertType = {
+export const mockAlerts: mockAlertType = {
   doctors: [
     {
       status: "Patient in",

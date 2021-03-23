@@ -1,6 +1,7 @@
 import React from "react";
 import {StyleSheet, SafeAreaView, FlatList} from "react-native";
 
+import {generateId} from "../../utils";
 import StuffItem from "../stuff-item/stuff-item";
 
 type StuffItemType = {
@@ -31,7 +32,7 @@ const StuffList = ({stuff, onStuffItemDelete}: StuffListProps) => {
       <FlatList
         data={stuff}
         renderItem={renderItem}
-        keyExtractor={item => item.name}
+        keyExtractor={generateId}
       />
     </SafeAreaView>
   );
