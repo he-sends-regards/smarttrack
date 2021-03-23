@@ -1,18 +1,20 @@
 import React, {useState} from "react";
 import {StyleSheet, SafeAreaView} from "react-native";
+import {useSelector} from "react-redux";
 
 import AlertList from "../../components/alert-list/alert-list";
 import Button from "../../components/buttons/button";
 import Navbar from "../../components/navbar/navbar";
 import StuffMenu from "../../components/stuff-menu/stuff-menu";
 import {primaryColor} from "../../const";
-import {mockStuff} from "../../mocks/alerts";
+import {RootState} from "../../store/store";
 
 const listItems = ["doctors", "assistans", "receptionist"];
 const noop = () => {};
 
 const Alerts = () => {
   const [activeListItem, setActiveListItem] = useState("doctors");
+  const alertsData = useSelector((state: RootState) => state.alerts);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,7 +31,7 @@ const Alerts = () => {
         width="100%"
         color="#fff"
       />
-      <AlertList alerts={mockStuff[activeListItem]} />
+      <AlertList alerts={alertsData[activeListItem]} />
     </SafeAreaView>
   );
 };

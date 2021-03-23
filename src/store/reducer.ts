@@ -1,8 +1,10 @@
 import {mockStuff} from "../mocks/stuff";
+import {mockAlerts} from "./../mocks/alerts";
 import {ActionType} from "./actions";
 
 const initialState = {
   stuff: mockStuff,
+  alerts: mockAlerts,
 };
 
 type actionTypes = {
@@ -11,8 +13,6 @@ type actionTypes = {
 };
 
 export default (state = initialState, action: actionTypes) => {
-  console.log(state);
-
   switch (action.type) {
     case ActionType.DELETE_STUFF:
       return Object.assign({}, state, {
