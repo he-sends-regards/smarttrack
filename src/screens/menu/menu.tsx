@@ -4,6 +4,7 @@ import {StyleSheet, Text, View, Image, Alert, SafeAreaView} from "react-native";
 import MenuItem from "../../components/menu-item/menu-item";
 import Navbar from "../../components/navbar/navbar";
 import {AppRoute, MenuItems} from "../../const";
+import {generateId} from "../../utils";
 
 const Menu = () => {
   const [activeMenuItem, setActiveMenuItem] = useState(AppRoute.DASHBOARD);
@@ -19,6 +20,7 @@ const Menu = () => {
           activeLogo={activeLogo}
           activeMenuItem={activeMenuItem}
           setActiveMenuItem={setActiveMenuItem}
+          key={generateId()}
         />
       ))}
 

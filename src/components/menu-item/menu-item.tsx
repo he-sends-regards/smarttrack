@@ -3,6 +3,7 @@ import {ImageSourcePropType, StyleSheet, Text, View, Image} from "react-native";
 import {TouchableHighlight} from "react-native-gesture-handler";
 
 import * as RootNavigation from "../../../routes/root-navigation";
+import {generateId} from "../../utils";
 
 type MenuItemProps = {
   title: string;
@@ -21,7 +22,7 @@ const MenuItem = ({
 }: MenuItemProps) => {
   return (
     <TouchableHighlight
-      key={title}
+      key={generateId()}
       underlayColor="transparent"
       onPress={() => {
         setActiveMenuItem(title);

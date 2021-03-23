@@ -1,6 +1,7 @@
 import React from "react";
 import {StyleSheet, SafeAreaView, FlatList} from "react-native";
 
+import {generateId} from "../../utils";
 import AlertItem from "../alert-item/alert-item";
 
 type AlertItemType = {
@@ -22,7 +23,7 @@ const AlertList = ({alerts}: AlertListProps) => {
       <FlatList
         data={alerts}
         renderItem={renderItem}
-        keyExtractor={item => item.status}
+        keyExtractor={generateId}
       />
     </SafeAreaView>
   );

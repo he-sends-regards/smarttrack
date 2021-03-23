@@ -13,6 +13,7 @@ import * as Yup from "yup";
 
 import Button from "../../components/buttons/button";
 import {Color, alertTypes} from "../../const";
+import {generateId} from "../../utils";
 
 interface FormProps {
   choosenAlert: string;
@@ -92,6 +93,7 @@ const AddingForm = ({choosenAlert, setChoosenAlert}: FormProps) => {
           <View style={styles.alertsContainer}>
             {alertTypes.map(({name, color}) => (
               <TouchableOpacity
+                key={generateId()}
                 onPress={() => {
                   setChoosenAlert(choosenAlert === name ? "" : name);
                 }}>

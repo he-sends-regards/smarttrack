@@ -1,5 +1,6 @@
 import {createStore} from "redux";
 
+import {dashboardItemType} from "./../mocks/dashboardData";
 import reducer from "./reducer";
 
 const store = createStore(reducer);
@@ -10,6 +11,7 @@ type StuffItemType = {
   phoneNumber: string;
   rooms: string[];
 };
+
 type AlertItemType = {
   status: string;
   color: string;
@@ -26,6 +28,7 @@ interface IAlert {
 export type RootState = {
   stuff: IStuff;
   alerts: IAlert;
+  dashboardData: dashboardItemType[];
 };
 
 export default store;

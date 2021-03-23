@@ -1,10 +1,12 @@
+import {mockAlerts} from "../mocks/alerts";
 import {mockStuff} from "../mocks/stuff";
-import {mockAlerts} from "./../mocks/alerts";
+import {mockDashboardData} from "./../mocks/dashboardData";
 import {ActionType} from "./actions";
 
 const initialState = {
   stuff: mockStuff,
   alerts: mockAlerts,
+  dashboardData: mockDashboardData,
 };
 
 type actionTypes = {
