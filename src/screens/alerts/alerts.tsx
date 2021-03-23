@@ -1,15 +1,13 @@
 import React, {useState} from "react";
-import {StyleSheet, SafeAreaView} from "react-native";
+import {SafeAreaView} from "react-native";
 import {useSelector} from "react-redux";
 
 import AlertList from "../../components/alert-list/alert-list";
 import Button from "../../components/buttons/button";
 import Navbar from "../../components/navbar/navbar";
-import StuffMenu from "../../components/stuff-menu/stuff-menu";
-import {primaryColor} from "../../const";
+import {Color} from "../../const";
 import {RootState} from "../../store/store";
 
-const listItems = ["doctors", "assistans", "receptionist"];
 const noop = () => {};
 
 const Alerts = () => {
@@ -17,17 +15,12 @@ const Alerts = () => {
   const alertsData = useSelector((state: RootState) => state.alerts);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView>
       <Navbar />
-      <StuffMenu
-        activeListItem={activeListItem}
-        setActiveListItem={setActiveListItem}
-        listItems={listItems}
-      />
       <Button
         title="Add new"
         onPress={noop}
-        backgroundColor={primaryColor}
+        backgroundColor={Color.primaryColor}
         width="100%"
         color="#fff"
       />
@@ -35,12 +28,5 @@ const Alerts = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#E5E5E5",
-  },
-});
 
 export default Alerts;
