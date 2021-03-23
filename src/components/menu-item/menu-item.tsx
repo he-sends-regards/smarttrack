@@ -1,36 +1,48 @@
-import React, {useState} from "react";
-import {StyleSheet, Text, View, Image, Alert, SafeAreaView} from "react-native";
+import React from "react";
+import {ImageSourcePropType, StyleSheet, Text, View, Image} from "react-native";
+import {TouchableHighlight} from "react-native-gesture-handler";
 
-import MenuItem from "../../components/menu-item/menu-item";
-import Navbar from "../../components/navbar/navbar";
-import {AppRoute, MenuItems} from "../../const";
+import * as RootNavigation from "../../../routes/root-navigation";
 import {generateId} from "../../utils";
 
-const Menu = () => {
-  const [activeMenuItem, setActiveMenuItem] = useState(AppRoute.DASHBOARD);
+type MenuItemProps = {
+  title: string;
+  logo: ImageSourcePropType;
+  activeLogo: ImageSourcePropType;
+  activeMenuItem: string;
+  setActiveMenuItem: Function;
+};
 
+const MenuItem = ({
+  title,
+  logo,
+  activeLogo,
+  activeMenuItem,
+  setActiveMenuItem,
+}: MenuItemProps) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Navbar haveCloseAbility />
-
-      {MenuItems.map(({title, logo, activeLogo}) => (
-        <MenuItem
-          title={title}
-          logo={logo}
-          activeLogo={activeLogo}
-          activeMenuItem={activeMenuItem}
-          setActiveMenuItem={setActiveMenuItem}
-          key={generateId()}
-        />
-      ))}
-
+    <TouchableHighlight
+      key={generateId()}
+      underlayColor="transparent"
+      onPress={() => {
+        setActiveMenuItem(title);
+        RootNavigation.navigate(title, {});
+      }}
+      style={{
+        width: "100%",
+        justifyContent: "flex-start",
+        flexDirection: "row",
+      }}>
       <View
-        style={styles.signOut}
-        onTouchStart={() => Alert.alert("You are signed out (no)")}>
-        <Image source={require("../../../assets/menu-icons/sign-out.png")} />
-        <Text style={styles.signOutText}>Sign Out</Text>
+        style={
+          activeMenuItem === title
+            ? styles.activeMenuItemContainer
+            : styles.menuItemContainer
+        }>
+        <Image source={activeMenuItem === title ? activeLogo : logo} />
+        <Text style={styles.menuItem}>{title}</Text>
       </View>
-    </SafeAreaView>
+    </TouchableHighlight>
   );
 };
 
@@ -86,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Menu;
+export default MenuItem;

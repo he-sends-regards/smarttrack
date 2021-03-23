@@ -1,5 +1,14 @@
 import React from "react";
-import {StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
+
+import {generateId} from "../../utils";
 
 type StuffItemType = {
   name: string;
@@ -11,9 +20,10 @@ type StuffItemType = {
 interface StuffProps {
   stuffWorkerData: StuffItemType;
   index: number;
+  onStuffItemDelete: Function;
 }
 
-const StuffItem = ({stuffWorkerData, index}: StuffProps) => {
+const StuffItem = ({stuffWorkerData, index, onStuffItemDelete}: StuffProps) => {
   return (
     <TouchableOpacity>
       <View style={styles.container}>
@@ -22,25 +32,30 @@ const StuffItem = ({stuffWorkerData, index}: StuffProps) => {
         </View>
 
         <View>
-          <View>
-            <Image
-              style={styles.controlsLogo}
-              source={require("./img/edit.png")}
-            />
-            <Image
-              style={styles.controlsLogo}
-              source={require("./img/delete.png")}
-            />
+          <View style={styles.controls}>
+            <TouchableOpacity onPress={() => Alert.alert("Edit")}>
+              <Image
+                style={styles.controlsLogo}
+                source={require("./img/edit.png")}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => onStuffItemDelete(stuffWorkerData.email)}>
+              <Image
+                style={styles.controlsLogo}
+                source={require("./img/delete.png")}
+              />
+            </TouchableOpacity>
           </View>
 
-          <View>
+          <View style={styles.stuffInfo}>
             <Text style={styles.stuffItemName}>{stuffWorkerData.name}</Text>
             <Text style={styles.stuffItem}>{stuffWorkerData.email}</Text>
             <Text style={styles.stuffItem}>{stuffWorkerData.phoneNumber}</Text>
             <View style={styles.rooms}>
               <Text>Rooms:</Text>
               {stuffWorkerData.rooms.map(room => (
-                <Text key={room}>{room}</Text>
+                <Text key={generateId()}>{room}</Text>
               ))}
             </View>
             <View style={styles.rooms}>
@@ -60,7 +75,7 @@ const StuffItem = ({stuffWorkerData, index}: StuffProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    // width: "100%",
     height: 200,
     flexDirection: "row",
     borderWidth: 1,
@@ -80,6 +95,9 @@ const styles = StyleSheet.create({
     borderColor: "#6AC7BE",
     borderTopLeftRadius: 20,
   },
+  stuffInfo: {
+    alignItems: "flex-start",
+  },
   stuffItem: {
     fontSize: 14,
     fontFamily: "Poppins-Regular",
@@ -89,8 +107,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "Poppins-Bold",
   },
+  controls: {
+    width: "100%",
+    flexDirection: "row",
+    marginLeft: "65%",
+    marginTop: 15,
+  },
   controlsLogo: {
     width: 15,
+    marginRight: 30,
   },
   rooms: {
     flexDirection: "row",
