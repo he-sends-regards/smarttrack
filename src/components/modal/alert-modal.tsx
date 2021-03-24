@@ -9,8 +9,9 @@ import {
   TouchableHighlight,
   TouchableOpacity,
 } from "react-native";
+import {useDispatch} from "react-redux";
 
-import {Color, alertTypes} from "../../const";
+import {Color, alerts} from "../../const";
 import {generateId} from "../../utils";
 import Button from "../buttons/button";
 
@@ -20,70 +21,99 @@ interface IalertModal {
 }
 
 const AlertModal = ({onPress, visible}: IalertModal) => {
-  const [text, onChangeText] = useState("Status");
+  const [status, onChangeStatus] = useState("Status");
+  const [colorAlert, setColorAlert] = useState("");
+
+  const dispatch = useDispatch();
+
+  const createAlert = (status: string, color: string): void => {
+    console.log("statu", status, color);
+    dispatch({type: "ADD_ALERT", payload: {status, color}});
+  };
+
+  const adjustBorderColor = (color: string, amount: number): string => {
+    return (
+      "#" +
+      color
+        .replace(/^#/, "")
+        .replace(/../g, color =>
+          (
+            "0" +
+            Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(
+              16
+            )
+          ).substr(-2)
+        )
+    );
+  };
 
   return (
-    // <View style={styles.modalContainer}>
-    <View style={styles.centeredView}>
-      <Modal animationType="slide" transparent visible={visible}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <TouchableHighlight
-              underlayColor="transparent"
-              onPress={() => onPress()}
-              style={styles.closeModal}>
-              <View>
-                <Image
-                  style={styles.closeModalBtn}
-                  source={require("./img/closeModal.png")}
-                />
-              </View>
-            </TouchableHighlight>
-            <Text style={styles.modalText}>Status would be here</Text>
-            <Text style={styles.modalInputTitle}>Name</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={onChangeText}
-              value={text}
-            />
-
-            <Text style={styles.modalInputTitle}>Color</Text>
-            <View style={styles.alertsContainer}>
-              {alertTypes.map(({color}) => (
-                <TouchableOpacity
-                  key={generateId()}
-                  onPress={() => {
-                    console.log("color");
-                  }}>
-                  <View style={styles.alertItemContainer}>
-                    <View
-                      style={{...styles.alertItem, backgroundColor: color}}
-                    />
-                  </View>
-                </TouchableOpacity>
-              ))}
+    <Modal animationType="slide" transparent visible={visible}>
+      <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+          <TouchableHighlight
+            underlayColor="transparent"
+            onPress={() => onPress()}
+            style={styles.closeModal}>
+            <View>
+              <Image
+                style={styles.closeModalBtn}
+                source={require("./img/closeModal.png")}
+              />
             </View>
+          </TouchableHighlight>
+          <Text style={styles.modalText}>Status would be here</Text>
+          <Text style={styles.modalInputTitle}>Name</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeStatus}
+            value={status}
+          />
 
-            <Button
-              title="Save"
-              color="white"
-              backgroundColor={Color.primaryColor}
-              width="100%"
-              onPress={() => onPress()}
-            />
+          <Text style={styles.modalInputTitle}>Color</Text>
+          <View style={styles.alertsContainer}>
+            {alerts.map(({color}) => (
+              <TouchableOpacity
+                key={generateId()}
+                onPress={() => {
+                  setColorAlert(color);
+                }}>
+                <View style={styles.alertItemContainer}>
+                  <View
+                    style={{
+                      ...styles.alertItem,
+                      backgroundColor: color,
+                      borderColor: adjustBorderColor(color, -50),
+                      // ...{
+                      //     // colorAlert === color ?  { borderWidth: 5,
+                      //     // width: 59,
+                      //     // height: 59,} : { borderWidth: 2,
+                      //     // width: 45,
+                      //     // height: 45,}}
+                    }}
+                  />
+                </View>
+              </TouchableOpacity>
+            ))}
           </View>
+
+          <Button
+            title="Save"
+            color="white"
+            backgroundColor={Color.primaryColor}
+            width="100%"
+            onPress={() => {
+              createAlert(status, colorAlert);
+              onPress();
+            }}
+          />
         </View>
-      </Modal>
-    </View>
-    // </View>
+      </View>
+    </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  //modalContainer: {
-  // flex: 1,
-  // backgroundColor: "rgba(0, 0, 0, 0.5)",
-  // },
   closeModal: {
     flexDirection: "row",
     justifyContent: "flex-end",
@@ -92,9 +122,10 @@ const styles = StyleSheet.create({
     width: 25,
   },
   centeredView: {
-    // flex: 1,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modalView: {
     margin: 20,
@@ -160,7 +191,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   alertItem: {
-    borderWidth: 1,
+    borderWidth: 2,
     width: 45,
     height: 45,
     borderRadius: 50,
