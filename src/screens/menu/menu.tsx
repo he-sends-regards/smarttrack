@@ -51,7 +51,7 @@ const Menu = () => {
       <View
         style={styles.signOut}
         onTouchStart={() => Alert.alert("You are signed out (no)")}>
-        {menuLogo.SignOutSvg}
+        <menuLogo.SignOutSvg />
 
         <Text style={styles.signOutText}>Sign Out</Text>
       </View>

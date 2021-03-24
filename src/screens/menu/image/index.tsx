@@ -1,14 +1,14 @@
 import React from "react";
 
 import AlertsActiveSvg from "./img/alerts-active.svg";
-import AlertsSvg from "./img/menu-icons/alerts.svg";
-import DashboardActiveSvg from "./img/menu-icons/dashboard-active.svg";
-import DashboardSvg from "./img/menu-icons/dashboard.svg";
-import SequenceActiveSvg from "./img/menu-icons/sequence-active.svg";
-import SequenceSvg from "./img/menu-icons/sequence.svg";
-import SignOutSvg from "./img/menu-icons/sign-out.svg";
-import StuffActiveSvg from "./img/menu-icons/stuff-active.svg";
-import StuffSvg from "./img/menu-icons/stuff.svg";
+import AlertsSvg from "./img/alerts.svg";
+import DashboardActiveSvg from "./img/dashboard-active.svg";
+import DashboardSvg from "./img/dashboard.svg";
+import SequenceActiveSvg from "./img/sequence-active.svg";
+import SequenceSvg from "./img/sequence.svg";
+import SignOutSvg from "./img/sign-out.svg";
+import StuffActiveSvg from "./img/stuff-active.svg";
+import StuffSvg from "./img/stuff.svg";
 
 export default {
   AlertsActiveSvg: () => <AlertsActiveSvg />,
