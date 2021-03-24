@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {StyleSheet, SafeAreaView, FlatList} from "react-native";
+import {useDispatch, useSelector} from "react-redux";
 
+import {RootState} from "../../store/store";
 import {generateId} from "../../utils";
 import StuffItem from "../stuff-item/stuff-item";
 
@@ -12,11 +14,19 @@ type StuffItemType = {
 };
 
 interface StuffListProps {
-  stuff: StuffItemType[];
-  onStuffItemDelete: Function;
+  activeListItem: string;
 }
 
-const StuffList = ({stuff, onStuffItemDelete}: StuffListProps) => {
+const StuffList = ({activeListItem}: StuffListProps) => {
+  const dispatch = useDispatch();
+
+  const onStuffItemDelete = (id: string, type: string = activeListItem) =>
+    dispatch({type: "DELETE_STUFF", payload: {type, id}});
+
+  const stuffData = useSelector((state: RootState) => state.stuff);
+  // useEffect(() => {})
+  console.log(stuffData);
+
   const renderItem = ({item, index}: any) => {
     return (
       <StuffItem
@@ -30,7 +40,7 @@ const StuffList = ({stuff, onStuffItemDelete}: StuffListProps) => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={stuff}
+        data={stuffData[activeListItem]}
         renderItem={renderItem}
         keyExtractor={generateId}
       />

@@ -25,20 +25,18 @@ export default (state = initialState, action: actionTypes) => {
       ];
 
       return newState;
+
     case ActionType.DELETE_STUFF:
-      return Object.assign({}, state, {
-        stuff: Object.assign(
-          {},
-          state.stuff,
-          Object.assign(
-            {},
-            state.stuff[action.payload.type],
-            state.stuff[action.payload.type].filter(
-              ({email}) => email !== action.payload.id
-            )
-          )
-        ),
-      });
+      return {
+        ...state,
+        stuff: {
+          ...state.stuff,
+          [action.payload.type]: state.stuff[action.payload.type].filter(
+            stuff => stuff.email !== action.payload.id
+          ),
+        },
+      };
+
     default:
       return state;
   }
