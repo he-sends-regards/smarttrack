@@ -2,37 +2,55 @@ import React, {useState} from "react";
 import {Text, SafeAreaView, StyleSheet, Alert} from "react-native";
 import {useDispatch} from "react-redux";
 
-import AddingForm from "../../components/adding-form/adding-form";
+import AddingForm from "../../components/stuff-form/stuff-form";
+import {formType} from "../../const";
 import {ActionType} from "../../store/actions";
 
 type AddStuffType = {
   stuffType: string;
-  setIsFormOpened: Function;
+  setFormStatus: Function;
+  formStatus: {isOpened: boolean; initiator: string; options: {id?: string}};
 };
 
 type onSumbitArgs = {
   [key: string]: string;
 };
 
-const AddStuff = ({stuffType, setIsFormOpened}: AddStuffType) => {
+const AddStuff = ({stuffType, setFormStatus, formStatus}: AddStuffType) => {
   const [choosenAlert, setChoosenAlert] = useState("");
   const dispatch = useDispatch();
 
   const onSubmit = ({name, email, phoneNumber, alert}: onSumbitArgs) => {
-    dispatch({
-      type: ActionType.ADD_STUFF,
-      payload: {
-        type: stuffType,
-        data: {
-          name,
-          email,
-          phoneNumber,
-          rooms: ["1", "2"],
+    if (formStatus.initiator === formType.ADD) {
+      dispatch({
+        type: ActionType.ADD_STUFF,
+        payload: {
+          type: stuffType,
+          data: {
+            name,
+            email,
+            phoneNumber,
+            rooms: ["1", "2"],
+          },
         },
-      },
-    });
+      });
+    } else if (formStatus.initiator === formType.EDIT) {
+      dispatch({
+        type: ActionType.UPDATE_STUFF,
+        payload: {
+          type: stuffType,
+          data: {
+            id: formStatus.options.id,
+            name,
+            email,
+            phoneNumber,
+            rooms: ["1", "2"],
+          },
+        },
+      });
+    }
 
-    setIsFormOpened(false);
+    setFormStatus({isOpened: false});
 
     return Alert.alert(
       `New ${stuffType.slice(
@@ -45,7 +63,9 @@ const AddStuff = ({stuffType, setIsFormOpened}: AddStuffType) => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
-        Add new {stuffType.slice(0, stuffType.length - 1)}
+        {`${
+          formStatus.initiator === formType.ADD ? "Add new" : "Edit"
+        } ${stuffType.slice(0, stuffType.length - 1)}`}
       </Text>
 
       <AddingForm

@@ -1,13 +1,11 @@
 import React, {useState} from "react";
 import {SafeAreaView, StyleSheet, View} from "react-native";
-import {useDispatch, useSelector} from "react-redux";
 
 import Button from "../../components/buttons/button";
 import Navbar from "../../components/navbar/navbar";
 import StuffList from "../../components/stuff-list/stuff-list";
 import StuffMenu from "../../components/stuff-menu/stuff-menu";
-import {Color} from "../../const";
-import {RootState} from "../../store/store";
+import {Color, formType} from "../../const";
 import AddStuff from "../add-stuff/add-stuff";
 
 const listItems = {
@@ -18,20 +16,26 @@ const listItems = {
 
 const Stuff = () => {
   const [activeListItem, setActiveListItem] = useState(listItems.doctors);
-  const [isFormOpened, setIsFormOpened] = useState(false);
-
-  const changeIsFormOpenedStatus = () => {
-    setIsFormOpened(!isFormOpened);
-  };
+  const [formStatus, setFormStatus] = useState({
+    isOpened: false,
+    initiator: "",
+    options: {},
+  });
 
   return (
     <SafeAreaView style={styles.container}>
-      {isFormOpened ? (
+      {formStatus.isOpened ? (
         <View>
-          <Navbar haveCloseAbility onPress={changeIsFormOpenedStatus} />
+          <Navbar
+            haveCloseAbility
+            onPress={() =>
+              setFormStatus({isOpened: false, initiator: "", options: {}})
+            }
+          />
           <AddStuff
             stuffType={activeListItem}
-            setIsFormOpened={setIsFormOpened}
+            formStatus={formStatus}
+            setFormStatus={setFormStatus}
           />
         </View>
       ) : (
@@ -44,13 +48,22 @@ const Stuff = () => {
             listItems={Object.values(listItems)}
           />
           <Button
-            onPress={changeIsFormOpenedStatus}
+            onPress={() =>
+              setFormStatus({
+                isOpened: true,
+                initiator: formType.ADD,
+                options: {},
+              })
+            }
             width="100%"
             backgroundColor={Color.primaryColor}
             color="white"
             title="Add new"
           />
-          <StuffList activeListItem={activeListItem} />
+          <StuffList
+            activeListItem={activeListItem}
+            setFormStatus={setFormStatus}
+          />
         </View>
       )}
     </SafeAreaView>

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {StyleSheet, SafeAreaView, FlatList} from "react-native";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -6,26 +6,18 @@ import {RootState} from "../../store/store";
 import {generateId} from "../../utils";
 import StuffItem from "../stuff-item/stuff-item";
 
-type StuffItemType = {
-  name: string;
-  email: string;
-  phoneNumber: string;
-  rooms: string[];
-};
-
 interface StuffListProps {
   activeListItem: string;
+  setFormStatus: Function;
 }
 
-const StuffList = ({activeListItem}: StuffListProps) => {
+const StuffList = ({activeListItem, setFormStatus}: StuffListProps) => {
   const dispatch = useDispatch();
 
   const onStuffItemDelete = (id: string, type: string = activeListItem) =>
     dispatch({type: "DELETE_STUFF", payload: {type, id}});
 
   const stuffData = useSelector((state: RootState) => state.stuff);
-  // useEffect(() => {})
-  console.log(stuffData);
 
   const renderItem = ({item, index}: any) => {
     return (
@@ -33,6 +25,7 @@ const StuffList = ({activeListItem}: StuffListProps) => {
         stuffWorkerData={item}
         index={index}
         onStuffItemDelete={onStuffItemDelete}
+        setFormStatus={setFormStatus}
       />
     );
   };

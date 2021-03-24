@@ -1,6 +1,7 @@
 import {mockAlerts} from "../mocks/alerts";
 import {mockStuff} from "../mocks/stuff";
 import {mockDashboardData} from "./../mocks/dashboardData";
+import {generateId} from "./../utils";
 import {ActionType} from "./actions";
 
 const initialState = {
@@ -21,10 +22,25 @@ export default (state = initialState, action: actionTypes) => {
     case ActionType.ADD_STUFF:
       newState.stuff[action.payload.type] = [
         ...newState.stuff[action.payload.type],
-        action.payload.data,
+        {...action.payload.data, id: generateId()},
       ];
 
       return newState;
+
+    case ActionType.UPDATE_STUFF:
+      return {
+        ...state,
+        stuff: {
+          ...state.stuff,
+          [action.payload.type]: state.stuff[action.payload.type].map(stuff => {
+            console.log(stuff.id, action.payload.data);
+
+            return stuff.id === action.payload.data.id
+              ? action.payload.data
+              : stuff;
+          }),
+        },
+      };
 
     case ActionType.DELETE_STUFF:
       return {
@@ -32,7 +48,7 @@ export default (state = initialState, action: actionTypes) => {
         stuff: {
           ...state.stuff,
           [action.payload.type]: state.stuff[action.payload.type].filter(
-            stuff => stuff.email !== action.payload.id
+            stuff => stuff.id !== action.payload.id
           ),
         },
       };
