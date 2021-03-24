@@ -1,14 +1,9 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import {StyleSheet, Text, View, TouchableOpacity, Alert} from "react-native";
 
 import {generateId} from "../../utils";
+import DeleteIcon from "./img/delete.svg";
+import EditIcon from "./img/edit.svg";
 
 type StuffItemType = {
   name: string;
@@ -34,17 +29,11 @@ const StuffItem = ({stuffWorkerData, index, onStuffItemDelete}: StuffProps) => {
         <View>
           <View style={styles.controls}>
             <TouchableOpacity onPress={() => Alert.alert("Edit")}>
-              <Image
-                style={styles.controlsLogo}
-                source={require("./img/edit.png")}
-              />
+              <EditIcon style={styles.controlsLogo} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => onStuffItemDelete(stuffWorkerData.email)}>
-              <Image
-                style={styles.controlsLogo}
-                source={require("./img/delete.png")}
-              />
+              <DeleteIcon style={styles.controlsLogo} />
             </TouchableOpacity>
           </View>
 

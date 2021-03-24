@@ -1,8 +1,9 @@
 import React from "react";
-import {StyleSheet, Text, View, Image} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import {TouchableHighlight} from "react-native-gesture-handler";
 
 import * as RootNavigation from "../../../routes/root-navigation";
+import CloseIcon from "./img/close-icon.svg";
 
 type NavbarProps = {
   haveCloseAbility?: boolean;
@@ -21,10 +22,7 @@ const Navbar = ({
         <TouchableHighlight
           onPress={() => onPress()}
           underlayColor="transparent">
-          <Image
-            style={styles.closeIcon}
-            source={require("./img/close-icon.png")}
-          />
+          <CloseIcon />
         </TouchableHighlight>
       ) : (
         <TouchableHighlight

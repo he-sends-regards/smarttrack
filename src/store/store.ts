@@ -1,9 +1,10 @@
 import {createStore} from "redux";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 import {dashboardItemType} from "./../mocks/dashboardData";
 import reducer from "./reducer";
 
-const store = createStore(reducer);
+const store = createStore(reducer, composeWithDevTools());
 
 type StuffItemType = {
   name: string;

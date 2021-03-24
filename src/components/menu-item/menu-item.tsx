@@ -1,5 +1,5 @@
 import React from "react";
-import {ImageSourcePropType, StyleSheet, Text, View, Image} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import {TouchableHighlight} from "react-native-gesture-handler";
 
 import * as RootNavigation from "../../../routes/root-navigation";
@@ -7,16 +7,16 @@ import {generateId} from "../../utils";
 
 type MenuItemProps = {
   title: string;
-  logo: ImageSourcePropType;
-  activeLogo: ImageSourcePropType;
+  Logo: React.FC;
+  ActiveLogo: React.FC;
   activeMenuItem: string;
   setActiveMenuItem: Function;
 };
 
 const MenuItem = ({
   title,
-  logo,
-  activeLogo,
+  Logo,
+  ActiveLogo,
   activeMenuItem,
   setActiveMenuItem,
 }: MenuItemProps) => {
@@ -39,7 +39,7 @@ const MenuItem = ({
             ? styles.activeMenuItemContainer
             : styles.menuItemContainer
         }>
-        <Image source={activeMenuItem === title ? activeLogo : logo} />
+        {activeMenuItem === title ? <ActiveLogo /> : <Logo />}
         <Text style={styles.menuItem}>{title}</Text>
       </View>
     </TouchableHighlight>

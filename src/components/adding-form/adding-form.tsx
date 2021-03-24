@@ -7,24 +7,27 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  Image,
 } from "react-native";
 import * as Yup from "yup";
 
 import Button from "../../components/buttons/button";
 import {Color, alertTypes} from "../../const";
 import {generateId} from "../../utils";
+import TrashIcon from "./img/remove-alert.svg";
 
 interface FormProps {
+  stuffType: string;
   choosenAlert: string;
   setChoosenAlert: Function;
+  onSubmit: (values: {[key: string]: string}) => void;
 }
 
-type onSumbitArgs = {
-  [key: string]: string;
-};
-
-const AddingForm = ({choosenAlert, setChoosenAlert}: FormProps) => {
+const AddingForm = ({
+  stuffType,
+  choosenAlert,
+  setChoosenAlert,
+  onSubmit,
+}: FormProps) => {
   const SignupSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, "Too Short!")
@@ -36,11 +39,6 @@ const AddingForm = ({choosenAlert, setChoosenAlert}: FormProps) => {
       .required("Required"),
     email: Yup.string().email("Invalid email").required("Required"),
   });
-
-  const onSubmit = ({name, email, phoneNumber, alert}: onSumbitArgs) =>
-    Alert.alert(
-      `Name: ${name}\nEmail: ${email}\nPhone number: ${phoneNumber}\nAlerts: ${alert}`
-    );
 
   const initialFormValues = {name: "", email: "", phoneNumber: "", alert: ""};
 
@@ -104,11 +102,7 @@ const AddingForm = ({choosenAlert, setChoosenAlert}: FormProps) => {
                       borderColor: color,
                       backgroundColor: color,
                     }}>
-                    <Text>
-                      {choosenAlert === name && (
-                        <Image source={require("./img/remove-alert.png")} />
-                      )}
-                    </Text>
+                    <Text>{choosenAlert === name && <TrashIcon />}</Text>
                   </View>
                   <Text>{name}</Text>
                 </View>
