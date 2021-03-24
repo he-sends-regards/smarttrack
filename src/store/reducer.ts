@@ -52,6 +52,17 @@ export default (state = initialState, action: actionTypes) => {
           ),
         },
       };
+    case ActionType.ADD_ALERT:
+      return {
+        ...state,
+        alerts: {
+          ...state.alerts,
+          [action.payload.type]: [
+            ...state.alerts[action.payload.type],
+            action.payload.data,
+          ],
+        },
+      };
 
     default:
       return state;

@@ -1,3 +1,5 @@
+import {generateId} from "../utils";
+
 type alertType = {
   status: string;
   color: string;
@@ -11,99 +13,115 @@ export const mockAlerts: mockAlertType = {
   doctors: [
     {
       status: "Patient in",
-      color: "green",
+      color: "#78F275",
     },
     {
       status: "Assistent required",
-      color: "green",
+      color: "#86E8EE",
     },
     {
       status: "Doctor required",
-      color: "green",
+      color: "#E485F3",
     },
     {
       status: "Doctor in",
-      color: "green",
+      color: "#C4E6E9",
     },
     {
       status: "Assistent in",
-      color: "green",
+      color: "#78F275",
     },
     {
       status: "Emergency",
-      color: "green",
+      color: "#FA700C",
     },
     {
       status: "Financial",
-      color: "green",
+      color: "#86E8EE",
     },
     {
       status: "Financialddd",
-      color: "green",
+      color: "#78F275",
     },
     {
       status: "Financials",
-      color: "green",
+      color: "#78F275",
     },
-  ],
+  ].map(doctor => Object.assign({}, doctor, {id: generateId()})),
   assistans: [
     {
-      status: "Doctor in",
-      color: "green",
+      status: "Financial",
+      color: "#86E8EE",
     },
     {
-      status: "Assistent in",
-      color: "green",
+      status: "Financialddd",
+      color: "#78F275",
+    },
+    {
+      status: "Financials",
+      color: "#78F275",
     },
     {
       status: "Patient in",
-      color: "green",
+      color: "#78F275",
     },
     {
       status: "Assistent required",
-      color: "green",
+      color: "#86E8EE",
     },
     {
       status: "Doctor required",
-      color: "green",
+      color: "#E485F3",
+    },
+    {
+      status: "Doctor in",
+      color: "#C4E6E9",
+    },
+    {
+      status: "Assistent in",
+      color: "#78F275",
     },
     {
       status: "Emergency",
-      color: "green",
-    },
-    {
-      status: "Financial",
-      color: "green",
+      color: "#FA700C",
     },
   ],
   receptionist: [
     {
       status: "Assistent required",
-      color: "green",
-    },
-    {
-      status: "Patient in",
-      color: "green",
+      color: "#86E8EE",
     },
     {
       status: "Doctor required",
-      color: "green",
+      color: "#E485F3",
+    },
+    {
+      status: "Patient in",
+      color: "#78F275",
     },
     {
       status: "Doctor in",
-      color: "green",
+      color: "#C4E6E9",
     },
     {
       status: "Assistent in",
-      color: "green",
+      color: "#78F275",
     },
     {
       status: "Emergency",
-      color: "green",
+      color: "#FA700C",
     },
     {
       status: "Financial",
-      color: "green",
+      color: "#86E8EE",
+    },
+    {
+      status: "Financialddd",
+      color: "#78F275",
+    },
+    {
+      status: "Financials",
+      color: "#78F275",
     },
   ],
 };

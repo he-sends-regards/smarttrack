@@ -12,39 +12,42 @@ import {
 import {useDispatch} from "react-redux";
 
 import {Color, alerts} from "../../const";
-import {generateId} from "../../utils";
+import {createColor, generateId} from "../../utils";
 import Button from "../buttons/button";
-
 interface IalertModal {
   onPress: () => void;
   visible: boolean;
+  activeListItem: string;
 }
 
-const AlertModal = ({onPress, visible}: IalertModal) => {
-  const [status, onChangeStatus] = useState("Status");
+const AlertModal = ({onPress, visible, activeListItem}: IalertModal) => {
+  const [status, onChangeStatus] = useState("");
   const [colorAlert, setColorAlert] = useState("");
+  const [errors, setErrors] = useState({requiredStatus: "", requiredColor: ""});
 
   const dispatch = useDispatch();
 
-  const createAlert = (status: string, color: string): void => {
-    console.log("statu", status, color);
-    dispatch({type: "ADD_ALERT", payload: {status, color}});
-  };
-
-  const adjustBorderColor = (color: string, amount: number): string => {
-    return (
-      "#" +
-      color
-        .replace(/^#/, "")
-        .replace(/../g, color =>
-          (
-            "0" +
-            Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(
-              16
-            )
-          ).substr(-2)
-        )
-    );
+  const createAlert = (
+    status: string,
+    color: string,
+    type: string = activeListItem
+  ): void => {
+    if (status.trim().length < 3) {
+      setErrors(prev => {
+        return {
+          ...prev,
+          requiredStatus: "Status should be at least 3 symbols!",
+        };
+      });
+    }
+    if (!colorAlert) {
+      setErrors(prev => {
+        return {...prev, requiredColor: "Please select color!"};
+      });
+    } else {
+      dispatch({type: "ADD_ALERT", payload: {type, data: {color, status}}});
+      onPress();
+    }
   };
 
   return (
@@ -64,13 +67,21 @@ const AlertModal = ({onPress, visible}: IalertModal) => {
           </TouchableHighlight>
           <Text style={styles.modalText}>Status would be here</Text>
           <Text style={styles.modalInputTitle}>Name</Text>
+          <Text style={styles.modalTextErrors}>
+            {errors.requiredStatus.length > 0 && errors.requiredStatus}
+          </Text>
+
           <TextInput
             style={styles.input}
             onChangeText={onChangeStatus}
             value={status}
+            maxLength={25}
           />
 
           <Text style={styles.modalInputTitle}>Color</Text>
+          <Text style={styles.modalTextErrors}>
+            {errors.requiredColor.length > 0 && errors.requiredColor}
+          </Text>
           <View style={styles.alertsContainer}>
             {alerts.map(({color}) => (
               <TouchableOpacity
@@ -83,13 +94,7 @@ const AlertModal = ({onPress, visible}: IalertModal) => {
                     style={{
                       ...styles.alertItem,
                       backgroundColor: color,
-                      borderColor: adjustBorderColor(color, -50),
-                      // ...{
-                      //     // colorAlert === color ?  { borderWidth: 5,
-                      //     // width: 59,
-                      //     // height: 59,} : { borderWidth: 2,
-                      //     // width: 45,
-                      //     // height: 45,}}
+                      borderColor: createColor(color, -50),
                     }}
                   />
                 </View>
@@ -104,7 +109,6 @@ const AlertModal = ({onPress, visible}: IalertModal) => {
             width="100%"
             onPress={() => {
               createAlert(status, colorAlert);
-              onPress();
             }}
           />
         </View>
@@ -131,7 +135,9 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 20,
+    paddingHorizontal: 25,
+    paddingBottom: 35,
+    paddingTop: 20,
     width: "80%",
     shadowColor: "#000",
     shadowOffset: {
@@ -141,11 +147,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
   },
   buttonOpen: {
     backgroundColor: "#F194FF",
@@ -165,6 +166,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 15,
   },
+  modalTextErrors: {
+    color: "red",
+    paddingLeft: 20,
+  },
   modalInputTitle: {
     textAlign: "left",
     paddingLeft: 20,
@@ -183,7 +188,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     marginBottom: 40,
     marginTop: 20,
-    paddingLeft: 10,
   },
   alertItemContainer: {
     marginBottom: 10,
