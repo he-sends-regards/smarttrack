@@ -2,6 +2,7 @@ import React from "react";
 import {StyleSheet, Text, View, TouchableOpacity} from "react-native";
 
 import {primaryColor, textBaseColor} from "../../const";
+import {createColor} from "../../utils";
 import EditIcon from "../stuff-item/img/edit.svg";
 
 type AlertItemType = {
@@ -12,9 +13,10 @@ type AlertItemType = {
 interface AlertProps {
   alertItem: AlertItemType;
   index: number;
+  modalHandler: () => void;
 }
 
-const AlertItem = ({alertItem, index}: AlertProps) => {
+const AlertItem = ({alertItem, index, modalHandler}: AlertProps) => {
   return (
     <TouchableOpacity>
       <View style={styles.container}>
@@ -24,8 +26,14 @@ const AlertItem = ({alertItem, index}: AlertProps) => {
         <View style={styles.innerContainer}>
           <Text style={styles.status}>{alertItem.status}</Text>
           <View style={styles.configContainer}>
-            <View style={styles.alertColor} />
-            <EditIcon style={styles.editBtn} />
+            <View
+              style={{
+                ...styles.alertColor,
+                backgroundColor: alertItem.color,
+                borderColor: createColor(alertItem.color, -50),
+              }}
+            />
+            <EditIcon style={styles.editBtn} onPress={() => modalHandler()} />
           </View>
         </View>
       </View>
@@ -74,12 +82,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   alertColor: {
-    backgroundColor: "rgba(116, 195, 134, 0.19)",
     borderRadius: 50,
     borderWidth: 2,
     height: 37,
     width: 37,
-    borderColor: "#74C486",
   },
   editBtn: {},
 });

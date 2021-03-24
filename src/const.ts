@@ -47,3 +47,32 @@ export const alertTypes = [
     color: "rgb(221,221,221)",
   },
 ];
+
+
+
+export const alerts = [
+  {
+    name: "Assistant",
+    color: "#EE5897",
+  },
+  {
+    name: "Doctor",
+    color: "#86E8EE",
+  },
+  {
+    name: "Finances",
+    color: "#FA700C",
+  },
+  {
+    name: "Patient",
+    color: "#E485F3",
+  },
+  {
+    name: "Emergency",
+    color: "#C4E6E9",
+  },
+  {
+    name: "Empty",
+    color: "#78F275",
+  },
+];

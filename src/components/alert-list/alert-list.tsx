@@ -1,6 +1,8 @@
 import React from "react";
 import {StyleSheet, SafeAreaView, FlatList} from "react-native";
+import {useSelector} from "react-redux";
 
+import {RootState} from "../../store/store";
 import {generateId} from "../../utils";
 import AlertItem from "../alert-item/alert-item";
 
@@ -10,18 +12,23 @@ type AlertItemType = {
 };
 
 interface AlertListProps {
-  alerts: AlertItemType[];
+  activeListItem: string;
+  modalHandler: () => void;
 }
 
-const AlertList = ({alerts}: AlertListProps) => {
+const AlertList = ({modalHandler, activeListItem}: AlertListProps) => {
+  const alertsData = useSelector((state: RootState) => state.alerts);
+
   const renderItem = ({item, index}: any) => {
-    return <AlertItem alertItem={item} index={index} />;
+    return (
+      <AlertItem modalHandler={modalHandler} alertItem={item} index={index} />
+    );
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={alerts}
+        data={alertsData[activeListItem]}
         renderItem={renderItem}
         keyExtractor={generateId}
       />
@@ -35,6 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     paddingHorizontal: "5%",
+    marginVertical: 15,
   },
 });
 

@@ -1,4 +1,5 @@
 export const ActionType = {
+  ADD_ALERT: "ADD_ALERT",
   DELETE_STUFF: "DELETE_STUFF",
   ADD_STUFF: "ADD_STUFF",
   UPDATE_STUFF: "UPDATE_STUFF",
