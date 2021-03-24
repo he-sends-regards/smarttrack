@@ -39,7 +39,10 @@ const Stuff = () => {
       {isFormOpened ? (
         <View>
           <Navbar haveCloseAbility onPress={changeIsFormOpenedStatus} />
-          <AddStuff stuffType={activeListItem} />
+          <AddStuff
+            stuffType={activeListItem}
+            setIsFormOpened={setIsFormOpened}
+          />
         </View>
       ) : (
         <View>
