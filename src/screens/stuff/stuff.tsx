@@ -21,6 +21,8 @@ const Stuff = () => {
   const [isFormOpened, setIsFormOpened] = useState(false);
 
   const dispatch = useDispatch();
+  const stuff = useSelector((state: RootState) => state.stuff);
+  console.log(stuff);
 
   const onStuffItemDelete = (id: string, type: string = activeListItem) => {
     dispatch({type: "DELETE_STUFF", payload: {type, id}});

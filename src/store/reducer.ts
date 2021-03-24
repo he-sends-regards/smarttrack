@@ -15,7 +15,16 @@ type actionTypes = {
 };
 
 export default (state = initialState, action: actionTypes) => {
+  const newState = Object.assign({}, state);
+
   switch (action.type) {
+    case ActionType.ADD_STUFF:
+      newState.stuff[action.payload.type] = [
+        ...newState.stuff[action.payload.type],
+        action.payload.data,
+      ];
+
+      return newState;
     case ActionType.DELETE_STUFF:
       return Object.assign({}, state, {
         stuff: Object.assign(

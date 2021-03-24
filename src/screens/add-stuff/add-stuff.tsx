@@ -17,6 +17,7 @@ const AddStuff = ({stuffType}: AddStuffType) => {
       </Text>
 
       <AddingForm
+        stuffType={stuffType}
         choosenAlert={choosenAlert}
         setChoosenAlert={setChoosenAlert}
       />

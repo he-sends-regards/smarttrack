@@ -9,13 +9,16 @@ import {
   Alert,
   Image,
 } from "react-native";
+import {useDispatch} from "react-redux";
 import * as Yup from "yup";
 
 import Button from "../../components/buttons/button";
 import {Color, alertTypes} from "../../const";
+import {ActionType} from "../../store/actions";
 import {generateId} from "../../utils";
 
 interface FormProps {
+  stuffType: string;
   choosenAlert: string;
   setChoosenAlert: Function;
 }
@@ -24,7 +27,9 @@ type onSumbitArgs = {
   [key: string]: string;
 };
 
-const AddingForm = ({choosenAlert, setChoosenAlert}: FormProps) => {
+const AddingForm = ({stuffType, choosenAlert, setChoosenAlert}: FormProps) => {
+  const dispatch = useDispatch();
+
   const SignupSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, "Too Short!")
@@ -37,10 +42,24 @@ const AddingForm = ({choosenAlert, setChoosenAlert}: FormProps) => {
     email: Yup.string().email("Invalid email").required("Required"),
   });
 
-  const onSubmit = ({name, email, phoneNumber, alert}: onSumbitArgs) =>
-    Alert.alert(
+  const onSubmit = ({name, email, phoneNumber, alert}: onSumbitArgs) => {
+    dispatch({
+      type: ActionType.ADD_STUFF,
+      payload: {
+        type: stuffType,
+        data: {
+          name,
+          email,
+          phoneNumber,
+          rooms: ["1", "2"],
+        },
+      },
+    });
+
+    return Alert.alert(
       `Name: ${name}\nEmail: ${email}\nPhone number: ${phoneNumber}\nAlerts: ${alert}`
     );
+  };
 
   const initialFormValues = {name: "", email: "", phoneNumber: "", alert: ""};
 
