@@ -7,13 +7,13 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  Image,
 } from "react-native";
 import * as Yup from "yup";
 
 import Button from "../../components/buttons/button";
 import {Color, alertTypes} from "../../const";
 import {generateId} from "../../utils";
+import TrashIcon from "./img/remove-alert.svg";
 
 interface FormProps {
   stuffType: string;
@@ -102,11 +102,7 @@ const AddingForm = ({
                       borderColor: color,
                       backgroundColor: color,
                     }}>
-                    <Text>
-                      {choosenAlert === name && (
-                        <Image source={require("./img/remove-alert.png")} />
-                      )}
-                    </Text>
+                    <Text>{choosenAlert === name && <TrashIcon />}</Text>
                   </View>
                   <Text>{name}</Text>
                 </View>

@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 
 import {alertType} from "../../mocks/dashboardData";
 
@@ -16,7 +16,6 @@ const DashboardAlertItem = ({dashboardAlert}: IDashboardItemProps) => {
       </View>
       <View style={styles.titleContainer}>
         <Text>{dashboardAlert.title}</Text>
-        <Image source={require("./img/drop-down.png")} />
       </View>
     </View>
   );

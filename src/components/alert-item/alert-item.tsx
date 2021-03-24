@@ -1,7 +1,8 @@
 import React from "react";
-import {StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
+import {StyleSheet, Text, View, TouchableOpacity} from "react-native";
 
 import {primaryColor, textBaseColor} from "../../const";
+import EditIcon from "../stuff-item/img/edit.svg";
 
 type AlertItemType = {
   status: string;
@@ -24,10 +25,7 @@ const AlertItem = ({alertItem, index}: AlertProps) => {
           <Text style={styles.status}>{alertItem.status}</Text>
           <View style={styles.configContainer}>
             <View style={styles.alertColor} />
-            <Image
-              style={styles.editBtn}
-              source={require("../stuff-item/img/edit.png")}
-            />
+            <EditIcon style={styles.editBtn} />
           </View>
         </View>
       </View>
