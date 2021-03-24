@@ -10,9 +10,9 @@ import {
 } from "react-native";
 import * as Yup from "yup";
 
-import Button from "../../components/buttons/button";
 import {Color, alertTypes} from "../../const";
 import {generateId} from "../../utils";
+import Button from "../buttons/button";
 import TrashIcon from "./img/remove-alert.svg";
 
 interface FormProps {

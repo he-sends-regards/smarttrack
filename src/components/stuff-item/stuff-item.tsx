@@ -1,24 +1,25 @@
 import React from "react";
-import {StyleSheet, Text, View, TouchableOpacity, Alert} from "react-native";
+import {StyleSheet, Text, View, TouchableOpacity} from "react-native";
 
+import {formType} from "../../const";
+import {stuffWorkerType} from "../../types";
 import {generateId} from "../../utils";
 import DeleteIcon from "./img/delete.svg";
 import EditIcon from "./img/edit.svg";
 
-type StuffItemType = {
-  name: string;
-  email: string;
-  phoneNumber: string;
-  rooms: string[];
-};
-
 interface StuffProps {
-  stuffWorkerData: StuffItemType;
+  stuffWorkerData: stuffWorkerType;
   index: number;
   onStuffItemDelete: Function;
+  setFormStatus: Function;
 }
 
-const StuffItem = ({stuffWorkerData, index, onStuffItemDelete}: StuffProps) => {
+const StuffItem = ({
+  stuffWorkerData,
+  index,
+  onStuffItemDelete,
+  setFormStatus,
+}: StuffProps) => {
   return (
     <TouchableOpacity>
       <View style={styles.container}>
@@ -28,11 +29,18 @@ const StuffItem = ({stuffWorkerData, index, onStuffItemDelete}: StuffProps) => {
 
         <View>
           <View style={styles.controls}>
-            <TouchableOpacity onPress={() => Alert.alert("Edit")}>
+            <TouchableOpacity
+              onPress={() => {
+                setFormStatus({
+                  isOpened: true,
+                  initiator: formType.EDIT,
+                  options: {id: stuffWorkerData.id},
+                });
+              }}>
               <EditIcon style={styles.controlsLogo} />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => onStuffItemDelete(stuffWorkerData.email)}>
+              onPress={() => onStuffItemDelete(stuffWorkerData.id)}>
               <DeleteIcon style={styles.controlsLogo} />
             </TouchableOpacity>
           </View>

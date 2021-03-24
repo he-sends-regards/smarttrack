@@ -1,9 +1,5 @@
-type stuffWorkerType = {
-  name: string;
-  email: string;
-  phoneNumber: string;
-  rooms: string[];
-};
+import {stuffWorkerType} from "./../types/index";
+import {generateId} from "./../utils";
 
 type mockStuffType = {
   [key: string]: stuffWorkerType[];
@@ -59,7 +55,7 @@ export const mockStuff: mockStuffType = {
       phoneNumber: "123123123",
       rooms: ["1b", "2c"],
     },
-  ],
+  ].map(doctor => Object.assign({}, doctor, {id: generateId()})),
   assistants: [
     {
       name: "John",
@@ -109,7 +105,7 @@ export const mockStuff: mockStuffType = {
       phoneNumber: "123123123",
       rooms: ["1b", "2c"],
     },
-  ],
+  ].map(doctor => Object.assign({}, doctor, {id: generateId()})),
   receptionists: [
     {
       name: "Liza",
@@ -159,5 +155,5 @@ export const mockStuff: mockStuffType = {
       phoneNumber: "123123123",
       rooms: ["1b", "2c"],
     },
-  ],
+  ].map(doctor => Object.assign({}, doctor, {id: generateId()})),
 };
