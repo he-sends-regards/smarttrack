@@ -1,10 +1,34 @@
 import React, {useState} from "react";
-import {StyleSheet, Text, View, Image, Alert, SafeAreaView} from "react-native";
+import {StyleSheet, Text, View, Alert, SafeAreaView} from "react-native";
 
 import MenuItem from "../../components/menu-item/menu-item";
 import Navbar from "../../components/navbar/navbar";
-import {AppRoute, MenuItems} from "../../const";
+import {AppRoute} from "../../const";
 import {generateId} from "../../utils";
+import menuLogo from "./image";
+
+const MenuItems = [
+  {
+    title: AppRoute.DASHBOARD,
+    Logo: menuLogo.DashboardSvg,
+    ActiveLogo: menuLogo.DashboardActiveSvg,
+  },
+  {
+    title: AppRoute.STUFF,
+    Logo: menuLogo.StuffSvg,
+    ActiveLogo: menuLogo.StuffActiveSvg,
+  },
+  {
+    title: AppRoute.ALERTS,
+    Logo: menuLogo.AlertsSvg,
+    ActiveLogo: menuLogo.AlertsActiveSvg,
+  },
+  {
+    title: AppRoute.SEQUENCE,
+    Logo: menuLogo.SequenceSvg,
+    ActiveLogo: menuLogo.SequenceActiveSvg,
+  },
+];
 
 const Menu = () => {
   const [activeMenuItem, setActiveMenuItem] = useState(AppRoute.DASHBOARD);
@@ -13,11 +37,11 @@ const Menu = () => {
     <SafeAreaView style={styles.container}>
       <Navbar haveCloseAbility />
 
-      {MenuItems.map(({title, logo, activeLogo}) => (
+      {MenuItems.map(({title, Logo, ActiveLogo}) => (
         <MenuItem
           title={title}
-          logo={logo}
-          activeLogo={activeLogo}
+          Logo={Logo}
+          ActiveLogo={ActiveLogo}
           activeMenuItem={activeMenuItem}
           setActiveMenuItem={setActiveMenuItem}
           key={generateId()}
@@ -27,7 +51,8 @@ const Menu = () => {
       <View
         style={styles.signOut}
         onTouchStart={() => Alert.alert("You are signed out (no)")}>
-        <Image source={require("../../../assets/menu-icons/sign-out.png")} />
+        {menuLogo.SignOutSvg}
+
         <Text style={styles.signOutText}>Sign Out</Text>
       </View>
     </SafeAreaView>
