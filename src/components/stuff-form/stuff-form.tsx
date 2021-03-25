@@ -1,7 +1,6 @@
 import {Formik} from "formik";
 import React from "react";
 import {
-  Text,
   View,
   StyleSheet,
   TextInput,
@@ -13,6 +12,7 @@ import * as Yup from "yup";
 import {Color, alertTypes} from "../../const";
 import {generateId} from "../../utils";
 import Button from "../buttons/button";
+import Text from "../custom-text/custom-text";
 import TrashIcon from "./img/remove-alert.svg";
 
 interface FormProps {
@@ -50,7 +50,7 @@ const AddingForm = ({
       {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
         <View style={styles.form}>
           <View>
-            <Text>Name:</Text>
+            <Text text="Name:" />
             <TextInput
               onChangeText={handleChange("name")}
               onBlur={handleBlur("name")}
@@ -58,11 +58,15 @@ const AddingForm = ({
               style={styles.input}
             />
             {errors.name && touched.name ? (
-              <Text style={styles.errorMessage}>{errors.name}</Text>
+              <Text
+                color="red"
+                additionalStyle={styles.errorMessage}
+                text={errors.name}
+              />
             ) : null}
           </View>
           <View>
-            <Text>Email:</Text>
+            <Text text="Email:" />
             <TextInput
               onChangeText={handleChange("email")}
               onBlur={handleBlur("email")}
@@ -70,11 +74,15 @@ const AddingForm = ({
               style={styles.input}
             />
             {errors.email && touched.email ? (
-              <Text style={styles.errorMessage}>{errors.email}</Text>
+              <Text
+                color="red"
+                additionalStyle={styles.errorMessage}
+                text={errors.email}
+              />
             ) : null}
           </View>
           <View>
-            <Text>Phone number:</Text>
+            <Text text="Phone number:" />
             <TextInput
               onChangeText={handleChange("phoneNumber")}
               onBlur={handleBlur("phoneNumber")}
@@ -82,11 +90,20 @@ const AddingForm = ({
               style={styles.input}
             />
             {errors.phoneNumber && touched.phoneNumber ? (
-              <Text style={styles.errorMessage}>{errors.phoneNumber}</Text>
+              <Text
+                color="red"
+                additionalStyle={styles.errorMessage}
+                text={errors.phoneNumber}
+              />
             ) : null}
           </View>
 
-          <Text style={styles.alertsTitle}>Alerts</Text>
+          <Text
+            text="Alerts"
+            fontWeight="bold"
+            fontSize="l"
+            additionalStyle={styles.alertsTitle}
+          />
 
           <View style={styles.alertsContainer}>
             {alertTypes.map(({name, color}) => (
@@ -102,9 +119,9 @@ const AddingForm = ({
                       borderColor: color,
                       backgroundColor: color,
                     }}>
-                    <Text>{choosenAlert === name && <TrashIcon />}</Text>
+                    {choosenAlert === name && <TrashIcon />}
                   </View>
-                  <Text>{name}</Text>
+                  <Text text={name} />
                 </View>
               </TouchableOpacity>
             ))}
@@ -115,9 +132,18 @@ const AddingForm = ({
             style={styles.alertsAddingTouchable}>
             <View style={styles.alertsAddingContainer}>
               <View style={styles.alertsAddingCircle}>
-                <Text style={styles.alertsAddingPlus}>+</Text>
+                <Text
+                  color="white"
+                  additionalStyle={styles.alertsAddingPlus}
+                  text="+"
+                />
               </View>
-              <Text style={styles.alertsAddingText}>Add an Alert</Text>
+              <Text
+                text="Add an Alert"
+                color="#6AC7BE"
+                additionalStyle={styles.alertsAddingText}
+                fontSize="m"
+              />
             </View>
           </TouchableOpacity>
 
@@ -140,11 +166,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 30,
   },
-  title: {
-    fontSize: 16,
-    lineHeight: 24,
-    fontFamily: "Poppins-Regular",
-  },
   input: {
     borderWidth: 1,
     borderColor: "black",
@@ -159,14 +180,11 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   errorMessage: {
-    color: "red",
     textAlign: "right",
   },
   alertsTitle: {
     marginTop: 25,
     marginBottom: 5,
-    fontFamily: "Poppins-Bold",
-    fontSize: 16,
     lineHeight: 21,
   },
   alertsContainer: {
@@ -177,7 +195,7 @@ const styles = StyleSheet.create({
   },
   alertItem: {
     marginBottom: 15,
-    marginHorizontal: 20,
+    marginHorizontal: 15,
     alignItems: "center",
   },
   alertItemCircle: {
@@ -204,12 +222,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  alertsAddingPlus: {color: "white", fontSize: 30},
+  alertsAddingPlus: {fontSize: 30},
   alertsAddingText: {
     marginLeft: 7,
-    color: "#6AC7BE",
-    fontSize: 14,
-    fontFamily: "Poppins-Regular",
   },
   alertsAddingTouchable: {
     marginBottom: 25,

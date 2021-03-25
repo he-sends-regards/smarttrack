@@ -1,7 +1,8 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, View} from "react-native";
 
 import {alertType} from "../../mocks/dashboardData";
+import Text from "../custom-text/custom-text";
 
 interface IDashboardItemProps {
   dashboardAlert: alertType;
@@ -12,10 +13,10 @@ const DashboardAlertItem = ({dashboardAlert}: IDashboardItemProps) => {
     <View style={styles.container}>
       <View />
       <View style={styles.logoContainer}>
-        <Text style={styles.logo}>{dashboardAlert.logo}</Text>
+        <Text text={dashboardAlert.logo} additionalStyle={{fontSize: 30}} />
       </View>
       <View style={styles.titleContainer}>
-        <Text>{dashboardAlert.title}</Text>
+        <Text text={dashboardAlert.title} />
       </View>
     </View>
   );
@@ -43,10 +44,6 @@ const styles = StyleSheet.create({
     height: 50,
     borderWidth: 2,
     borderRadius: 25,
-  },
-  logo: {
-    fontSize: 30,
-    fontFamily: "Poppins-Regular",
   },
   titleContainer: {
     width: "100%",

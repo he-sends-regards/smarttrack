@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import {Text, SafeAreaView, StyleSheet, Alert} from "react-native";
+import {SafeAreaView, StyleSheet, Alert} from "react-native";
 import {useDispatch} from "react-redux";
 
+import Text from "../../components/custom-text/custom-text";
 import AddingForm from "../../components/stuff-form/stuff-form";
 import {formType} from "../../const";
 import {ActionType} from "../../store/actions";
@@ -62,11 +63,13 @@ const AddStuff = ({stuffType, setFormStatus, formStatus}: AddStuffType) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>
-        {`${
+      <Text
+        text={`${
           formStatus.initiator === formType.ADD ? "Add new" : "Edit"
         } ${stuffType.slice(0, stuffType.length - 1)}`}
-      </Text>
+        additionalStyle={styles.title}
+        fontSize="l"
+      />
 
       <AddingForm
         stuffType={stuffType}
@@ -86,9 +89,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   title: {
-    fontSize: 16,
     lineHeight: 24,
-    fontFamily: "Poppins-Regular",
   },
 });
 

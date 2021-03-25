@@ -1,9 +1,10 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, View} from "react-native";
 import {TouchableHighlight} from "react-native-gesture-handler";
 
 import {textBaseColor} from "../../const";
 import {generateId} from "../../utils";
+import Text from "../custom-text/custom-text";
 
 type StuffMenuProps = {
   activeListItem: string;
@@ -25,13 +26,11 @@ const StuffMenu = ({
           underlayColor="transparent">
           <View style={styles.listItemContainer}>
             <Text
-              style={
-                activeListItem === listItem
-                  ? styles.activeItemList
-                  : styles.listItem
-              }>
-              {listItem}
-            </Text>
+              text={listItem}
+              color={activeListItem === listItem ? "#5CBD9F" : textBaseColor}
+              fontSize="l"
+              additionalStyle={styles.menuItem}
+            />
             <View
               style={activeListItem === listItem && styles.activeItemBorder}
             />
@@ -52,18 +51,9 @@ const styles = StyleSheet.create({
     paddingRight: "3%",
     marginBottom: 24,
   },
-  listItem: {
-    fontSize: 16,
-    color: textBaseColor,
-    textTransform: "capitalize",
-    fontFamily: "Poppins-Regular",
-  },
-  activeItemList: {
-    fontSize: 16,
-    textTransform: "capitalize",
-    fontFamily: "Poppins-Regular",
-    color: "#5CBD9F",
+  menuItem: {
     paddingBottom: 10,
+    textTransform: "capitalize",
   },
   listItemContainer: {
     justifyContent: "center",

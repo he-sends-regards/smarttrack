@@ -1,8 +1,9 @@
 import React from "react";
-import {StyleSheet, Text, View, TouchableOpacity} from "react-native";
+import {StyleSheet, View, TouchableOpacity} from "react-native";
 
 import {primaryColor, textBaseColor} from "../../const";
 import {createColor} from "../../utils";
+import Text from "../custom-text/custom-text";
 import EditIcon from "../stuff-item/img/edit.svg";
 
 type AlertItemType = {
@@ -21,10 +22,10 @@ const AlertItem = ({alertItem, index, modalHandler}: AlertProps) => {
     <TouchableOpacity>
       <View style={styles.container}>
         <View style={styles.coloredNumber}>
-          <Text>{index + 1}</Text>
+          <Text text={`${index + 1}`} />
         </View>
         <View style={styles.innerContainer}>
-          <Text style={styles.status}>{alertItem.status}</Text>
+          <Text text={alertItem.status} fontSize="l" />
           <View style={styles.configContainer}>
             <View
               style={{
@@ -76,10 +77,6 @@ const styles = StyleSheet.create({
     opacity: 0.3,
     borderBottomRightRadius: 20,
     color: textBaseColor,
-  },
-  status: {
-    fontFamily: "Poppins-Regular",
-    fontSize: 16,
   },
   alertColor: {
     borderRadius: 50,

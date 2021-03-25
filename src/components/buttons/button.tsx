@@ -1,5 +1,7 @@
 import React from "react";
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {StyleSheet, TouchableOpacity, View} from "react-native";
+
+import Text from "../custom-text/custom-text";
 
 interface ButtonProps {
   title: string;
@@ -42,13 +44,10 @@ const Button = ({
           ...borderType,
         }}>
         <Text
-          style={{
-            ...styles.appButtonText,
-            color,
-            fontSize: border === "sm" ? 12 : 16,
-          }}>
-          {title}
-        </Text>
+          text={title}
+          fontSize={border === "sm" ? "s" : "l"}
+          color={color}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -60,11 +59,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-  },
-  appButtonText: {
-    fontSize: 12,
-    fontFamily: "Poppins-Regular",
-    lineHeight: 18,
   },
 });
 

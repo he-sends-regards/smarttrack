@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Modal,
   View,
-  Text,
   TextInput,
   Image,
   TouchableHighlight,
@@ -14,6 +13,7 @@ import {useDispatch} from "react-redux";
 import {Color, alerts} from "../../const";
 import {createColor, generateId} from "../../utils";
 import Button from "../buttons/button";
+import Text from "../custom-text/custom-text";
 interface IalertModal {
   onPress: () => void;
   visible: boolean;
@@ -65,11 +65,17 @@ const AlertModal = ({onPress, visible, activeListItem}: IalertModal) => {
               />
             </View>
           </TouchableHighlight>
-          <Text style={styles.modalText}>Status would be here</Text>
-          <Text style={styles.modalInputTitle}>Name</Text>
-          <Text style={styles.modalTextErrors}>
-            {errors.requiredStatus.length > 0 && errors.requiredStatus}
-          </Text>
+          <Text
+            fontSize="l"
+            additionalStyle={styles.modalText}
+            text="Status would be here"
+          />
+          <Text additionalStyle={styles.modalInputTitle} text="Name" />
+          <Text
+            color="red"
+            text={errors.requiredStatus.length > 0 ? errors.requiredStatus : ""}
+            additionalStyle={styles.modalTextErrors}
+          />
 
           <TextInput
             style={styles.input}
@@ -78,10 +84,12 @@ const AlertModal = ({onPress, visible, activeListItem}: IalertModal) => {
             maxLength={25}
           />
 
-          <Text style={styles.modalInputTitle}>Color</Text>
-          <Text style={styles.modalTextErrors}>
-            {errors.requiredColor.length > 0 && errors.requiredColor}
-          </Text>
+          <Text additionalStyle={styles.modalInputTitle} text="Color" />
+          <Text
+            color="red"
+            additionalStyle={styles.modalTextErrors}
+            text={errors.requiredColor.length > 0 ? errors.requiredColor : ""}
+          />
           <View style={styles.alertsContainer}>
             {alerts.map(({color}) => (
               <TouchableOpacity
@@ -154,20 +162,12 @@ const styles = StyleSheet.create({
   buttonClose: {
     backgroundColor: "#2196F3",
   },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
   modalText: {
-    fontSize: 16,
-    fontFamily: "Poppins-Regular",
     marginBottom: 15,
     textAlign: "center",
     marginTop: 15,
   },
   modalTextErrors: {
-    color: "red",
     paddingLeft: 20,
   },
   modalInputTitle: {

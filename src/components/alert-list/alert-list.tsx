@@ -38,7 +38,6 @@ const AlertList = ({modalHandler, activeListItem}: AlertListProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
     flex: 1,
     justifyContent: "space-between",
     paddingHorizontal: "5%",
