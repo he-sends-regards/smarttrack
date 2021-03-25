@@ -7,9 +7,11 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
+import {useSelector} from "react-redux";
 import * as Yup from "yup";
 
 import {Color, alertTypes} from "../../const";
+import {RootState} from "../../store/store";
 import {generateId} from "../../utils";
 import Button from "../buttons/button";
 import Text from "../custom-text/custom-text";
@@ -22,12 +24,7 @@ interface FormProps {
   onSubmit: (values: {[key: string]: string}) => void;
 }
 
-const AddingForm = ({
-  stuffType,
-  choosenAlert,
-  setChoosenAlert,
-  onSubmit,
-}: FormProps) => {
+const AddingForm = ({choosenAlert, setChoosenAlert, onSubmit}: FormProps) => {
   const SignupSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, "Too Short!")
@@ -40,7 +37,14 @@ const AddingForm = ({
     email: Yup.string().email("Invalid email").required("Required"),
   });
 
-  const initialFormValues = {name: "", email: "", phoneNumber: "", alert: ""};
+  const initialValuesInStore = useSelector(
+    (state: RootState) => state.FORMS.defaultData
+  );
+
+  const initialFormValues =
+    Object.keys(initialValuesInStore).length === 0
+      ? {name: "", email: "", phoneNumber: "", alert: ""}
+      : initialValuesInStore;
 
   return (
     <Formik

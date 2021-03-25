@@ -1,11 +1,14 @@
 import React, {useState} from "react";
 import {SafeAreaView, StyleSheet, View} from "react-native";
+import {useDispatch, useSelector} from "react-redux";
 
 import Button from "../../components/buttons/button";
 import Navbar from "../../components/navbar/navbar";
 import StuffList from "../../components/stuff-list/stuff-list";
 import StuffMenu from "../../components/stuff-menu/stuff-menu";
-import {Color, formType} from "../../const";
+import {Color} from "../../const";
+import {ActionType} from "../../store/actions";
+import {RootState} from "../../store/store";
 import AddStuff from "../add-stuff/add-stuff";
 
 const listItems = {
@@ -16,27 +19,26 @@ const listItems = {
 
 const Stuff = () => {
   const [activeListItem, setActiveListItem] = useState(listItems.doctors);
-  const [formStatus, setFormStatus] = useState({
-    isOpened: false,
-    initiator: "",
-    options: {},
-  });
+  const isFormOpened = useSelector(
+    (state: RootState) => state.FORMS.isStuffFormOpened
+  );
+  const dispatch = useDispatch();
 
   return (
     <SafeAreaView style={styles.container}>
-      {formStatus.isOpened ? (
+      {isFormOpened ? (
         <View>
           <Navbar
             haveCloseAbility
-            onPress={() =>
-              setFormStatus({isOpened: false, initiator: "", options: {}})
-            }
+            onPress={() => {
+              dispatch({type: ActionType.SWITCH_STUFF_FORM_STATUS});
+              dispatch({
+                type: ActionType.SET_STUFF_FORM_DEFAULT_VALUE,
+                payload: {},
+              });
+            }}
           />
-          <AddStuff
-            stuffType={activeListItem}
-            formStatus={formStatus}
-            setFormStatus={setFormStatus}
-          />
+          <AddStuff stuffType={activeListItem} />
         </View>
       ) : (
         <View>
@@ -49,21 +51,14 @@ const Stuff = () => {
           />
           <Button
             onPress={() =>
-              setFormStatus({
-                isOpened: true,
-                initiator: formType.ADD,
-                options: {},
-              })
+              dispatch({type: ActionType.SWITCH_STUFF_FORM_STATUS})
             }
             width="100%"
             backgroundColor={Color.primaryColor}
             color="white"
             title="Add new"
           />
-          <StuffList
-            activeListItem={activeListItem}
-            setFormStatus={setFormStatus}
-          />
+          <StuffList activeListItem={activeListItem} />
         </View>
       )}
     </SafeAreaView>

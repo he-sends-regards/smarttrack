@@ -1,7 +1,8 @@
 import React from "react";
 import {StyleSheet, View, TouchableOpacity} from "react-native";
+import {useDispatch} from "react-redux";
 
-import {formType} from "../../const";
+import {ActionType} from "../../store/actions";
 import {stuffWorkerType} from "../../types";
 import {generateId} from "../../utils";
 import Text from "../custom-text/custom-text";
@@ -12,15 +13,19 @@ interface StuffProps {
   stuffWorkerData: stuffWorkerType;
   index: number;
   onStuffItemDelete: Function;
-  setFormStatus: Function;
 }
 
-const StuffItem = ({
-  stuffWorkerData,
-  index,
-  onStuffItemDelete,
-  setFormStatus,
-}: StuffProps) => {
+const StuffItem = ({stuffWorkerData, index, onStuffItemDelete}: StuffProps) => {
+  const dispatch = useDispatch();
+
+  const onFormEditClick = () => {
+    dispatch({type: ActionType.SWITCH_STUFF_FORM_STATUS});
+    dispatch({
+      type: ActionType.SET_STUFF_FORM_DEFAULT_VALUE,
+      payload: stuffWorkerData,
+    });
+  };
+
   return (
     <TouchableOpacity>
       <View style={styles.container}>
@@ -32,11 +37,7 @@ const StuffItem = ({
           <View style={styles.controls}>
             <TouchableOpacity
               onPress={() => {
-                setFormStatus({
-                  isOpened: true,
-                  initiator: formType.EDIT,
-                  options: {id: stuffWorkerData.id, name: stuffWorkerData.name},
-                });
+                onFormEditClick();
               }}>
               <EditIcon style={styles.controlsLogo} />
             </TouchableOpacity>

@@ -1,8 +1,10 @@
 import React from "react";
 import {StyleSheet, View} from "react-native";
 import {TouchableHighlight} from "react-native-gesture-handler";
+import {useSelector} from "react-redux";
 
 import * as RootNavigation from "../../../routes/root-navigation";
+import {RootState} from "../../store/store";
 import Text from "../custom-text/custom-text";
 import CloseIcon from "./img/close-icon.svg";
 
@@ -15,6 +17,10 @@ const Navbar = ({
   haveCloseAbility = false,
   onPress = () => RootNavigation.goBack(),
 }: NavbarProps) => {
+  const isFormOpened = useSelector(
+    (state: RootState) => state.FORMS.isStuffFormOpened
+  );
+
   return (
     <View style={styles.container}>
       <Text
@@ -25,7 +31,7 @@ const Navbar = ({
         fontSize="xl"
       />
 
-      {haveCloseAbility ? (
+      {isFormOpened ? (
         <TouchableHighlight
           onPress={() => onPress()}
           underlayColor="transparent">

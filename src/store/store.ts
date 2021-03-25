@@ -28,6 +28,10 @@ export type RootState = {
   ALERTS: {
     alerts: IAlert;
   };
+  FORMS: {
+    isStuffFormOpened: boolean;
+    defaultData: IStuff;
+  };
 };
 
 export default store;

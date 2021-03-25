@@ -1,28 +1,45 @@
 import React, {useState} from "react";
 import {SafeAreaView, StyleSheet, Alert} from "react-native";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import Text from "../../components/custom-text/custom-text";
 import AddingForm from "../../components/stuff-form/stuff-form";
-import {formType} from "../../const";
 import {ActionType} from "../../store/actions";
+import {RootState} from "../../store/store";
 
 type AddStuffType = {
   stuffType: string;
-  setFormStatus: Function;
-  formStatus: {isOpened: boolean; initiator: string; options: {id?: string}};
 };
 
 type onSumbitArgs = {
   [key: string]: string;
 };
 
-const AddStuff = ({stuffType, setFormStatus, formStatus}: AddStuffType) => {
+const AddStuff = ({stuffType}: AddStuffType) => {
   const [choosenAlert, setChoosenAlert] = useState("");
   const dispatch = useDispatch();
 
+  const initialValues = useSelector(
+    (state: RootState) => state.FORMS.defaultData
+  );
+  const doesStoreHaveInitialValues = Object.keys(initialValues).length > 0;
+
   const onSubmit = ({name, email, phoneNumber, alert}: onSumbitArgs) => {
-    if (formStatus.initiator === formType.ADD) {
+    if (doesStoreHaveInitialValues) {
+      dispatch({
+        type: ActionType.UPDATE_STUFF,
+        payload: {
+          type: stuffType,
+          data: {
+            id: initialValues.id,
+            name,
+            email,
+            phoneNumber,
+            rooms: ["1", "2"],
+          },
+        },
+      });
+    } else {
       dispatch({
         type: ActionType.ADD_STUFF,
         payload: {
@@ -35,23 +52,9 @@ const AddStuff = ({stuffType, setFormStatus, formStatus}: AddStuffType) => {
           },
         },
       });
-    } else if (formStatus.initiator === formType.EDIT) {
-      dispatch({
-        type: ActionType.UPDATE_STUFF,
-        payload: {
-          type: stuffType,
-          data: {
-            id: formStatus.options.id,
-            name,
-            email,
-            phoneNumber,
-            rooms: ["1", "2"],
-          },
-        },
-      });
     }
 
-    setFormStatus({isOpened: false});
+    dispatch({type: ActionType.SWITCH_STUFF_FORM_STATUS});
 
     return Alert.alert(
       `New ${stuffType.slice(
@@ -65,7 +68,7 @@ const AddStuff = ({stuffType, setFormStatus, formStatus}: AddStuffType) => {
     <SafeAreaView style={styles.container}>
       <Text
         text={`${
-          formStatus.initiator === formType.ADD ? "Add new" : "Edit"
+          doesStoreHaveInitialValues ? "Edit" : "Add new"
         } ${stuffType.slice(0, stuffType.length - 1)}`}
         additionalStyle={styles.title}
         fontSize="l"

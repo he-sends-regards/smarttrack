@@ -8,10 +8,9 @@ import StuffItem from "../stuff-item/stuff-item";
 
 interface StuffListProps {
   activeListItem: string;
-  setFormStatus: Function;
 }
 
-const StuffList = ({activeListItem, setFormStatus}: StuffListProps) => {
+const StuffList = ({activeListItem}: StuffListProps) => {
   const dispatch = useDispatch();
 
   const onStuffItemDelete = (id: string, type: string = activeListItem) =>
@@ -25,7 +24,6 @@ const StuffList = ({activeListItem, setFormStatus}: StuffListProps) => {
         stuffWorkerData={item}
         index={index}
         onStuffItemDelete={onStuffItemDelete}
-        setFormStatus={setFormStatus}
       />
     );
   };
