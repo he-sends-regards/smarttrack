@@ -17,7 +17,7 @@ interface AlertListProps {
 }
 
 const AlertList = ({modalHandler, activeListItem}: AlertListProps) => {
-  const alertsData = useSelector((state: RootState) => state.alerts);
+  const alertsData = useSelector((state: RootState) => state.ALERTS.alerts);
 
   const renderItem = ({item, index}: any) => {
     return (
@@ -38,7 +38,6 @@ const AlertList = ({modalHandler, activeListItem}: AlertListProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
     flex: 1,
     justifyContent: "space-between",
     paddingHorizontal: "5%",

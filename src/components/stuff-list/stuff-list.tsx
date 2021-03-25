@@ -8,16 +8,15 @@ import StuffItem from "../stuff-item/stuff-item";
 
 interface StuffListProps {
   activeListItem: string;
-  setFormStatus: Function;
 }
 
-const StuffList = ({activeListItem, setFormStatus}: StuffListProps) => {
+const StuffList = ({activeListItem}: StuffListProps) => {
   const dispatch = useDispatch();
 
   const onStuffItemDelete = (id: string, type: string = activeListItem) =>
     dispatch({type: "DELETE_STUFF", payload: {type, id}});
 
-  const stuffData = useSelector((state: RootState) => state.stuff);
+  const stuffData = useSelector((state: RootState) => state.STUFF.stuff);
 
   const renderItem = ({item, index}: any) => {
     return (
@@ -25,7 +24,6 @@ const StuffList = ({activeListItem, setFormStatus}: StuffListProps) => {
         stuffWorkerData={item}
         index={index}
         onStuffItemDelete={onStuffItemDelete}
-        setFormStatus={setFormStatus}
       />
     );
   };
@@ -44,7 +42,7 @@ const StuffList = ({activeListItem, setFormStatus}: StuffListProps) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: "80%", // Solve without hardcode
+    height: "75%", // Solve without hardcode
     flexDirection: "column",
     justifyContent: "space-between",
     paddingHorizontal: "5%",

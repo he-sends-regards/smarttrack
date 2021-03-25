@@ -1,8 +1,11 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, View} from "react-native";
 import {TouchableHighlight} from "react-native-gesture-handler";
+import {useSelector} from "react-redux";
 
 import * as RootNavigation from "../../../routes/root-navigation";
+import {RootState} from "../../store/store";
+import Text from "../custom-text/custom-text";
 import CloseIcon from "./img/close-icon.svg";
 
 type NavbarProps = {
@@ -14,11 +17,21 @@ const Navbar = ({
   haveCloseAbility = false,
   onPress = () => RootNavigation.goBack(),
 }: NavbarProps) => {
+  const isFormOpened = useSelector(
+    (state: RootState) => state.FORMS.isStuffFormOpened
+  );
+
   return (
     <View style={styles.container}>
-      <Text style={styles.logo}>Logo</Text>
+      <Text
+        text="Logo"
+        additionalStyle={styles.logo}
+        color="white"
+        fontWeight="bold"
+        fontSize="xl"
+      />
 
-      {haveCloseAbility ? (
+      {isFormOpened ? (
         <TouchableHighlight
           onPress={() => onPress()}
           underlayColor="transparent">
@@ -52,10 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   logo: {
-    fontSize: 24,
     lineHeight: 36,
-    fontFamily: "Poppins-Bold",
-    color: "#fff",
   },
   closeIcon: {
     width: 24,
@@ -80,7 +90,6 @@ const styles = StyleSheet.create({
   menuIconContainer: {
     width: 32,
     height: 24,
-    flexDirection: "column",
     justifyContent: "space-between",
   },
 });

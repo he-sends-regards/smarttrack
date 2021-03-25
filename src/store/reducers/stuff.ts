@@ -1,8 +1,8 @@
-import {mockAlerts} from "../mocks/alerts";
-import {mockStuff} from "../mocks/stuff";
-import {mockDashboardData} from "./../mocks/dashboardData";
-import {generateId} from "./../utils";
-import {ActionType} from "./actions";
+import {mockAlerts} from "../../mocks/alerts";
+import {mockDashboardData} from "../../mocks/dashboardData";
+import {mockStuff} from "../../mocks/stuff";
+import {generateId} from "../../utils";
+import {ActionType} from "../actions";
 
 const initialState = {
   stuff: mockStuff,

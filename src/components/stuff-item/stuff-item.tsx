@@ -1,9 +1,11 @@
 import React from "react";
-import {StyleSheet, Text, View, TouchableOpacity} from "react-native";
+import {StyleSheet, View, TouchableOpacity} from "react-native";
+import {useDispatch} from "react-redux";
 
-import {formType} from "../../const";
+import {ActionType} from "../../store/actions";
 import {stuffWorkerType} from "../../types";
 import {generateId} from "../../utils";
+import Text from "../custom-text/custom-text";
 import DeleteIcon from "./img/delete.svg";
 import EditIcon from "./img/edit.svg";
 
@@ -11,31 +13,31 @@ interface StuffProps {
   stuffWorkerData: stuffWorkerType;
   index: number;
   onStuffItemDelete: Function;
-  setFormStatus: Function;
 }
 
-const StuffItem = ({
-  stuffWorkerData,
-  index,
-  onStuffItemDelete,
-  setFormStatus,
-}: StuffProps) => {
+const StuffItem = ({stuffWorkerData, index, onStuffItemDelete}: StuffProps) => {
+  const dispatch = useDispatch();
+
+  const onFormEditClick = () => {
+    dispatch({type: ActionType.SWITCH_STUFF_FORM_STATUS});
+    dispatch({
+      type: ActionType.SET_STUFF_FORM_DEFAULT_VALUE,
+      payload: stuffWorkerData,
+    });
+  };
+
   return (
     <TouchableOpacity>
       <View style={styles.container}>
         <View style={styles.coloredBlock}>
-          <Text>{index + 1}</Text>
+          <Text text={`${index + 1}`} fontWeight="bold" />
         </View>
 
         <View>
           <View style={styles.controls}>
             <TouchableOpacity
               onPress={() => {
-                setFormStatus({
-                  isOpened: true,
-                  initiator: formType.EDIT,
-                  options: {id: stuffWorkerData.id},
-                });
+                onFormEditClick();
               }}>
               <EditIcon style={styles.controlsLogo} />
             </TouchableOpacity>
@@ -46,22 +48,26 @@ const StuffItem = ({
           </View>
 
           <View style={styles.stuffInfo}>
-            <Text style={styles.stuffItemName}>{stuffWorkerData.name}</Text>
-            <Text style={styles.stuffItem}>{stuffWorkerData.email}</Text>
-            <Text style={styles.stuffItem}>{stuffWorkerData.phoneNumber}</Text>
+            <Text
+              text={stuffWorkerData.name}
+              additionalStyle={styles.stuffItemName}
+              fontSize="l"
+            />
+            <Text
+              text={stuffWorkerData.email}
+              additionalStyle={styles.stuffItem}
+            />
+            <Text
+              text={stuffWorkerData.phoneNumber}
+              additionalStyle={styles.stuffItem}
+            />
             <View style={styles.rooms}>
-              <Text>Rooms:</Text>
-              {stuffWorkerData.rooms.map(room => (
-                <Text key={generateId()}>{room}</Text>
-              ))}
-            </View>
-            <View style={styles.rooms}>
-              <Text>o</Text>
-              <Text>o</Text>
-              <Text>o</Text>
-              <Text>o</Text>
-              <Text>o</Text>
-              <Text>o</Text>
+              <Text text="Rooms:" fontWeight="bold" />
+              <View style={styles.roomsText}>
+                {stuffWorkerData.rooms.map(room => (
+                  <Text key={generateId()} text={`${room} `} />
+                ))}
+              </View>
             </View>
           </View>
         </View>
@@ -72,14 +78,13 @@ const StuffItem = ({
 
 const styles = StyleSheet.create({
   container: {
-    // width: "100%",
-    height: 200,
+    width: "100%",
     flexDirection: "row",
     borderWidth: 1,
     borderColor: "white",
     borderTopLeftRadius: 20,
     borderBottomRightRadius: 20,
-    marginBottom: 15,
+    marginBottom: "5%",
     backgroundColor: "white",
   },
   coloredBlock: {
@@ -96,29 +101,29 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   stuffItem: {
-    fontSize: 14,
-    fontFamily: "Poppins-Regular",
-    marginVertical: 5,
+    marginBottom: "4%",
   },
   stuffItemName: {
-    fontSize: 16,
-    fontFamily: "Poppins-Bold",
+    marginBottom: "10%",
   },
   controls: {
     width: "100%",
     flexDirection: "row",
     marginLeft: "65%",
     marginTop: 15,
+    marginBottom: 10,
   },
   controlsLogo: {
     width: 15,
     marginRight: 30,
   },
   rooms: {
+    width: 120, // Recount to remove hardcode
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 10,
   },
+  roomsText: {flexDirection: "row"},
 });
 
 export default StuffItem;

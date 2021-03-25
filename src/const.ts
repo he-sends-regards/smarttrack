@@ -16,11 +16,6 @@ export const Color = {
   dangerColor: "#FC7E55",
 };
 
-export const formType = {
-  ADD: "ADD",
-  EDIT: "EDIT",
-};
-
 export const alertTypes = [
   {
     name: "Assistant",

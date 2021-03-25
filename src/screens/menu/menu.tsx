@@ -1,6 +1,7 @@
 import React, {useState} from "react";
-import {StyleSheet, Text, View, Alert, SafeAreaView} from "react-native";
+import {StyleSheet, View, Alert, SafeAreaView} from "react-native";
 
+import Text from "../../components/custom-text/custom-text";
 import MenuItem from "../../components/menu-item/menu-item";
 import Navbar from "../../components/navbar/navbar";
 import {AppRoute} from "../../const";
@@ -53,7 +54,12 @@ const Menu = () => {
         onTouchStart={() => Alert.alert("You are signed out (no)")}>
         <menuLogo.SignOutSvg />
 
-        <Text style={styles.signOutText}>Sign Out</Text>
+        <Text
+          fontSize="xl"
+          color="#8484D8"
+          additionalStyle={styles.signOutText}
+          text="Sign Out"
+        />
       </View>
     </SafeAreaView>
   );
@@ -102,12 +108,9 @@ const styles = StyleSheet.create({
     marginTop: "20%",
   },
   signOutText: {
-    fontSize: 18,
     paddingVertical: 18,
     paddingRight: "40%",
     marginLeft: 14,
-    color: "#8484D8",
-    fontFamily: "Poppins-Regular",
   },
 });
 

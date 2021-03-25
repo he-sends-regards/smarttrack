@@ -1,9 +1,10 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, View} from "react-native";
 import {TouchableHighlight} from "react-native-gesture-handler";
 
 import * as RootNavigation from "../../../routes/root-navigation";
 import {generateId} from "../../utils";
+import Text from "../custom-text/custom-text";
 
 type MenuItemProps = {
   title: string;
@@ -40,7 +41,12 @@ const MenuItem = ({
             : styles.menuItemContainer
         }>
         {activeMenuItem === title ? <ActiveLogo /> : <Logo />}
-        <Text style={styles.menuItem}>{title}</Text>
+        <Text
+          text={title}
+          fontSize="xl"
+          color="white"
+          additionalStyle={styles.menuItem}
+        />
       </View>
     </TouchableHighlight>
   );
@@ -54,12 +60,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#212155",
   },
   menuItem: {
-    fontSize: 18,
     paddingVertical: 18,
     paddingRight: "40%",
-    color: "white",
     marginLeft: 14,
-    fontFamily: "Poppins-Regular",
   },
   menuItemContainer: {
     flexDirection: "row",
@@ -87,14 +90,6 @@ const styles = StyleSheet.create({
     width: "80%",
     paddingLeft: 25,
     marginTop: "20%",
-  },
-  signOutText: {
-    fontSize: 18,
-    paddingVertical: 18,
-    paddingRight: "40%",
-    marginLeft: 14,
-    color: "#8484D8",
-    fontFamily: "Poppins-Regular",
   },
 });
 

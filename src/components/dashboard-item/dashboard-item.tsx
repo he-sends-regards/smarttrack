@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, View} from "react-native";
 import {TouchableOpacity} from "react-native-gesture-handler";
 
 import {dashboardItemType} from "../../mocks/dashboardData";
 import Button from "../buttons/button";
+import Text from "../custom-text/custom-text";
 import DashboardAlertsList from "../dashboard-alerts-list/dashboard-alerts-list";
 
 interface IDashboardItemProps {
@@ -17,8 +18,15 @@ const DashboardItem = ({dashboardItem}: IDashboardItemProps) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View>
-          <Text style={styles.name}>{dashboardItem.name}</Text>
-          <Text style={styles.position}>{dashboardItem.position}</Text>
+          <Text
+            text={dashboardItem.name}
+            fontSize="l"
+            additionalStyle={styles.name}
+          />
+          <Text
+            text={dashboardItem.position}
+            additionalStyle={styles.position}
+          />
         </View>
         <Button
           title="Reset"
@@ -33,16 +41,32 @@ const DashboardItem = ({dashboardItem}: IDashboardItemProps) => {
           <View style={styles.alertControlsCount}>
             <TouchableOpacity
               onPress={() => setCurrentAlertsCount(currentAlertsCount - 1)}>
-              <Text style={styles.alertControlsText}>-</Text>
+              <Text
+                fontSize="l"
+                additionalStyle={styles.alertControlsText}
+                text="-"
+              />
             </TouchableOpacity>
-            <Text style={styles.alertControlsTextCount}>
-              {currentAlertsCount}
-            </Text>
+            <Text
+              fontSize="l"
+              additionalStyle={styles.alertControlsTextCount}
+              color="#FC7E55"
+              text={`${currentAlertsCount}`}
+            />
             <TouchableOpacity
               onPress={() => setCurrentAlertsCount(currentAlertsCount + 1)}>
-              <Text style={styles.alertControlsText}>+</Text>
+              <Text
+                fontSize="l"
+                additionalStyle={styles.alertControlsText}
+                text="+"
+              />
             </TouchableOpacity>
-            <Text style={styles.alertControlsInLine}>in line</Text>
+            <Text
+              text="in line"
+              fontSize="m"
+              color="#969696"
+              additionalStyle={styles.alertControlsInLine}
+            />
           </View>
 
           <Button
@@ -68,15 +92,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   name: {
-    fontSize: 18,
-    color: "black",
-    fontFamily: "Poppins-Regular",
     marginBottom: 10,
   },
   position: {
-    fontSize: 14,
     color: "#4F4F4F",
-    fontFamily: "Poppins-Regular",
     marginBottom: 20,
   },
   header: {
@@ -98,22 +117,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   alertControlsText: {
-    fontSize: 18,
-    color: "black",
-    fontFamily: "Poppins-Regular",
     paddingHorizontal: 7,
   },
   alertControlsTextCount: {
-    fontSize: 18,
-    color: "#FC7E55",
-    fontFamily: "Poppins-Regular",
     paddingHorizontal: 7,
   },
   alertControlsInLine: {
     marginLeft: 20,
-    fontSize: 14,
-    color: "#969696",
-    fontFamily: "Poppins-Regular",
   },
 });
 
