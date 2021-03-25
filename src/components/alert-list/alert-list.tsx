@@ -17,7 +17,7 @@ interface AlertListProps {
 }
 
 const AlertList = ({modalHandler, activeListItem}: AlertListProps) => {
-  const alertsData = useSelector((state: RootState) => state.alerts);
+  const alertsData = useSelector((state: RootState) => state.ALERTS.alerts);
 
   const renderItem = ({item, index}: any) => {
     return (

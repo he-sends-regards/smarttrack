@@ -3,7 +3,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 
 import {dashboardItemType} from "./../mocks/dashboardData";
 import {stuffWorkerType} from "./../types/index";
-import reducer from "./reducer";
+import reducer from "./reducers/";
 
 const store = createStore(reducer, composeWithDevTools());
 
@@ -21,9 +21,13 @@ interface IAlert {
 }
 
 export type RootState = {
-  stuff: IStuff;
-  alerts: IAlert;
-  dashboardData: dashboardItemType[];
+  STUFF: {
+    stuff: IStuff;
+    dashboardData: dashboardItemType[];
+  };
+  ALERTS: {
+    alerts: IAlert;
+  };
 };
 
 export default store;

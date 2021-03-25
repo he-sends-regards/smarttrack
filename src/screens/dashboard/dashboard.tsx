@@ -6,7 +6,9 @@ import DashboardList from "../../components/dashboard-list/dashboard-list";
 import Navbar from "../../components/navbar/navbar";
 import {RootState} from "../../store/store";
 const Dashboard = () => {
-  const dashboardData = useSelector((state: RootState) => state.dashboardData);
+  const dashboardData = useSelector(
+    (state: RootState) => state.STUFF.dashboardData
+  );
 
   return (
     <SafeAreaView style={styles.container}>

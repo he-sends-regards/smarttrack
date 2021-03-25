@@ -17,7 +17,7 @@ const StuffList = ({activeListItem, setFormStatus}: StuffListProps) => {
   const onStuffItemDelete = (id: string, type: string = activeListItem) =>
     dispatch({type: "DELETE_STUFF", payload: {type, id}});
 
-  const stuffData = useSelector((state: RootState) => state.stuff);
+  const stuffData = useSelector((state: RootState) => state.STUFF.stuff);
 
   const renderItem = ({item, index}: any) => {
     return (
