@@ -12,12 +12,22 @@ type AlertItemType = {
   color: string;
 };
 
+type modalType = {
+  isOpened: boolean;
+  actionType: string;
+  
+}
+
 interface IStuff {
   [key: string]: stuffWorkerType[];
 }
 
 interface IAlert {
   [key: string]: AlertItemType[];
+}
+
+interface IModal {
+  [key: string]: modalType[];
 }
 
 export type RootState = {

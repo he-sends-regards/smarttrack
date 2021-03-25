@@ -8,6 +8,7 @@ const initialState = {
   stuff: mockStuff,
   alerts: mockAlerts,
   dashboardData: mockDashboardData,
+  modal: {isOpened: false, default: {}},
 };
 
 type actionTypes = {
@@ -39,6 +40,15 @@ export default (state = initialState, action: actionTypes) => {
               ? action.payload.data
               : stuff;
           }),
+        },
+      };
+
+    case ActionType.OPEN_MODAL:
+      return {
+        ...state,
+        modal: {
+          isOpened: true,
+          default: {},
         },
       };
 

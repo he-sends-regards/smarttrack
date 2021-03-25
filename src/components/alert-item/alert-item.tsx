@@ -14,10 +14,25 @@ type AlertItemType = {
 interface AlertProps {
   alertItem: AlertItemType;
   index: number;
-  modalHandler: () => void;
+  setModalStatus: () => void;
 }
 
-const AlertItem = ({alertItem, index, modalHandler}: AlertProps) => {
+const AlertItem = ({alertItem, index, setModalStatus}: AlertProps) => {
+
+  // const alertSelected =
+  // alertItem.color === color
+  //     ? {
+  //       borderWidth: 4,
+  //       height: 59,
+  //       width: 359,
+  //       }
+  //     : {
+  //       borderWidth: 2,
+  //       height: 37,
+  //       width: 37,
+  //       };
+
+  console.log("alertItem", alertItem);
   return (
     <TouchableOpacity>
       <View style={styles.container}>
@@ -32,9 +47,19 @@ const AlertItem = ({alertItem, index, modalHandler}: AlertProps) => {
                 ...styles.alertColor,
                 backgroundColor: alertItem.color,
                 borderColor: createColor(alertItem.color, -50),
+                // ...alertSelected,
               }}
             />
-            <EditIcon style={styles.editBtn} onPress={() => modalHandler()} />
+            <EditIcon
+              style={styles.editBtn}
+              onPress={() =>
+                setModalStatus({
+                  isOpened: true,
+                  actionType: "edit",
+                  options: alertItem,
+                })
+              }
+            />
           </View>
         </View>
       </View>

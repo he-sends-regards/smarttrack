@@ -18,9 +18,16 @@ interface IalertModal {
   onPress: () => void;
   visible: boolean;
   activeListItem: string;
+  // setModalStatus: () => void;
+  setModalStatus: {isOpened: boolean; actionType: string; options: object};
 }
 
-const AlertModal = ({onPress, visible, activeListItem}: IalertModal) => {
+const AlertModal = ({
+  onPress,
+  visible,
+  activeListItem,
+  setModalStatus,
+}: IAlertModal) => {
   const [status, onChangeStatus] = useState("");
   const [colorAlert, setColorAlert] = useState("");
   const [errors, setErrors] = useState({requiredStatus: "", requiredColor: ""});
@@ -56,7 +63,15 @@ const AlertModal = ({onPress, visible, activeListItem}: IalertModal) => {
         <View style={styles.modalView}>
           <TouchableHighlight
             underlayColor="transparent"
-            onPress={() => onPress()}
+            onPress={() =>
+              // setModalStatus({isOpened: false})
+              setModalStatus(prev => {
+                return {
+                  ...prev,
+                  isOpened: false,
+                };
+              })
+            }
             style={styles.closeModal}>
             <View>
               <Image
@@ -97,12 +112,19 @@ const AlertModal = ({onPress, visible, activeListItem}: IalertModal) => {
                 onPress={() => {
                   setColorAlert(color);
                 }}>
-                <View style={styles.alertItemContainer}>
+                <View
+                  style={{
+                    ...styles.alertItemContainer,
+                    marginHorizontal: colorAlert === color ? 6 : 10,
+                  }}>
                   <View
                     style={{
                       ...styles.alertItem,
                       backgroundColor: color,
                       borderColor: createColor(color, -50),
+                      borderWidth: colorAlert === color ? 4 : 2,
+                      width: colorAlert === color ? 56 : 45,
+                      height: colorAlert === color ? 56 : 45,
                     }}
                   />
                 </View>
@@ -191,13 +213,10 @@ const styles = StyleSheet.create({
   },
   alertItemContainer: {
     marginBottom: 10,
-    marginHorizontal: 10,
     alignItems: "center",
+    justifyContent: "center",
   },
   alertItem: {
-    borderWidth: 2,
-    width: 45,
-    height: 45,
     borderRadius: 50,
     marginBottom: 5,
     alignItems: "center",

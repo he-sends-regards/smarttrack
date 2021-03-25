@@ -6,14 +6,14 @@ import {RootState} from "../../store/store";
 import {generateId} from "../../utils";
 import AlertItem from "../alert-item/alert-item";
 
-type AlertItemType = {
-  status: string;
-  color: string;
-};
-
+// type AlertItemType = {
+//   status: string;
+//   color: string;
+// };
 interface AlertListProps {
   activeListItem: string;
-  modalHandler: () => void;
+  // setModalStatus: () => void;
+  setModalStatus: {isOpened: boolean; actionType: string; options: object};
 }
 
 const AlertList = ({modalHandler, activeListItem}: AlertListProps) => {
@@ -21,7 +21,11 @@ const AlertList = ({modalHandler, activeListItem}: AlertListProps) => {
 
   const renderItem = ({item, index}: any) => {
     return (
-      <AlertItem modalHandler={modalHandler} alertItem={item} index={index} />
+      <AlertItem
+        setModalStatus={setModalStatus}
+        alertItem={item}
+        index={index}
+      />
     );
   };
 
