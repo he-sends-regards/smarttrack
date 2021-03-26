@@ -12,21 +12,17 @@ import AlertItem from "../alert-item/alert-item";
 // };
 interface AlertListProps {
   activeListItem: string;
-  // setModalStatus: () => void;
-  setModalStatus: {isOpened: boolean; actionType: string; options: object};
 }
 
-const AlertList = ({modalHandler, activeListItem}: AlertListProps) => {
+const AlertList = ({activeListItem}: AlertListProps) => {
   const alertsData = useSelector((state: RootState) => state.ALERTS.alerts);
 
+  // console.log('alertsData', alertsData[activeListItem])
+  // console.log('activeListItem', activeListItem)
+  // console.log('alertsData[activeListItem]', alertsData[activeListItem])
+
   const renderItem = ({item, index}: any) => {
-    return (
-      <AlertItem
-        setModalStatus={setModalStatus}
-        alertItem={item}
-        index={index}
-      />
-    );
+    return <AlertItem alertItem={item} index={index} />;
   };
 
   return (

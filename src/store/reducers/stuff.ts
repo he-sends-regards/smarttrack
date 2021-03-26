@@ -6,9 +6,7 @@ import {ActionType} from "../actions";
 
 const initialState = {
   stuff: mockStuff,
-  alerts: mockAlerts,
   dashboardData: mockDashboardData,
-  modal: {isOpened: false, default: {}},
 };
 
 type actionTypes = {
@@ -43,15 +41,6 @@ export default (state = initialState, action: actionTypes) => {
         },
       };
 
-    case ActionType.OPEN_MODAL:
-      return {
-        ...state,
-        modal: {
-          isOpened: true,
-          default: {},
-        },
-      };
-
     case ActionType.DELETE_STUFF:
       return {
         ...state,
@@ -60,17 +49,6 @@ export default (state = initialState, action: actionTypes) => {
           [action.payload.type]: state.stuff[action.payload.type].filter(
             stuff => stuff.id !== action.payload.id
           ),
-        },
-      };
-    case ActionType.ADD_ALERT:
-      return {
-        ...state,
-        alerts: {
-          ...state.alerts,
-          [action.payload.type]: [
-            ...state.alerts[action.payload.type],
-            action.payload.data,
-          ],
         },
       };
 

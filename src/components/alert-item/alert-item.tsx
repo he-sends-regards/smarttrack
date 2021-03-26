@@ -1,7 +1,9 @@
 import React from "react";
 import {StyleSheet, View, TouchableOpacity} from "react-native";
+import {useDispatch} from "react-redux";
 
 import {primaryColor, textBaseColor} from "../../const";
+import {ActionType} from "../../store/actions";
 import {createColor} from "../../utils";
 import Text from "../custom-text/custom-text";
 import EditIcon from "../stuff-item/img/edit.svg";
@@ -9,30 +11,18 @@ import EditIcon from "../stuff-item/img/edit.svg";
 type AlertItemType = {
   status: string;
   color: string;
+  id?: string;
 };
 
 interface AlertProps {
   alertItem: AlertItemType;
   index: number;
-  setModalStatus: () => void;
 }
 
-const AlertItem = ({alertItem, index, setModalStatus}: AlertProps) => {
+const AlertItem = ({alertItem, index}: AlertProps) => {
+ 
+  const dispatch = useDispatch();
 
-  // const alertSelected =
-  // alertItem.color === color
-  //     ? {
-  //       borderWidth: 4,
-  //       height: 59,
-  //       width: 359,
-  //       }
-  //     : {
-  //       borderWidth: 2,
-  //       height: 37,
-  //       width: 37,
-  //       };
-
-  console.log("alertItem", alertItem);
   return (
     <TouchableOpacity>
       <View style={styles.container}>
@@ -47,18 +37,13 @@ const AlertItem = ({alertItem, index, setModalStatus}: AlertProps) => {
                 ...styles.alertColor,
                 backgroundColor: alertItem.color,
                 borderColor: createColor(alertItem.color, -50),
-                // ...alertSelected,
               }}
             />
             <EditIcon
               style={styles.editBtn}
-              onPress={() =>
-                setModalStatus({
-                  isOpened: true,
-                  actionType: "edit",
-                  options: alertItem,
-                })
-              }
+              onPress={() => {
+                dispatch({type: ActionType.TOGGLE_MODAL, payload: alertItem});
+              }}
             />
           </View>
         </View>

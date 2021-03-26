@@ -10,24 +10,15 @@ const store = createStore(reducer, composeWithDevTools());
 type AlertItemType = {
   status: string;
   color: string;
+  id?: string;
 };
-
-type modalType = {
-  isOpened: boolean;
-  actionType: string;
-  
-}
 
 interface IStuff {
   [key: string]: stuffWorkerType[];
 }
 
 interface IAlert {
-  [key: string]: AlertItemType[];
-}
-
-interface IModal {
-  [key: string]: modalType[];
+  [key: string]: string;
 }
 
 export type RootState = {
@@ -41,6 +32,10 @@ export type RootState = {
   FORMS: {
     isStuffFormOpened: boolean;
     defaultData: IStuff;
+  };
+  MODAL: {
+    isOpened: boolean;
+    data: AlertItemType;
   };
 };
 

@@ -8,31 +8,34 @@ import {
   TouchableHighlight,
   TouchableOpacity,
 } from "react-native";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import {Color, alerts} from "../../const";
+import {ActionType} from "../../store/actions";
+import {RootState} from "../../store/store";
 import {createColor, generateId} from "../../utils";
 import Button from "../buttons/button";
 import Text from "../custom-text/custom-text";
-interface IalertModal {
-  onPress: () => void;
+interface IAlertModal {
   visible: boolean;
   activeListItem: string;
-  // setModalStatus: () => void;
-  setModalStatus: {isOpened: boolean; actionType: string; options: object};
 }
 
-const AlertModal = ({
-  onPress,
-  visible,
-  activeListItem,
-  setModalStatus,
-}: IAlertModal) => {
-  const [status, onChangeStatus] = useState("");
-  const [colorAlert, setColorAlert] = useState("");
+const AlertModal = ({visible, activeListItem}: IAlertModal) => {
+  const dataAlertFromStore = useSelector(
+    (state: RootState) => state.MODAL.data
+  );
+  const [status, setStatus] = useState<string>(
+    dataAlertFromStore?.status || ""
+  );
+  const [colorAlert, setColorAlert] = useState(dataAlertFromStore?.color || "");
   const [errors, setErrors] = useState({requiredStatus: "", requiredColor: ""});
 
   const dispatch = useDispatch();
+
+  const onChangeStatus = (newStatus: string) => {
+    setStatus(newStatus);
+  };
 
   const createAlert = (
     status: string,
@@ -52,8 +55,22 @@ const AlertModal = ({
         return {...prev, requiredColor: "Please select color!"};
       });
     } else {
-      dispatch({type: "ADD_ALERT", payload: {type, data: {color, status}}});
-      onPress();
+      if (dataAlertFromStore) {
+        dispatch({
+          type: ActionType.UPDATE_ALERT,
+          payload: {
+            type,
+            data: {id: dataAlertFromStore.id, color, status},
+          },
+        });
+        dispatch({type: ActionType.TOGGLE_MODAL});
+      } else {
+        dispatch({
+          type: ActionType.ADD_ALERT,
+          payload: {type, data: {color, status}},
+        });
+        dispatch({type: ActionType.TOGGLE_MODAL});
+      }
     }
   };
 
@@ -63,15 +80,7 @@ const AlertModal = ({
         <View style={styles.modalView}>
           <TouchableHighlight
             underlayColor="transparent"
-            onPress={() =>
-              // setModalStatus({isOpened: false})
-              setModalStatus(prev => {
-                return {
-                  ...prev,
-                  isOpened: false,
-                };
-              })
-            }
+            onPress={() => dispatch({type: ActionType.TOGGLE_MODAL})}
             style={styles.closeModal}>
             <View>
               <Image
@@ -94,8 +103,8 @@ const AlertModal = ({
 
           <TextInput
             style={styles.input}
-            onChangeText={onChangeStatus}
-            value={status}
+            onChangeText={newStatus => onChangeStatus(newStatus)}
+            value={`${status}`}
             maxLength={25}
           />
 
