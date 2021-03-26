@@ -13,7 +13,6 @@ type actionTypes = {
 export default (state = initialState, action: actionTypes) => {
   switch (action.type) {
     case ActionType.SWITCH_STUFF_FORM_STATUS:
-      console.log(state.defaultData);
 
       return Object.keys(state.defaultData).length > 0
         ? {

@@ -8,24 +8,34 @@ import {
   TouchableHighlight,
   TouchableOpacity,
 } from "react-native";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import {Color, alerts} from "../../const";
+import {ActionType} from "../../store/actions";
+import {RootState} from "../../store/store";
 import {createColor, generateId} from "../../utils";
 import Button from "../buttons/button";
 import Text from "../custom-text/custom-text";
-interface IalertModal {
-  onPress: () => void;
+interface IAlertModal {
   visible: boolean;
   activeListItem: string;
 }
 
-const AlertModal = ({onPress, visible, activeListItem}: IalertModal) => {
-  const [status, onChangeStatus] = useState("");
-  const [colorAlert, setColorAlert] = useState("");
+const AlertModal = ({visible, activeListItem}: IAlertModal) => {
+  const dataAlertFromStore = useSelector(
+    (state: RootState) => state.MODAL.data
+  );
+  const [status, setStatus] = useState<string>(
+    dataAlertFromStore?.status || ""
+  );
+  const [colorAlert, setColorAlert] = useState(dataAlertFromStore?.color || "");
   const [errors, setErrors] = useState({requiredStatus: "", requiredColor: ""});
 
   const dispatch = useDispatch();
+
+  const onChangeStatus = (newStatus: string) => {
+    setStatus(newStatus);
+  };
 
   const createAlert = (
     status: string,
@@ -45,8 +55,22 @@ const AlertModal = ({onPress, visible, activeListItem}: IalertModal) => {
         return {...prev, requiredColor: "Please select color!"};
       });
     } else {
-      dispatch({type: "ADD_ALERT", payload: {type, data: {color, status}}});
-      onPress();
+      if (dataAlertFromStore) {
+        dispatch({
+          type: ActionType.UPDATE_ALERT,
+          payload: {
+            type,
+            data: {id: dataAlertFromStore.id, color, status},
+          },
+        });
+        dispatch({type: ActionType.TOGGLE_MODAL});
+      } else {
+        dispatch({
+          type: ActionType.ADD_ALERT,
+          payload: {type, data: {color, status}},
+        });
+        dispatch({type: ActionType.TOGGLE_MODAL});
+      }
     }
   };
 
@@ -56,7 +80,7 @@ const AlertModal = ({onPress, visible, activeListItem}: IalertModal) => {
         <View style={styles.modalView}>
           <TouchableHighlight
             underlayColor="transparent"
-            onPress={() => onPress()}
+            onPress={() => dispatch({type: ActionType.TOGGLE_MODAL})}
             style={styles.closeModal}>
             <View>
               <Image
@@ -79,8 +103,8 @@ const AlertModal = ({onPress, visible, activeListItem}: IalertModal) => {
 
           <TextInput
             style={styles.input}
-            onChangeText={onChangeStatus}
-            value={status}
+            onChangeText={newStatus => onChangeStatus(newStatus)}
+            value={`${status}`}
             maxLength={25}
           />
 
@@ -97,12 +121,19 @@ const AlertModal = ({onPress, visible, activeListItem}: IalertModal) => {
                 onPress={() => {
                   setColorAlert(color);
                 }}>
-                <View style={styles.alertItemContainer}>
+                <View
+                  style={{
+                    ...styles.alertItemContainer,
+                    marginHorizontal: colorAlert === color ? 6 : 10,
+                  }}>
                   <View
                     style={{
                       ...styles.alertItem,
                       backgroundColor: color,
                       borderColor: createColor(color, -50),
+                      borderWidth: colorAlert === color ? 4 : 2,
+                      width: colorAlert === color ? 56 : 45,
+                      height: colorAlert === color ? 56 : 45,
                     }}
                   />
                 </View>
@@ -191,13 +222,10 @@ const styles = StyleSheet.create({
   },
   alertItemContainer: {
     marginBottom: 10,
-    marginHorizontal: 10,
     alignItems: "center",
+    justifyContent: "center",
   },
   alertItem: {
-    borderWidth: 2,
-    width: 45,
-    height: 45,
     borderRadius: 50,
     marginBottom: 5,
     alignItems: "center",

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {StyleSheet, SafeAreaView} from "react-native";
-// import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import AlertList from "../../components/alert-list/alert-list";
 import Button from "../../components/buttons/button";
@@ -8,27 +8,29 @@ import AlertModal from "../../components/modal/alert-modal";
 import Navbar from "../../components/navbar/navbar";
 import StuffMenu from "../../components/stuff-menu/stuff-menu";
 import {primaryColor} from "../../const";
-// import {RootState} from "../../store/store";
+import {ActionType} from "../../store/actions";
+import {RootState} from "../../store/store";
 
 const listItems = ["doctors", "assistans", "receptionist"];
 
 const Alerts = () => {
   const [activeListItem, setActiveListItem] = useState("doctors");
-  const [modalVisible, setModalVisible] = useState(false);
+  const isModalOpened = useSelector((state: RootState) => state.MODAL.isOpened);
 
-  const modalHandler = () => {
-    setModalVisible(!modalVisible);
-  };
-
+  const dispatch = useDispatch();
   // const alertsData = useSelector((state: RootState) => state.alerts);
+
+  // const modalHandler = () => {
+  //   setModalVisible(!modalVisible);
+  // };
 
   return (
     <SafeAreaView style={styles.container}>
       <Navbar />
-      {modalVisible && (
+      {isModalOpened && (
         <AlertModal
-          visible={modalVisible}
-          onPress={modalHandler}
+          visible={isModalOpened}
+          // onPress={modalHandler}
           activeListItem={activeListItem}
         />
       )}
@@ -39,12 +41,12 @@ const Alerts = () => {
       />
       <Button
         title="Add new"
-        onPress={() => modalHandler()}
+        onPress={() => dispatch({type: ActionType.TOGGLE_MODAL})}
         backgroundColor={primaryColor}
         width="100%"
         color="#fff"
       />
-      <AlertList modalHandler={modalHandler} activeListItem={activeListItem} />
+      <AlertList activeListItem={activeListItem} />
     </SafeAreaView>
   );
 };

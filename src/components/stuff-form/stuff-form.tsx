@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  SafeAreaView,
 } from "react-native";
 import {useSelector} from "react-redux";
 import * as Yup from "yup";
@@ -47,119 +48,128 @@ const AddingForm = ({choosenAlert, setChoosenAlert, onSubmit}: FormProps) => {
       : initialValuesInStore;
 
   return (
-    <Formik
-      initialValues={initialFormValues}
-      onSubmit={onSubmit}
-      validationSchema={SignupSchema}>
-      {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
-        <View style={styles.form}>
-          <View>
-            <Text text="Name:" />
-            <TextInput
-              onChangeText={handleChange("name")}
-              onBlur={handleBlur("name")}
-              value={values.name}
-              style={styles.input}
-            />
-            {errors.name && touched.name ? (
-              <Text
-                color="red"
-                additionalStyle={styles.errorMessage}
-                text={errors.name}
+    <SafeAreaView>
+      <Formik
+        initialValues={initialFormValues}
+        onSubmit={onSubmit}
+        validationSchema={SignupSchema}>
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          touched,
+        }) => (
+          <View style={styles.form}>
+            <View>
+              <Text text="Name:" />
+              <TextInput
+                onChangeText={handleChange("name")}
+                onBlur={handleBlur("name")}
+                value={values.name}
+                style={styles.input}
               />
-            ) : null}
-          </View>
-          <View>
-            <Text text="Email:" />
-            <TextInput
-              onChangeText={handleChange("email")}
-              onBlur={handleBlur("email")}
-              value={values.email}
-              style={styles.input}
-            />
-            {errors.email && touched.email ? (
-              <Text
-                color="red"
-                additionalStyle={styles.errorMessage}
-                text={errors.email}
-              />
-            ) : null}
-          </View>
-          <View>
-            <Text text="Phone number:" />
-            <TextInput
-              onChangeText={handleChange("phoneNumber")}
-              onBlur={handleBlur("phoneNumber")}
-              value={values.phoneNumber}
-              style={styles.input}
-            />
-            {errors.phoneNumber && touched.phoneNumber ? (
-              <Text
-                color="red"
-                additionalStyle={styles.errorMessage}
-                text={errors.phoneNumber}
-              />
-            ) : null}
-          </View>
-
-          <Text
-            text="Alerts"
-            fontWeight="bold"
-            fontSize="l"
-            additionalStyle={styles.alertsTitle}
-          />
-
-          <View style={styles.alertsContainer}>
-            {alertTypes.map(({name, color}) => (
-              <TouchableOpacity
-                key={generateId()}
-                onPress={() => {
-                  setChoosenAlert(choosenAlert === name ? "" : name);
-                }}>
-                <View style={styles.alertItem}>
-                  <View
-                    style={{
-                      ...styles.alertItemCircle,
-                      borderColor: color,
-                      backgroundColor: color,
-                    }}>
-                    {choosenAlert === name && <TrashIcon />}
-                  </View>
-                  <Text text={name} />
-                </View>
-              </TouchableOpacity>
-            ))}
-          </View>
-
-          <TouchableOpacity
-            onPress={() => Alert.alert("Add on alert")}
-            style={styles.alertsAddingTouchable}>
-            <View style={styles.alertsAddingContainer}>
-              <View style={styles.alertsAddingCircle}>
+              {errors.name && touched.name ? (
                 <Text
-                  color="white"
-                  additionalStyle={styles.alertsAddingPlus}
-                  text="+"
+                  color="red"
+                  additionalStyle={styles.errorMessage}
+                  text={errors.name}
+                />
+              ) : null}
+            </View>
+            <View>
+              <Text text="Email:" />
+              <TextInput
+                onChangeText={handleChange("email")}
+                onBlur={handleBlur("email")}
+                value={values.email}
+                style={styles.input}
+              />
+              {errors.email && touched.email ? (
+                <Text
+                  color="red"
+                  additionalStyle={styles.errorMessage}
+                  text={errors.email}
+                />
+              ) : null}
+            </View>
+            <View>
+              <Text text="Phone number:" />
+              <TextInput
+                onChangeText={handleChange("phoneNumber")}
+                onBlur={handleBlur("phoneNumber")}
+                value={values.phoneNumber}
+                style={styles.input}
+              />
+              {errors.phoneNumber && touched.phoneNumber ? (
+                <Text
+                  color="red"
+                  additionalStyle={styles.errorMessage}
+                  text={errors.phoneNumber}
+                />
+              ) : null}
+            </View>
+
+            <Text
+              text="Alerts"
+              fontWeight="bold"
+              fontSize="l"
+              additionalStyle={styles.alertsTitle}
+            />
+
+            <View style={styles.alertsContainer}>
+              {alertTypes.map(({name, color}) => (
+                <TouchableOpacity
+                  key={generateId()}
+                  onPress={() => {
+                    setChoosenAlert(choosenAlert === name ? "" : name);
+                  }}>
+                  <View style={styles.alertItem}>
+                    <View
+                      style={{
+                        ...styles.alertItemCircle,
+                        borderColor: color,
+                        backgroundColor: color,
+                      }}>
+                      {choosenAlert === name && <TrashIcon />}
+                    </View>
+                    <Text text={name} />
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            <TouchableOpacity
+              onPress={() => Alert.alert("Add on alert")}
+              style={styles.alertsAddingTouchable}>
+              <View style={styles.alertsAddingContainer}>
+                <View style={styles.alertsAddingCircle}>
+                  <Text
+                    color="white"
+                    additionalStyle={styles.alertsAddingPlus}
+                    text="+"
+                  />
+                </View>
+                <Text
+                  text="Add an Alert"
+                  color="#6AC7BE"
+                  additionalStyle={styles.alertsAddingText}
+                  fontSize="m"
                 />
               </View>
-              <Text
-                text="Add an Alert"
-                color="#6AC7BE"
-                additionalStyle={styles.alertsAddingText}
-                fontSize="m"
-              />
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
 
-          <Button
-            onPress={handleSubmit}
-            title="Save"
-            backgroundColor={Color.primaryColor}
-            color="white"
-          />
-        </View>
-      )}
-    </Formik>
+            <Button
+              onPress={handleSubmit}
+              title="Save"
+              backgroundColor={Color.primaryColor}
+              color="white"
+            />
+          </View>
+        )}
+      </Formik>
+    </SafeAreaView>
   );
 };
 

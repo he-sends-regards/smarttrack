@@ -6,7 +6,6 @@ import {ActionType} from "../actions";
 
 const initialState = {
   stuff: mockStuff,
-  alerts: mockAlerts,
   dashboardData: mockDashboardData,
 };
 
@@ -50,17 +49,6 @@ export default (state = initialState, action: actionTypes) => {
           [action.payload.type]: state.stuff[action.payload.type].filter(
             stuff => stuff.id !== action.payload.id
           ),
-        },
-      };
-    case ActionType.ADD_ALERT:
-      return {
-        ...state,
-        alerts: {
-          ...state.alerts,
-          [action.payload.type]: [
-            ...state.alerts[action.payload.type],
-            action.payload.data,
-          ],
         },
       };
 

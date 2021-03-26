@@ -6,23 +6,23 @@ import {RootState} from "../../store/store";
 import {generateId} from "../../utils";
 import AlertItem from "../alert-item/alert-item";
 
-type AlertItemType = {
-  status: string;
-  color: string;
-};
-
+// type AlertItemType = {
+//   status: string;
+//   color: string;
+// };
 interface AlertListProps {
   activeListItem: string;
-  modalHandler: () => void;
 }
 
-const AlertList = ({modalHandler, activeListItem}: AlertListProps) => {
+const AlertList = ({activeListItem}: AlertListProps) => {
   const alertsData = useSelector((state: RootState) => state.ALERTS.alerts);
 
+  // console.log('alertsData', alertsData[activeListItem])
+  // console.log('activeListItem', activeListItem)
+  // console.log('alertsData[activeListItem]', alertsData[activeListItem])
+
   const renderItem = ({item, index}: any) => {
-    return (
-      <AlertItem modalHandler={modalHandler} alertItem={item} index={index} />
-    );
+    return <AlertItem alertItem={item} index={index} />;
   };
 
   return (

@@ -1,7 +1,9 @@
 import React from "react";
 import {StyleSheet, View, TouchableOpacity} from "react-native";
+import {useDispatch} from "react-redux";
 
 import {primaryColor, textBaseColor} from "../../const";
+import {ActionType} from "../../store/actions";
 import {createColor} from "../../utils";
 import Text from "../custom-text/custom-text";
 import EditIcon from "../stuff-item/img/edit.svg";
@@ -9,15 +11,18 @@ import EditIcon from "../stuff-item/img/edit.svg";
 type AlertItemType = {
   status: string;
   color: string;
+  id?: string;
 };
 
 interface AlertProps {
   alertItem: AlertItemType;
   index: number;
-  modalHandler: () => void;
 }
 
-const AlertItem = ({alertItem, index, modalHandler}: AlertProps) => {
+const AlertItem = ({alertItem, index}: AlertProps) => {
+ 
+  const dispatch = useDispatch();
+
   return (
     <TouchableOpacity>
       <View style={styles.container}>
@@ -34,7 +39,12 @@ const AlertItem = ({alertItem, index, modalHandler}: AlertProps) => {
                 borderColor: createColor(alertItem.color, -50),
               }}
             />
-            <EditIcon style={styles.editBtn} onPress={() => modalHandler()} />
+            <EditIcon
+              style={styles.editBtn}
+              onPress={() => {
+                dispatch({type: ActionType.TOGGLE_MODAL, payload: alertItem});
+              }}
+            />
           </View>
         </View>
       </View>
