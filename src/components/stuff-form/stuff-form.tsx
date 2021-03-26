@@ -50,6 +50,7 @@ const AddingForm = ({choosenAlert, setChoosenAlert, onSubmit}: FormProps) => {
   return (
     <SafeAreaView>
       <Formik
+        style={styles.container}
         initialValues={initialFormValues}
         onSubmit={onSubmit}
         validationSchema={SignupSchema}>
@@ -140,9 +141,7 @@ const AddingForm = ({choosenAlert, setChoosenAlert, onSubmit}: FormProps) => {
               ))}
             </View>
 
-            <TouchableOpacity
-              onPress={() => Alert.alert("Add on alert")}
-              style={styles.alertsAddingTouchable}>
+            <TouchableOpacity style={styles.alertsAddingTouchable}>
               <View style={styles.alertsAddingContainer}>
                 <View style={styles.alertsAddingCircle}>
                   <Text
@@ -175,29 +174,26 @@ const AddingForm = ({choosenAlert, setChoosenAlert, onSubmit}: FormProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    paddingHorizontal: 16,
-    alignItems: "center",
-    marginTop: 30,
+    flex: 1,
   },
   input: {
     borderWidth: 1,
     borderColor: "black",
     borderRadius: 20,
-    padding: 14,
+    padding: 5,
     width: "100%",
-    marginVertical: 10,
     fontFamily: "Poppins-Regular",
     fontSize: 12,
   },
   form: {
-    width: "100%",
+    flex: 1,
+    justifyContent: "flex-start",
   },
   errorMessage: {
     textAlign: "right",
   },
   alertsTitle: {
-    marginTop: 25,
+    marginTop: 5,
     marginBottom: 5,
     lineHeight: 21,
   },
@@ -205,7 +201,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "flex-start",
-    marginBottom: 40,
   },
   alertItem: {
     marginBottom: 15,

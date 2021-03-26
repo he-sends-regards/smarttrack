@@ -5,21 +5,21 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import {generateId} from "../../utils";
 import AlertItem from "../alert-item/alert-item";
-
-// type AlertItemType = {
-//   status: string;
-//   color: string;
-// };
+import Text from "../custom-text/custom-text";
 interface AlertListProps {
   activeListItem: string;
 }
 
 const AlertList = ({activeListItem}: AlertListProps) => {
-  const alertsData = useSelector((state: RootState) => state.ALERTS.alerts);
-
-  // console.log('alertsData', alertsData[activeListItem])
-  // console.log('activeListItem', activeListItem)
-  // console.log('alertsData[activeListItem]', alertsData[activeListItem])
+  const alertsData = useSelector((state: RootState) => {
+    return state.STUFF[activeListItem].reduce(
+      (acc, stuff) =>
+        stuff.alerts && stuff.alerts.length > 0
+          ? [...acc, ...stuff.alerts]
+          : acc,
+      []
+    );
+  });
 
   const renderItem = ({item, index}: any) => {
     return <AlertItem alertItem={item} index={index} />;
@@ -27,11 +27,15 @@ const AlertList = ({activeListItem}: AlertListProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={alertsData[activeListItem]}
-        renderItem={renderItem}
-        keyExtractor={generateId}
-      />
+      {alertsData.length > 0 ? (
+        <FlatList
+          data={alertsData}
+          renderItem={renderItem}
+          keyExtractor={generateId}
+        />
+      ) : (
+        <Text text="No alerts in such stuff category..." fontSize="l" />
+      )}
     </SafeAreaView>
   );
 };

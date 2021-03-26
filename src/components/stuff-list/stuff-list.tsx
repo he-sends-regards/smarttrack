@@ -16,7 +16,9 @@ const StuffList = ({activeListItem}: StuffListProps) => {
   const onStuffItemDelete = (id: string, type: string = activeListItem) =>
     dispatch({type: "DELETE_STUFF", payload: {type, id}});
 
-  const stuffData = useSelector((state: RootState) => state.STUFF.stuff);
+  const stuffData = useSelector(
+    (state: RootState) => state.STUFF[activeListItem]
+  );
 
   const renderItem = ({item, index}: any) => {
     return (
@@ -31,7 +33,7 @@ const StuffList = ({activeListItem}: StuffListProps) => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={stuffData[activeListItem]}
+        data={stuffData}
         renderItem={renderItem}
         keyExtractor={generateId}
       />

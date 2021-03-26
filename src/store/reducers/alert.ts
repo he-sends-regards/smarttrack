@@ -24,18 +24,18 @@ export default (state = initialState, action: actionTypes) => {
           ],
         },
       };
-    case ActionType.UPDATE_ALERT:
-      return {
-        ...state,
-        alerts: {
-          ...state.alerts,
-          [action.payload.type]: state.alerts[action.payload.type].map(item => {
-            return item.id === action.payload.data.id
-              ? action.payload.data
-              : item;
-          }),
-        },
-      };
+    // case ActionType.UPDATE_ALERT:
+    //   return {
+    //     ...state,
+    //     alerts: {
+    //       ...state.alerts,
+    //       [action.payload.type]: state.alerts[action.payload.type].map(item => {
+    //         return item.id === action.payload.data.id
+    //           ? action.payload.data
+    //           : item;
+    //       }),
+    //     },
+    //   };
 
     default:
       return state;

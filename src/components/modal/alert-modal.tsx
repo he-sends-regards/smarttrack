@@ -25,6 +25,8 @@ const AlertModal = ({visible, activeListItem}: IAlertModal) => {
   const dataAlertFromStore = useSelector(
     (state: RootState) => state.MODAL.data
   );
+  console.log(dataAlertFromStore);
+  
   const [status, setStatus] = useState<string>(
     dataAlertFromStore?.status || ""
   );
@@ -40,7 +42,8 @@ const AlertModal = ({visible, activeListItem}: IAlertModal) => {
   const createAlert = (
     status: string,
     color: string,
-    type: string = activeListItem
+    type: string = activeListItem,
+    ownerId,
   ): void => {
     if (status.trim().length < 3) {
       setErrors(prev => {
@@ -60,7 +63,7 @@ const AlertModal = ({visible, activeListItem}: IAlertModal) => {
           type: ActionType.UPDATE_ALERT,
           payload: {
             type,
-            data: {id: dataAlertFromStore.id, color, status},
+            data: {id: dataAlertFromStore.id, color, status, ownerId},
           },
         });
         dispatch({type: ActionType.TOGGLE_MODAL});
@@ -147,7 +150,7 @@ const AlertModal = ({visible, activeListItem}: IAlertModal) => {
             backgroundColor={Color.primaryColor}
             width="100%"
             onPress={() => {
-              createAlert(status, colorAlert);
+              createAlert(status, colorAlert, dataAlertFromStore.id);
             }}
           />
         </View>

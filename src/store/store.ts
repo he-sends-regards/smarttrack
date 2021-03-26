@@ -23,6 +23,7 @@ interface IAlert {
 
 export type RootState = {
   STUFF: {
+    doctors: stuffWorkerType[];
     stuff: IStuff;
     dashboardData: dashboardItemType[];
   };

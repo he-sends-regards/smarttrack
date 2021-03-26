@@ -20,8 +20,11 @@ interface AlertProps {
 }
 
 const AlertItem = ({alertItem, index}: AlertProps) => {
- 
   const dispatch = useDispatch();
+
+  const onEdit = () => {
+    dispatch({type: ActionType.TOGGLE_MODAL, payload: alertItem});
+  };
 
   return (
     <TouchableOpacity>
@@ -39,12 +42,7 @@ const AlertItem = ({alertItem, index}: AlertProps) => {
                 borderColor: createColor(alertItem.color, -50),
               }}
             />
-            <EditIcon
-              style={styles.editBtn}
-              onPress={() => {
-                dispatch({type: ActionType.TOGGLE_MODAL, payload: alertItem});
-              }}
-            />
+            <EditIcon style={styles.editBtn} onPress={() => onEdit()} />
           </View>
         </View>
       </View>

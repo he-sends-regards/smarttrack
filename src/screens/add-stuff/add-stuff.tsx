@@ -56,12 +56,7 @@ const AddStuff = ({stuffType}: AddStuffType) => {
 
     dispatch({type: ActionType.SWITCH_STUFF_FORM_STATUS});
 
-    return Alert.alert(
-      `New ${stuffType.slice(
-        0,
-        stuffType.length - 1
-      )} with such data:\nName: ${name}\nEmail: ${email}\nPhone number: ${phoneNumber}\nhas been added`
-    );
+    return Alert.alert(`Done!`);
   };
 
   return (
@@ -87,9 +82,10 @@ const AddStuff = ({stuffType}: AddStuffType) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+    height: "100%",
     paddingHorizontal: 16,
     alignItems: "center",
-    marginTop: 30,
+    paddingTop: 30,
   },
   title: {
     lineHeight: 24,

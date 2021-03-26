@@ -11,7 +11,7 @@ import {primaryColor} from "../../const";
 import {ActionType} from "../../store/actions";
 import {RootState} from "../../store/store";
 
-const listItems = ["doctors", "assistans", "receptionist"];
+const listItems = ["doctors", "assistants", "receptionists"];
 
 const Alerts = () => {
   const [activeListItem, setActiveListItem] = useState("doctors");
@@ -20,19 +20,11 @@ const Alerts = () => {
   const dispatch = useDispatch();
   // const alertsData = useSelector((state: RootState) => state.alerts);
 
-  // const modalHandler = () => {
-  //   setModalVisible(!modalVisible);
-  // };
-
   return (
     <SafeAreaView style={styles.container}>
       <Navbar />
       {isModalOpened && (
-        <AlertModal
-          visible={isModalOpened}
-          // onPress={modalHandler}
-          activeListItem={activeListItem}
-        />
+        <AlertModal visible={isModalOpened} activeListItem={activeListItem} />
       )}
       <StuffMenu
         activeListItem={activeListItem}
